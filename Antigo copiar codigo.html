@@ -1,0 +1,2044 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guia Prático do Auxílio Estudantil UTFPR - Editor</title>
+    <style>
+      /* CONFIGURAÇÃO DE CORES E FONTES: Modifique aqui para alterar a identidade visual em todo o guia */
+      :root {
+        /* --black: Cor escura principal. Usada em cabeçalhos, páginas de capa e caixas de texto com fundo preto.
+           - Como editar: Substitua pelo código hexadecimal da nova cor escura (ex: #1c1917).
+           - O que muda: Altera o tom escuro de destaque e os fundos de cards escuros por todo o documento. */
+        --black: #050505;
+
+        /* --yellow: Cor amarela de destaque da marca UTFPR. Usada em selos, ícones, bordas de seleção ativa e adornos decorativos.
+           - Como editar: Substitua pelo hexadecimal de sua nova cor de destaque (ex: #0066cc para azul).
+           - O que muda: Modifica a cor de realce, botões amarelos, adornos e miniaturas ativas. */
+        --yellow: #e7d000;
+
+        /* --white: Cor branca pura. Usada para o fundo padrão das páginas simuladas e textos em fundos escuros.
+           - Como editar: Substitua por outra tonalidade se desejar um fundo diferente (ex: #fffef0 para um tom mais sépia).
+           - O que muda: Altera a cor da folha de papel digital das páginas do guia. */
+        --white: #ffffff;
+
+        /* --soft: Tom cinza bem claro/suave. Usado para fundo de áreas auxiliares ou paletas.
+           - Como editar: Insira uma cor neutra clara (ex: #f1f5f9).
+           - O que muda: Altera o contraste sutil de seções internas secundárias. */
+        --soft: #f6f7f9;
+
+        /* --gray: Tom cinza médio neutro. Usado para textos secundários de descrição, rodapés e metadados.
+           - Como editar: Altere o hexadecimal para controlar o contraste de leitura secundária (ex: #4b5563).
+           - O que muda: Altera a tonalidade das descrições menores e notas que não exigem foco total. */
+        --gray: #68707a;
+
+        /* --line: Cor das linhas de borda. Usada para delimitar os cards e dividir seções das páginas.
+           - Como editar: Insira o hexadecimal para a nova borda (ex: #cbd5e1).
+           - O que muda: Altera a espessura visual das bordas e divisores dos elementos internos. */
+        --line: #e5e7eb;
+
+        /* --font-title: Família de fontes para os títulos. Usada em títulos grandes, kicker (linhas superiores) e logos.
+           - Como editar: Altere o nome da fonte mantendo as fontes de fallback (ex: "Inter", "Arial", sans-serif).
+           - O que muda: Altera a tipografia e o estilo visual de todos os títulos principais. */
+        --font-title: "Montserrat", "Arial", sans-serif;
+
+        /* --font-body: Família de fontes para o texto corrido. Usada no conteúdo dos cards, dicionários e listas.
+           - Como editar: Substitua pela fonte desejada (ex: "Roboto", sans-serif).
+           - O que muda: Altera a tipografia das descrições do guia, afetando diretamente a legibilidade. */
+        --font-body: "Open Sans", "Segoe UI", Arial, sans-serif;
+      }
+
+      /* RESET GLOBAL (*): Remove inconsistências padrão de dimensionamento dos elementos HTML.
+         - Como editar: Adicione margens globais se precisar de respiros adicionais na raiz.
+         - O que muda: Alinha o comportamento de box-sizing (incluir bordas no cálculo de tamanho) de forma unificada no navegador. */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* CORPO DO DOCUMENTO (body): Configura a base visual do editor web.
+         - Como editar: Altere o "background" caso queira mudar a cor de fundo por trás dos painéis.
+         - O que muda: O fundo de toda a área externa ao redor da folha digital de edição. */
+      body {
+        margin: 0;
+        background: #111827;
+        color: #f9fafb;
+        font-family: var(--font-body);
+      }
+
+      /* CABEÇALHO DO EDITOR (.header): A barra superior fixa na tela que hospeda botões de controle e marca.
+         - Como editar: Altere o "background" para mudar a cor da barra ou "padding" para alterar sua altura física.
+         - O que muda: Visual da barra superior fixa no topo do navegador. */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: #050505;
+        border-bottom: 1px solid #27272a;
+        padding: 14px 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* ÁREA DA LOGOMARCA (.brand): Flexbox para alinhar horizontalmente o badge e títulos institucionais.
+         - Como editar: Mude o "gap" para afastar ou aproximar o emblema "SOMA" do texto do título.
+         - O que muda: O espaçamento horizontal na logomarca. */
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* EMBLEMA "SOMA" (.badge): Selo com a marca em destaque amarelo no topo esquerdo.
+         - Como editar: Mude a cor do fundo em "background", ou use "border-radius" se quiser cantos retos (ex: 0px).
+         - O que muda: A aparência da etiqueta amarela de destaque na marca. */
+      .badge {
+        background: var(--yellow);
+        color: #000;
+        font-weight: 900;
+        font-family: var(--font-title);
+        padding: 9px 12px;
+        border-radius: 10px;
+      }
+
+      /* TÍTULO DA MARCA (.brand h1): Título principal no topo do editor.
+         - Como editar: Modifique "font-size" se preferir que o título tenha maior ou menor relevância visual.
+         - O que muda: O tamanho do texto do cabeçalho do editor. */
+      .brand h1 {
+        font-family: var(--font-title);
+        font-size: 15px;
+        margin: 0;
+      }
+
+      /* DESCRIÇÃO DA MARCA (.brand p): Linha secundária de descrição curta abaixo do título do editor.
+         - Como editar: Modifique a cor em "color" se desejar um texto com mais contraste (ex: #ffffff).
+         - O que muda: O texto cinza de descrição curta no topo esquerdo. */
+      .brand p {
+        font-size: 11px;
+        color: #a1a1aa;
+        margin: 2px 0 0;
+      }
+
+      /* CONJUNTO DE AÇÕES (.actions): Agrupamento dos botões de controle do editor à direita.
+         - Como editar: Altere "gap" para aproximar ou afastar os botões horizontais.
+         - O que muda: Distribuição espacial dos botões na barra superior. */
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      /* BOTÃO BASE (.btn): Regras estéticas base compartilhadas por todos os botões da barra.
+         - Como editar: Altere "padding" se desejar botões mais altos ou largos, ou "border-radius" para alterar os cantos.
+         - O que muda: O formato e o tamanho base dos botões na barra superior. */
+      .btn {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 800;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      /* BOTÃO DE REALCE (.btn-yellow): Visual para o botão de ativar/desativar modo de visualização.
+         - Como editar: Altere para outra variável de cor se quiser usar um destaque azul ou cinza.
+         - O que muda: Apenas a cor de destaque do botão de Modo Visualização. */
+      .btn-yellow {
+        background: var(--yellow);
+        color: #000;
+      }
+
+      /* BOTÃO ESCURO (.btn-dark): Botão secundário para exportar dados e imprimir.
+         - Como editar: Altere o fundo "background" (ex: #3f3f46) para dar mais contraste.
+         - O que muda: Aparência física dos botões "Baixar HTML" e "Imprimir / Salvar PDF". */
+      .btn-dark {
+        background: #27272a;
+        color: #fff;
+      }
+
+      /* GRID DO WORKSPACE: Divide a tela do editor em 3 colunas (Painel Esquerdo, Canvas Central, Painel Direito)
+         - Como editar: Altere os valores de tamanho das colunas laterais (ex: 300px 1fr 300px) em "grid-template-columns".
+         - O que muda: A proporção física de espaço ocupada pelas barras de ferramentas laterais na tela do monitor. */
+      .workspace {
+        display: grid;
+        grid-template-columns: 280px 1fr 290px;
+        min-height: calc(100vh - 64px);
+      }
+
+      /* PAINEL LATERAL GERAL: Configura a barra de navegação/camadas com cor escura e rolagem se necessário
+         - Como editar: Altere o recuo em "padding" para dar mais respiro nas bordas ou mude o fundo em "background" para clarear os painéis.
+         - O que muda: A cor de fundo e o distanciamento do conteúdo interno nos painéis laterais. */
+      .sidebar {
+        background: #09090b;
+        border-right: 1px solid #27272a;
+        padding: 18px;
+        overflow: auto;
+      }
+
+      /* PAINEL DIREITO: Ajusta as bordas especificamente para o lado direito da tela
+         - Como editar: Se desejar uma borda com cor diferente, altere "border-left" (ex: 1px solid var(--yellow)).
+         - O que muda: Inverte a borda separadora lateral, removendo-a da direita e fixando-a na esquerda. */
+      .rightbar {
+        border-right: 0;
+        border-left: 1px solid #27272a;
+      }
+
+      /* TÍTULO DE SEÇÃO DOS PAINÉIS: Estiliza os cabeçalhos de miniaturas, paleta e camadas
+         - Como editar: Altere a cor em "color" ou altere a propriedade "letter-spacing" para expandir a distância das letras.
+         - O que muda: Visualização dos pequenos títulos cinzas em caixa alta nas laterais (ex: PÁGINAS, CAMADAS EDITÁVEIS). */
+      .section-title {
+        font-size: 11px;
+        color: #a1a1aa;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        margin: 0 0 12px;
+      }
+
+      /* CONTÊINER DAS MINIATURAS: Grid de 2 colunas para listar as visualizações das páginas
+         - Como editar: Altere para "1fr" se preferir que as miniaturas das páginas sejam exibidas uma abaixo da outra em lista única.
+         - O que muda: A quantidade de colunas e o alinhamento das miniaturas de página na barra esquerda. */
+      .thumbs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      /* BOTÃO DE MINIATURA INDIVIDUAL: Configura o botão que leva à página selecionada
+         - Como editar: Altere "border-radius" ou aumente o "padding" se desejar caixas de miniatura mais altas.
+         - O que muda: O visual de cada bloco de miniatura cinza na lateral esquerda. */
+      .thumb {
+        background: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 10px;
+        color: #d4d4d8;
+        padding: 10px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      /* MINIATURA ATIVA: Destaca em amarelo a página que está sendo exibida no momento
+         - Como editar: Modifique "background" se quiser usar outra cor de destaque ativo (ex: azul, vermelho).
+         - O que muda: A cor da miniatura correspondente à página visualizada no momento. */
+      .thumb.active {
+        background: var(--yellow);
+        border-color: var(--yellow);
+        color: #000;
+      }
+
+      /* NÚMERO NA MINIATURA (.thumb .num): Estilo do contador "PÁG. 01".
+         - Como editar: Altere a propriedade "opacity" se desejar que a numeração fique mais ou menos visível.
+         - O que muda: O destaque do rótulo numérico da página no canto superior das miniaturas. */
+      .thumb .num {
+        font-size: 10px;
+        font-weight: 900;
+        opacity: 0.65;
+      }
+
+      /* TÍTULO NA MINIATURA (.thumb .ttl): Título que resume o tema da página na barra lateral.
+         - Como editar: Altere "font-size" se as letras parecerem muito pequenas ou remova "white-space: nowrap" se quiser que o título quebre linhas.
+         - O que muda: Como o nome das páginas é exibido sob a numeração na miniatura. */
+      .thumb .ttl {
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 3px;
+      }
+
+      /* CAIXA DE DICAS E INSTRUÇÕES: Blocos informativos com bordas arredondadas e textos de apoio
+         - Como editar: Mude "background" se quiser que as dicas fiquem em caixas mais destacadas ou mude o recuo em "padding".
+         - O que muda: A aparência das caixas de dica do editor de cor cinza escuro nas duas barras. */
+      .hint {
+        background: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 16px;
+        padding: 14px;
+        font-size: 12px;
+        color: #a1a1aa;
+        line-height: 1.55;
+        margin-top: 20px;
+      }
+
+      /* PALETA DE CORES DA BARRA LATERAL: Grid de 5 colunas para mostrar a amostra das cores da marca SOMA/UTFPR
+         - Como editar: Altere o valor de "gap" para aproximar os pequenos blocos de cores.
+         - O que muda: Organização visual das amostras cromáticas de apoio na barra esquerda. */
+      .palette {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+      }
+
+      /* AMOSTRAS DE CORES (.sw de Swatch): Representação visual quadrada com a cor correspondente
+         - Como editar: Modifique "height" ou "border-radius" para obter amostras redondas (ex: 50% de border-radius).
+         - O que muda: O formato e altura dos círculos/quadrados da paleta de cores lateral. */
+      .sw {
+        height: 28px;
+        border-radius: 7px;
+        border: 1px solid #3f3f46;
+      }
+
+      /* CONTAINER DA ÁREA DE TRABALHO (Canvas): Centraliza a folha de papel digital na tela com fundo cinza/azul escuro
+         - Como editar: Mude o "background" (ex: #000000) se desejar clarear/escurecer a área que contorna a página simulada.
+         - O que muda: A cor de fundo geral da parte central do editor de páginas. */
+      .canvas-wrap {
+        background: #111827;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        overflow: auto;
+      }
+
+      /* COMPONENTE INTERNO DO CANVAS: Controla a largura máxima para manter a folha sempre legível e centralizada
+         - Como editar: Modifique a largura em "width: min(92vw, 540px)" para alargar as páginas no monitor (ex: 600px).
+         - O que muda: O tamanho físico ocupado pela folha na tela central de edição. */
+      .canvas-inner {
+        width: min(92vw, 540px);
+      }
+
+      /* BARRA DE NAVEGAÇÃO DO CANVAS: Container preto que abriga as setas e o indicador da página ativa
+         - Como editar: Altere "border-radius" se preferir cantos totalmente quadrados (ex: 0px) ou mude as margens em "margin-bottom".
+         - O que muda: A caixa de paginação que fica acima da folha virtual de desenho. */
+      .navline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        background: #09090b;
+        border: 1px solid #27272a;
+        border-radius: 14px;
+        padding: 10px 12px;
+      }
+
+      /* BOTÕES DE NAVEGAÇÃO DA PÁGINA (‹ e ›): Configura o visual interativo das setas de retroceder/avançar
+         - Como editar: Mude "background" ou a cor das setas se preferir botões com mais brilho.
+         - O que muda: As setas de controle de avançar e voltar de página no topo do canvas. */
+      .navline button {
+        background: #18181b;
+        color: #fff;
+        border: 1px solid #27272a;
+        border-radius: 9px;
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      /* INDICADOR DE PÁGINA EM TEXTO: Estiliza o número central que mostra a página (ex: PÁGINA 1 DE 24)
+         - Como editar: Modifique "color" se desejar que o texto chame mais atenção ou mude "font-size".
+         - O que muda: A numeração da página impressa na barra preta de navegação. */
+      .navline span {
+        font-family: var(--font-title);
+        font-size: 12px;
+        font-weight: 800;
+        color: #d4d4d8;
+      }
+
+      /* MODELO DA FOLHA DE PAPEL (.page): Simula a proporção exata de um papel A4 vertical (proporção 1:1.414), com sombra e bordas arredondadas
+         - Como editar: Se desejar folhas com cantos totalmente retos, mude "border-radius: 0;". Aumente a sombra em "box-shadow" se quiser dar mais destaque 3D.
+         - O que muda: A moldura física, cantos e a sombra projetada da folha no editor. */
+      .page {
+        width: 100%;
+        aspect-ratio: 1/1.414;
+        background: #fff;
+        color: #111827;
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      }
+
+      /* ADORNO DE PÁGINA (Círculo Amarelo inferior direito): Círculo decorativo dinâmico que simula a identidade visual do guia
+         - Como editar: Se preferir remover esta decoração amarela nas páginas, comente este seletor. Modifique "width" e "height" para alterar seu diâmetro.
+         - O que muda: O círculo amarelo posicionado no canto inferior direito de cada folha do guia. */
+      .page:before {
+        content: "";
+        position: absolute;
+        inset: auto -120px -120px auto;
+        width: 280px;
+        height: 280px;
+        background: var(--yellow);
+        border-radius: 50%;
+        opacity: 0.95;
+      }
+
+      /* ADORNO DE PÁGINA (Círculo Diagonais superior esquerdo): Detalhe decorativo escuro com padrão que complementa o design
+         - Como editar: Mude as coordenadas "left" e "top" para mover o detalhe decorativo listrado preto.
+         - O que muda: O adorno gráfico listrado no canto superior esquerdo de todas as páginas comuns do guia. */
+      .page:after {
+        content: "";
+        position: absolute;
+        left: -75px;
+        top: -75px;
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #000 20%, transparent 20%);
+        opacity: 0.96;
+      }
+
+      /* RECUO DE CONTEÚDO DA FOLHA (.page-content): Margem interna para que textos e elementos não fiquem colados na borda física do papel.
+         - Como editar: Altere "padding" se precisar de margens de segurança maiores para seus textos na folha (ex: 40px).
+         - O que muda: O alinhamento interno e o limite de preenchimento do conteúdo de cada folha. */
+      .page-content {
+        position: absolute;
+        inset: 0;
+        padding: 38px 38px 30px;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+      }
+
+      /* MINI BARRA INSTITUCIONAL (.topbar): Linha que separa o kicker superior do logo UTFPR no topo da página.
+         - Como editar: Ajuste "margin-bottom" se desejar afastar mais a linha institucional do título da seção.
+         - O que muda: Espaçamento de cabeçalho interno das folhas. */
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      /* LOGOTIPO UTFPR NA FOLHA (.mini-logo): Formatação estilizada do nome da UTFPR na página.
+         - Como editar: Modifique "font-size" se quiser aumentar ou diminuir a marca d'água no topo direito.
+         - O que muda: A aparência da marca "UTFPR" impressa no topo das páginas internas. */
+      .mini-logo {
+        font-family: var(--font-title);
+        font-weight: 900;
+        font-size: 15px;
+      }
+
+      /* REALCE AMARELO NA LOGOMARCA (.mini-logo span): Destaque amarelo na letra "F" da UTFPR.
+         - Como editar: Troque a propriedade "color" se decidir mudar a paleta de realce em todo o documento.
+         - O que muda: A cor da letra "F" na marca UTFPR interna do guia. */
+      .mini-logo span {
+        color: var(--yellow);
+      }
+
+      /* LINHA DE APOIO / KICKER (.kicker): Texto pequeno e espaçado em caixa alta acima do título principal.
+         - Como editar: Modifique "letter-spacing" se desejar letras mais comprimidas ou "color" se desejar maior nitidez.
+         - O que muda: O pre-título (ex: "CAMPUS FRANCISCO BELTRÃO | ASSAE/NUAPE"). */
+      .kicker {
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        color: #6b7280;
+        text-transform: uppercase;
+      }
+
+      /* TÍTULO DA PÁGINA (.title): Configura a exibição tipográfica das seções do guia.
+         - Como editar: Altere "font-size" se algum título longo acabar quebrando muitas linhas ou mude a propriedade "letter-spacing" para dar mais espaço.
+         - O que muda: O tamanho do título principal em todas as páginas normais do guia. */
+      .title {
+        font-family: var(--font-title);
+        font-size: 33px;
+        line-height: 0.98;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+        letter-spacing: -0.04em;
+      }
+
+      /* DESTAQUE DO TÍTULO (.title .yellow): Aplica a cor de realce em trechos específicos do título.
+         - Como editar: Mude a variável se alterar a paleta principal.
+         - O que muda: Trechos de títulos destacados em amarelo. */
+      .title .yellow {
+        color: var(--yellow);
+      }
+
+      /* SUBTÍTULO DA SEÇÃO (.subtitle): Texto explicativo resumido localizado abaixo do título da página.
+         - Como editar: Altere "color" ou aumente a fonte em "font-size" para melhorar o conforto na leitura de tela.
+         - O que muda: O bloco de texto descritivo secundário no topo das folhas. */
+      .subtitle {
+        font-size: 14px;
+        line-height: 1.35;
+        color: #374151;
+        margin: 0 0 18px;
+      }
+
+      /* MARCADOR DE DESIGN (.yellow-bar): Pequeno traço horizontal amarelo posicionado abaixo do subtítulo.
+         - Como editar: Modifique "width" ou "height" para alterar o comprimento e espessura do marcador, ou comente a regra para ocultá-lo.
+         - O que muda: A barrinha horizontal amarela no início do conteúdo da página. */
+      .yellow-bar {
+        width: 58px;
+        height: 7px;
+        background: var(--yellow);
+        border-radius: 99px;
+        margin: 8px 0 17px;
+      }
+
+      /* CONTEÚDO PRINCIPAL DA FOLHA (.content-area): Flexbox vertical que organiza e distribui os componentes dentro da página.
+         - Como editar: Altere a propriedade "gap" para afastar ou aproximar verticalmente os blocos que compõem as páginas.
+         - O que muda: Espaçamento entre os cartões de conteúdo. */
+      .content-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* CARD DE CONTEÚDO (.card): Bloco retangular arredondado que agrupa informações.
+         - Como editar: Modifique o recuo interno em "padding" ou o arredondamento dos cantos em "border-radius".
+         - O que muda: As molduras que delimitam cada card com borda fina padrão. */
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px 15px;
+        box-shadow: 0 4px 14px rgba(17, 24, 39, 0.05);
+      }
+
+      /* VARIANTE CINZA DO CARD (.card.gray): Variante padrão dos cards com fundo cinza muito claro.
+         - Como editar: Altere o hexadecimal em "background" (ex: #f1f5f9) para obter cartões de outra tonalidade.
+         - O que muda: O tom de cinza de fundo dos cards internos. */
+      .card.gray {
+        background: #f8fafc;
+      }
+
+      /* VARIANTE PRETA DO CARD (.card.black): Variante para cartões em destaque escuro absoluto.
+         - Como editar: Altere a cor do fundo ou a cor da borda se não quiser usar preto absoluto.
+         - O que muda: Cards escuros de destaque internos de algumas páginas. */
+      .card.black {
+        background: #050505;
+        color: #fff;
+        border-color: #050505;
+      }
+
+      /* MARCADOR DE TÍTULO DO CARD (.label): Badge que identifica a categoria ou título de cada card.
+         - Como editar: Ajuste "border-radius" ou as margens em "margin-bottom" para posicionar melhor em relação ao texto do card.
+         - O que muda: As etiquetas amarelas (tags) de título que marcam cada informação. */
+      .label {
+        display: inline-block;
+        font-family: var(--font-title);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        background: var(--yellow);
+        padding: 5px 10px;
+        border-radius: 8px;
+        margin-bottom: 6px;
+        color: #000;
+      }
+
+      /* TEXTO DOS CARDS (.text): Formata as descrições em parágrafo nos cards normais.
+         - Como editar: Modifique "line-height" para melhorar o distanciamento das linhas do texto ou mude a cor para outro tom de cinza/preto.
+         - O que muda: A leitura do texto corrido principal contido nos cards cinzas. */
+      .text {
+        font-size: 12px;
+        line-height: 1.45;
+        color: #4b5563;
+      }
+
+      /* TEXTO DOS CARDS ESCUROS: Garante contraste de leitura no fundo preto.
+         - Como editar: Troque pelo hexadecimal cinza desejado (ex: #cbd5e1).
+         - O que muda: As fontes contidas nos cards com fundo preto. */
+      .black .text {
+        color: #e5e7eb;
+      }
+
+      /* BLOCO DE ALERTA DO RODAPÉ (.highlight): Destaque especial no rodapé das páginas para avisos críticos.
+         - Como editar: Altere "border-radius" se quiser cantos mais retos ou modifique o recuo interno em "padding".
+         - O que muda: A aparência visual do bloco de rodapé preto que chama a atenção com avisos (ex: "Sem protocolo, considere não concluída"). */
+      .highlight {
+        margin-top: auto;
+        background: #050505;
+        color: #fff;
+        border-radius: 20px;
+        padding: 14px 16px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      /* CÍRCULO DO ALERTA (.highlight .icon): Círculo amarelo que hospeda a exclamação.
+         - Como editar: Mude "width" e "height" para ajustar o tamanho do círculo ou mude a cor do fundo.
+         - O que muda: O tamanho do indicador redondo de exclamação no bloco de alerta. */
+      .highlight .icon {
+        min-width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--yellow);
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+      }
+
+      /* TEXTO DO ALERTA (.highlight .htext): Texto descritivo interno do alerta.
+         - Como editar: Mude o "font-size" se preferir letras maiores ou "line-height" para ajustar as linhas.
+         - O que muda: A aparência e o tamanho do texto dentro dos avisos pretos de rodapé. */
+      .highlight .htext {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      /* RODAPÉ DO DOCUMENTO (.footer): Mostra o nome do guia e o número correspondente da folha.
+         - Como editar: Modifique a cor em "color" se desejar metadados mais legíveis ou altere o divisor em "border-top".
+         - O que muda: Visual da linha divisória e o tamanho do texto de apoio na base da folha. */
+      .footer {
+        font-size: 9px;
+        color: #6b7280;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 9px;
+        margin-top: 14px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      /* ESTILOS DA CAPA (.cover): Sobrescreve as configurações de cores da folha exclusivamente na página 1 (Capa).
+         - Como editar: Modifique "background" (originalmente #050505, alterado para var(--white) a pedido do usuário).
+         - O que muda: O fundo da folha de capa agora é branco, combinando com as páginas internas. */
+      .cover {
+        background: var(--white);
+        color: #111827;
+      }
+
+      /* ADORNO DE PÁGINA DA CAPA (Círculo Amarelo ampliado): Amplia o diâmetro do adorno amarelo no rodapé da capa.
+         - Como editar: Aumente as dimensões "width" e "height" se quiser um círculo que cubra maior parte do rodapé.
+         - O que muda: O círculo amarelo decorativo apenas na capa. */
+      .cover:before {
+        width: 360px;
+        height: 360px;
+        right: -130px;
+        bottom: -130px;
+        opacity: 1;
+      }
+
+      /* ADORNO DE PÁGINA DA CAPA (Grafismo superior esquerdo amarelo): Altera as cores do adorno superior na capa para amarelo.
+         - Como editar: Mude para outra variável de cor ou reduza a opacidade em "opacity".
+         - O que muda: A cor decorativa das listras do canto superior esquerdo exclusivamente na página de capa. */
+      .cover:after {
+        background: var(--yellow);
+        opacity: 0.9;
+      }
+
+      /* RECUO DE CONTEÚDO NA CAPA: Dá um espaçamento interno maior e diferenciado para a capa.
+         - Como editar: Mude o recuo em "padding" para mover os títulos mais para dentro ou para fora da capa.
+         - O que muda: O alinhamento dos elementos centrais na folha de capa. */
+      .cover .page-content {
+        padding: 46px 42px;
+      }
+
+      /* TÍTULO DA CAPA: Título principal ampliado da página inicial do guia.
+         - Como editar: Aumente para "40px" ou mais se desejar que o título chame ainda mais atenção.
+         - O que muda: O tamanho do título "Guia Prático..." em preto na capa. */
+      .cover .title {
+        font-size: 38px;
+        color: #111827;
+      }
+
+      /* SUBTÍTULO DA CAPA: Texto explicativo secundário da capa em tom cinza-escuro.
+         - Como editar: Ajuste a cor se preferir um tom mais claro ou mais escuro.
+         - O que muda: A cor das letras do subtítulo inicial. */
+      .cover .subtitle {
+        color: #374151;
+      }
+
+      /* CARDS DE CONTEÚDO DA CAPA: Ajusta as bordas e fundos dos cartões da capa para combinar com o tema claro.
+         - Como editar: Modifique "background" ou "border-color" se quiser cards de outras cores na capa.
+         - O que muda: O fundo e as bordas dos cards explicativos da capa agora são claros. */
+      .cover .card {
+        background: #f8fafc;
+        border-color: var(--line);
+        color: #111827;
+      }
+
+      /* TEXTO DO CARD NA CAPA: Texto dos cards da capa em cinza escuro para contraste.
+         - Como editar: Troque pelo hexadecimal cinza desejado (ex: #4b5563).
+         - O que muda: A leitura das descrições internas nos blocos da capa. */
+      .cover .text {
+        color: #4b5563;
+      }
+
+      /* RODAPÉ DA CAPA: Divisor e metadados no rodapé da capa.
+         - Como editar: Modifique a cor em "color" se desejar realçar os contatos no rodapé da capa.
+         - O que muda: A cor e a linha do rodapé na página de capa agora são cinzas suaves. */
+      .cover .footer {
+        border-color: var(--line);
+        color: #6b7280;
+      }
+
+      /* CONTAINER DO SUMÁRIO (.toc-grid): Organiza os tópicos do sumário em duas colunas para evitar estouro de página.
+         - Como editar: Altere "grid-template-columns" se quiser mudar o número de colunas (ex: 1fr para coluna única).
+         - O que muda: O sumário será dividido em duas colunas organizadas lado a lado. */
+      .toc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 16px;
+        align-items: start;
+      }
+
+      /* LINHA DO SUMÁRIO (.toc-row): Layout de cada linha do sumário (Página 3).
+         - Como editar: Altere o tamanho da coluna esquerda em "36px" para dar mais espaço ao texto na coluna estreita.
+         - O que muda: O alinhamento horizontal dos tópicos no sumário. */
+      .toc-row {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 8px;
+        align-items: stretch;
+      }
+
+      /* NÚMERO DO GRUPO NO SUMÁRIO (.toc-num): Caixa preta contendo o número amarelo.
+         - Como editar: Mude "font-size" (reduzido de 24px para 16px) ou o arredondamento "border-radius" (reduzido para 10px).
+         - O que muda: As caixas com a numeração dos capítulos (ex: "01", "02") na página de sumário. */
+      .toc-num {
+        background: #050505;
+        color: var(--yellow);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-title);
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      /* CAIXA DE CONTEÚDO DO SUMÁRIO (.toc-box): Bloco que agrupa a lista de páginas de cada capítulo.
+         - Como editar: Altere o recuo em "padding" (reduzido de 9px 12px para 6px 10px) para economizar espaço vertical.
+         - O que muda: O contorno e fundo dos cards de sumário. */
+      .toc-box {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 6px 10px;
+      }
+
+      /* TÍTULO DO GRUPO NO SUMÁRIO (.toc-title): Tag amarela identificadora de cada capítulo do sumário.
+         - Como editar: Ajuste o recuo interno "padding" ou mude a fonte em "font-size" (reduzido para 10.5px).
+         - O que muda: O tamanho do badge amarelo com o nome do capítulo (ex: "Comece por aqui"). */
+      .toc-title {
+        font-family: var(--font-title);
+        font-weight: 900;
+        font-size: 10.5px;
+        text-transform: uppercase;
+        background: var(--yellow);
+        display: inline-block;
+        padding: 3px 6px;
+        border-radius: 5px;
+        margin-bottom: 4px;
+      }
+
+      /* LISTA DE PÁGINAS NO SUMÁRIO (.toc-items): Listagem com marcadores de tópicos.
+         - Como editar: Ajuste "font-size" (reduzido para 9.5px) ou "line-height" (reduzido para 1.25).
+         - O que muda: A disposição e o espaçamento dos títulos das páginas sob cada capítulo. */
+      .toc-items {
+        font-size: 9.5px;
+        line-height: 1.25;
+        color: #374151;
+        margin: 0;
+        padding-left: 12px;
+      }
+
+      /* ESTRUTURA DE CHECKLIST (.check-list): Empilha verticalmente os itens com marcador de check (visto).
+         - Como editar: Altere a distância vertical entre os itens em "gap" (ex: 12px).
+         - O que muda: O espaçamento geral dos itens do checklist. */
+      .check-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* ITEM DE VERIFICAÇÃO (.check-item): Linha contendo a marca de visto e o texto.
+         - Como editar: Altere "border" ou comente para obter uma lista sem caixas delimitadoras de borda.
+         - O que muda: O contorno de todas as etapas de checklist (ex: "Leia o edital...", "Separe documentos..."). */
+      .check-item {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        gap: 9px;
+        align-items: start;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 10px 12px;
+      }
+
+      /* CÍRCULO DO VISTO (.check-dot): Círculo amarelo que abriga o caractere "✓".
+         - Como editar: Ajuste "width" e "height" se preferir marcadores menores ou altere a cor de fundo.
+         - O que muda: O visual do marcador de check circular amarelo. */
+      .check-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--yellow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        color: #000;
+      }
+
+      /* TEXTO DO CHECKLIST (.check-text): Texto da etapa a ser verificada.
+         - Como editar: Altere a cor do texto ou modifique "font-size" se preferir letras maiores nas listagens.
+         - O que muda: O visual de texto descritivo dos checklists. */
+      .check-text {
+        font-size: 12px;
+        line-height: 1.35;
+        color: #374151;
+      }
+
+      /* CRONOGRAMA / TIMELINE (.timeline): Linha guia vertical conectando os passos.
+         - Como editar: Altere a cor em "border-left" ou aumente a distância da linha em "padding-left".
+         - O que muda: O visual da linha guia vertical esquerda que forma o cronograma. */
+      .timeline {
+        border-left: 3px solid #e5e7eb;
+        margin-left: 13px;
+        padding-left: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* PASSO DO CRONOGRAMA (.step): Bloco contendo cada etapa da linha do tempo.
+         - Como editar: Aumente a distância em "gap" no elemento pai se quiser afastar os passos sequenciais.
+         - O que muda: Espaçamento vertical de cada etapa da linha do tempo. */
+      .step {
+        position: relative;
+      }
+
+      /* MARCADOR CIRCULAR SOBRE A LINHA VERTICAL: Círculo amarelo que indica a etapa.
+         - Como editar: Modifique "left: -28px" se alterar a margem do cronograma para centralizar de forma correta.
+         - O que muda: O alinhamento horizontal dos círculos amarelos sobre a linha vertical do cronograma. */
+      .step:before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 3px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--yellow);
+        border: 4px solid #fff;
+      }
+
+      /* ALTERNÂNCIA DE CORES DOS PASSOS: Círculo escuro para os passos pares do cronograma.
+         - Como editar: Altere a cor para amarelo se preferir que todas as bolinhas da timeline tenham a mesma cor.
+         - O que muda: A cor dos marcadores das etapas 2, 4, 6... */
+      .step:nth-child(even):before {
+        background: #050505;
+      }
+
+      /* TÍTULO DA ETAPA DO CRONOGRAMA (.step-title): Texto de cabeçalho da etapa (ex: "1. Portal do Aluno").
+         - Como editar: Altere a cor ou a tipografia em "font-family" para combinar com a identidade visual da marca.
+         - O que muda: A aparência dos cabeçalhos numéricos das etapas do cronograma. */
+      .step-title {
+        font-family: var(--font-title);
+        font-size: 12px;
+        font-weight: 900;
+        color: #111827;
+      }
+
+      /* TEXTO DA ETAPA (.step-text): Descrição da ação que o estudante deve tomar.
+         - Como editar: Altere "font-size" se desejar aumentar o tamanho do texto explicativo das etapas.
+         - O que muda: A leitura do texto explicativo contido sob o título de cada etapa do cronograma. */
+      .step-text {
+        font-size: 11.5px;
+        line-height: 1.35;
+        color: #4b5563;
+      }
+
+      /* CAIXA DE FÓRMULA (.formula): Destaque visual escuro para exibir a equação de cálculo socioeconômico.
+         - Como editar: Ajuste "padding" para caixas maiores ou altere o tamanho da fonte em "font-size" para dar mais ênfase.
+         - O que muda: O design da caixa de fórmulas matemáticas da página "Renda per capita". */
+      .formula {
+        background: #050505;
+        color: #fff;
+        border-radius: 18px;
+        padding: 18px;
+        text-align: center;
+        font-family: var(--font-title);
+        font-size: 17px;
+        font-weight: 900;
+        margin-bottom: 12px;
+      }
+
+      /* LISTA DO DICIONÁRIO (.dict): Layout vertical para glossário e termos.
+         - Como editar: Modifique "gap" se quiser as palavras do glossário mais afastadas.
+         - O que muda: Alinhamento geral do dicionário administrativo. */
+      .dict {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      /* TERMO INDIVIDUAL (.term): Linha contendo a palavra e o significado correspondente.
+         - Como editar: Altere "border-bottom: 1px dashed #d1d5db" se quiser uma linha contínua sólida ou preferir ocultar a linha tracejada de separação.
+         - O que muda: O divisor gráfico localizado sob cadaverbete do glossário. */
+      .term {
+        display: grid;
+        grid-template-columns: 105px 1fr;
+        gap: 8px;
+        align-items: start;
+        border-bottom: 1px dashed #d1d5db;
+        padding-bottom: 6px;
+      }
+
+      /* PALAVRA CHAVE DO DICIONÁRIO (.term strong): Palavra chave em destaque negrito no glossário.
+         - Como editar: Modifique o "font-size" se preferir que as palavras chaves sejam maiores.
+         - O que muda: O tamanho do verbete (coluna esquerda do dicionário). */
+      .term strong {
+        font-family: var(--font-title);
+        font-size: 11px;
+      }
+
+      /* SIGNIFICADO DO TERMO (.term span): Significado descritivo de cada palavra do dicionário.
+         - Como editar: Altere a cor em "color" se desejar um texto com maior ou menor intensidade.
+         - O que muda: A leitura das definições dos verbetes (coluna direita). */
+      .term span {
+        font-size: 10.7px;
+        color: #4b5563;
+        line-height: 1.3;
+      }
+
+      /* CONTATOS EM EVIDÊNCIA (.contact-big): Texto maior para destacar números de telefone e e-mails de atendimento.
+         - Como editar: Ajuste "font-size" se preferir contatos maiores na página final.
+         - O que muda: O tamanho de telefones e e-mails exibidos no encerramento do guia. */
+      .contact-big {
+        font-family: var(--font-title);
+        font-size: 17px;
+        font-weight: 900;
+      }
+
+      /* ELEMENTOS EDITÁVEIS (.editable): Aplica borda tracejada amarela e cursor de texto ao passar o mouse, e fundo destacado com borda sólida no foco
+         - Como editar: Modifique a cor em "var(--yellow)" para usar outra cor de destaque de edição ou ajuste "outline-offset" para afastar a borda tracejada.
+         - O que muda: O feedback visual interativo exibido na tela do usuário ao passar o mouse ou focar um campo de texto no editor. */
+      .editable:hover {
+        outline: 2px dashed var(--yellow);
+        outline-offset: 2px;
+        cursor: text;
+      }
+      .editable:focus {
+        outline: 2px solid var(--yellow);
+        background: rgba(255, 204, 0, 0.08);
+      }
+
+      /* CONTAINER DE CAMADAS (.layers): Empilhamento de tags de camadas na barra lateral direita.
+         - Como editar: Altere "gap" para aproximar ou afastar as tags de camadas.
+         - O que muda: Visualização em lista das tags indicadoras de camadas no painel direito. */
+      .layers {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* INDICADOR DE CAMADA INDIVIDUAL (.layer): Pequeno bloco cinza listando cada campo editável na tela.
+         - Como editar: Mude "background" ou a cor da fonte em "color" se desejar um painel mais escuro/claro.
+         - O que muda: O estilo de cada botão cinza que indica o campo editável no painel lateral direito. */
+      .layer {
+        background: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 10px;
+        padding: 9px 10px;
+        font-size: 11px;
+        color: #d4d4d8;
+      }
+
+      /* BALÃO DE ALERTA TOAST (.toast): Notificação popup temporária de salvamento no canto inferior direito.
+         - Como editar: Ajuste "right" e "bottom" para reposicionar a caixa na tela do monitor ou altere "transition" para mudar a velocidade da animação.
+         - O que muda: A posição e aparência da mensagem popup "Alteração salva" no editor. */
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        background: #050505;
+        border: 1px solid #27272a;
+        border-radius: 13px;
+        padding: 12px 14px;
+        font-size: 12px;
+        color: #fff;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: 0.25s;
+        z-index: 99;
+      }
+
+      /* TOAST VISÍVEL (.toast.show): Ativado dinamicamente via JS para deslizar e exibir a notificação.
+         - Como editar: Ajuste "translateY" para controlar a amplitude do movimento de subida.
+         - O que muda: A animação física de entrada da notificação de salvamento de texto. */
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* ADAPTABILIDADE RESPONSIVA (Telas menores de 1000px): Reorganiza o workspace para focar exclusivamente na folha de edição.
+         - Como editar: Altere o limite "1000px" se preferir que os painéis sumam mais cedo ou mais tarde, ou altere o tamanho do título em ".title".
+         - O que muda: A disposição em telas de tablets/celulares, onde as colunas laterais desaparecem e a folha virtual se ajusta à largura da tela. */
+      @media (max-width: 1000px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+        .sidebar,
+        .rightbar {
+          display: none;
+        }
+        .canvas-wrap {
+          padding: 12px;
+        }
+        .page-content {
+          padding: 30px 28px;
+        }
+        .title {
+          font-size: 28px;
+        }
+      }
+
+      /* CONFIGURAÇÕES DE IMPRESSÃO: Define que apenas as páginas simuladas do guia serão exibidas e impressas no formato A4 (PDF), ocultando os painéis do editor
+         - Como editar: Se desejar uma margem interna de papel diferente na exportação de PDF, ajuste a propriedade "padding" de ".page-content" dentro deste bloco.
+         - O que muda: Garante a quebra de página correta e omite as barras do editor ao imprimir ou exportar para PDF. */
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      @media print {
+        body {
+          background: white !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        .header,
+        .sidebar,
+        .rightbar,
+        .navline,
+        .edit-note,
+        .toast {
+          display: none !important;
+        }
+        .workspace {
+          display: block !important;
+          min-height: auto !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        .canvas-wrap {
+          display: block !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          background: white !important;
+        }
+        .canvas-inner {
+          width: 100% !important;
+          max-width: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        .page {
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          width: 210mm !important;
+          height: 297mm !important;
+          page-break-after: always !important;
+          break-after: page !important;
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+          position: relative !important;
+          overflow: hidden !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        .page-content {
+          padding: 22mm 18mm 16mm !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BARRA SUPERIOR: Contém o título do editor e botões de ação global (Salvar, Imprimir/PDF e Alternar Modo) -->
+    <header class="header">
+      <div class="brand">
+        <div class="badge">SOMA</div>
+        <div>
+          <h1>Editor do Guia Prático</h1>
+          <p>Auxílio Estudantil UTFPR - template editável</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-dark" onclick="downloadEditedHTML()">
+          Baixar HTML editado</button
+        ><button class="btn btn-dark" onclick="window.print()">
+          Imprimir / Salvar PDF</button
+        ><button class="btn btn-yellow" onclick="toggleEdit()" id="editBtn">
+          Modo visualização
+        </button>
+      </div>
+    </header>
+    <!-- WORKSPACE PRINCIPAL: Divide a tela nos painéis laterais de ferramentas e na visualização central -->
+    <div class="workspace">
+      <!-- PAINEL ESQUERDO: Miniaturas para navegação rápida de páginas e demonstração de paleta de cores -->
+      <aside class="sidebar">
+        <h3 class="section-title">Páginas</h3>
+        <div id="thumbs" class="thumbs"></div>
+        <div class="hint">
+          <b>Dica:</b> clique em qualquer texto da página para editar. Depois
+          use “Baixar HTML editado” para salvar sua versão.
+        </div>
+        <div class="hint">
+          <h3 class="section-title">Paleta</h3>
+          <div class="palette">
+            <div class="sw" style="background: #050505"></div>
+            <div class="sw" style="background: #ffcc00"></div>
+            <div class="sw" style="background: #fff"></div>
+            <div class="sw" style="background: #f6f7f9"></div>
+            <div class="sw" style="background: #68707a"></div>
+          </div>
+        </div>
+      </aside>
+      <!-- CANVAS CENTRAL: Exibe a página ativa simulando a folha impressa e permite a edição em tempo real -->
+      <main class="canvas-wrap">
+        <div class="canvas-inner">
+          <div class="navline">
+            <button onclick="prevPage()">‹</button
+            ><span id="pageIndicator">Página 1</span
+            ><button onclick="nextPage()">›</button>
+          </div>
+          <div id="page" class="page"></div>
+          <p
+            class="edit-note"
+            style="text-align: center; color: #71717a; font-size: 12px"
+          >
+            Dê duplo clique ou selecione qualquer texto para editar.
+          </p>
+        </div>
+      </main>
+      <!-- PAINEL DIREITO: Lista as camadas editáveis presentes na página atual para controle estrutural -->
+      <aside class="sidebar rightbar">
+        <h3 class="section-title">Camadas editáveis</h3>
+        <div id="layers" class="layers"></div>
+        <div class="hint">
+          <b>Arquivo editável:</b> este HTML funciona como editor. Os textos
+          ficam em caixas editáveis e podem ser salvos em nova versão.
+        </div>
+      </aside>
+    </div>
+    <div id="toast" class="toast">Alteração salva na página.</div>
+    <script id="pagesData" type="application/json">
+      [
+
+  {
+                "_comentario": "PÁGINA 1: Capa principal do guia prático. Contém contatos no rodapé.",
+                "kicker": "CAMPUS FRANCISCO BELTRÃO | ASSAE/NUAPE",
+                "title": "Guia Prático do Auxílio Estudantil UTFPR",
+                "subtitle": "Passo a passo para solicitar o auxílio sem se perder no processo",
+                "type": "cover",
+                "accent": "PROCESSO SELETIVO UNIFICADO",
+                "cards": [
+                          {
+                                    "label": "Para quem é",
+                                    "text": "Estudantes que pretendem solicitar o Auxílio Estudantil da UTFPR."
+                          },
+                          {
+                                    "label": "Como usar",
+                                    "text": "Leia cada etapa, organize seus documentos e acompanhe os prazos oficiais."
+                          },
+                          {
+                                    "label": "Atenção",
+                                    "text": "Este guia não substitui o edital vigente. Ele serve como apoio prático para a inscrição."
+                          }
+                ],
+                "footer": "auxilioestudantil-fb@utfpr.edu.br | WhatsApp: (46) 3151-1213"
+      },
+
+  {
+                "_comentario": "PÁGINA 2: Apresentação inicial do guia. Traduz a importância e o objetivo do Auxílio Estudantil.",
+                "kicker": "01 | APRESENTAÇÃO",
+                "title": "Introdução",
+                "subtitle": "Um guia para transformar o edital em passos simples.",
+                "type": "text",
+                "cards": [
+                          {
+                                    "label": "Por que este guia existe?",
+                                    "text": "O Auxílio Estudantil é uma política de permanência voltada a apoiar estudantes em situação de vulnerabilidade socioeconômica. Este material foi criado para explicar o processo de inscrição em linguagem simples e prática."
+                          },
+                          {
+                                    "label": "O que você vai encontrar",
+                                    "text": "Aqui você verá como acessar a plataforma, preencher a inscrição, organizar documentos, entender grupo familiar, renda per capita, CNIS, IRPF, reaproveitamento de documentos e acompanhamento do resultado."
+                          },
+                          {
+                                    "label": "Importante",
+                                    "text": "Use este guia como apoio, mas consulte sempre o edital vigente e os comunicados oficiais da UTFPR."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 3: Sumário interativo do guia. Lista o mapa e a estrutura de tópicos da apostila.",
+                "kicker": "02 | MAPA DO GUIA",
+                "title": "Sumário",
+                "subtitle": "Navegue pelas etapas e encontre rapidamente o que precisa.",
+                "type": "toc",
+                "groups": [
+                          {
+                                    "n": "01",
+                                    "title": "Comece por aqui",
+                                    "items": [
+                                              "Capa",
+                                              "Introdução",
+                                              "Sumário",
+                                              "Antes de começar",
+                                              "Quem pode solicitar e quais auxílios existem"
+                                    ]
+                          },
+                          {
+                                    "n": "02",
+                                    "title": "Fazendo a inscrição",
+                                    "items": [
+                                              "Passo a passo da inscrição",
+                                              "Preenchendo a inscrição",
+                                              "Documentos: como enviar sem erro",
+                                              "Grupo familiar",
+                                              "Renda per capita"
+                                    ]
+                          },
+                          {
+                                    "n": "03",
+                                    "title": "Documentos importantes",
+                                    "items": [
+                                              "Aproveitamento de documentos",
+                                              "CNIS: o que é e quando usar",
+                                              "CNIS: quem já teve vínculos",
+                                              "CNIS: quem nunca trabalhou",
+                                              "IRPF: declarante ou isento?",
+                                              "IRPF: quem declarou",
+                                              "IRPF: isento/não declarante"
+                                    ]
+                          },
+                          {
+                                    "n": "04",
+                                    "title": "Depois do envio",
+                                    "items": [
+                                              "Finalizar a inscrição",
+                                              "Depois de enviar",
+                                              "Resultado da inscrição",
+                                              "Se for contemplado(a)"
+                                    ]
+                          },
+                          {
+                                    "n": "05",
+                                    "title": "Para não errar",
+                                    "items": [
+                                              "Erros comuns que prejudicam",
+                                              "Dicionário do auxílio",
+                                              "Checklist antes de enviar",
+                                              "Contatos e orientação final"
+                                    ]
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 4: Recomendações prévias e preparativos necessários antes de iniciar o processo de inscrição.",
+                "kicker": "03 | PRIMEIROS CUIDADOS",
+                "title": "Antes de começar",
+                "subtitle": "Organização evita perda de prazo e erro de documento.",
+                "type": "check",
+                "items": [
+                          "Leia o edital vigente e confira o cronograma.",
+                          "Acesse o Portal do Aluno e verifique seus dados.",
+                          "Separe documentos de todos os membros do grupo familiar.",
+                          "Confira se o e-mail cadastrado está correto e acompanhe também a caixa de SPAM.",
+                          "Tenha acesso à conta gov.br, especialmente para CNIS e IRPF."
+                ],
+                "highlight": "Na dúvida, procure orientação antes de enviar informações incompletas."
+      },
+
+  {
+                "_comentario": "PÁGINA 5: Detalhamento sobre quem se enquadra no auxílio e a explicação das 4 modalidades de benefícios.",
+                "kicker": "04 | MODALIDADES",
+                "title": "Quem pode solicitar e quais auxílios existem",
+                "subtitle": "Entenda o público do edital e as modalidades principais.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Quem pode solicitar",
+                                    "text": "Estudantes regularmente matriculados nos cursos presenciais da UTFPR, conforme os requisitos do edital vigente."
+                          },
+                          {
+                                    "label": "Auxílio Básico",
+                                    "text": "Valor em pecúnia para apoiar despesas relacionadas à permanência acadêmica."
+                          },
+                          {
+                                    "label": "Auxílio Moradia",
+                                    "text": "Apoio para estudantes que precisam manter moradia fora do domicílio de origem para estudar."
+                          },
+                          {
+                                    "label": "Auxílio Alimentação",
+                                    "text": "Benefício voltado à alimentação, geralmente vinculado ao Restaurante Universitário, conforme regras do campus."
+                          },
+                          {
+                                    "label": "Auxílio Infância",
+                                    "text": "Apoio destinado a estudantes com filho(a) de 0 a 6 anos incompletos, conforme edital."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 6: Fluxo sequencial macro do preenchimento da inscrição, da plataforma ao protocolo final.",
+                "kicker": "05 | FLUXO GERAL",
+                "title": "Passo a passo da inscrição",
+                "subtitle": "Veja o caminho básico até gerar o protocolo.",
+                "type": "timeline",
+                "steps": [
+                          {
+                                    "title": "1. Portal do Aluno",
+                                    "text": "Acesse o Portal do Aluno e clique em “Inscrição - Auxílio Estudantil”."
+                          },
+                          {
+                                    "title": "2. Plataforma de Inscrição",
+                                    "text": "Entre na plataforma indicada e leia o aviso inicial. Para continuar, clique em “Ciente”."
+                          },
+                          {
+                                    "title": "3. Questionário Socioeconômico",
+                                    "text": "Preencha as informações solicitadas e salve antes de avançar."
+                          },
+                          {
+                                    "title": "4. Grupo Familiar",
+                                    "text": "Cadastre todos os membros do grupo familiar, começando pelo próprio estudante."
+                          },
+                          {
+                                    "title": "5. Modalidades",
+                                    "text": "Selecione os auxílios que correspondem à sua realidade e salve."
+                          },
+                          {
+                                    "title": "6. Documentos",
+                                    "text": "Faça upload dos comprovantes exigidos para todos os membros do grupo familiar."
+                          },
+                          {
+                                    "title": "7. Checklist e protocolo",
+                                    "text": "Confira checklist, dados bancários e termo de responsabilidade. A inscrição só termina quando o sistema gerar protocolo."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 7: Dicas específicas sobre o preenchimento do questionário e inserção dos dados bancários do estudante.",
+                "kicker": "06 | PREENCHIMENTO",
+                "title": "Preenchendo a inscrição",
+                "subtitle": "Dados corretos ajudam a evitar divergências no checklist.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Questionário socioeconômico",
+                                    "text": "Preencha com atenção renda, moradia, composição familiar, endereço, curso e demais informações solicitadas."
+                          },
+                          {
+                                    "label": "Salvar e avançar",
+                                    "text": "Depois de preencher cada etapa, clique em salvar. Não avance sem conferir as informações."
+                          },
+                          {
+                                    "label": "Dados bancários",
+                                    "text": "O pagamento em dinheiro só pode ser feito em conta bancária no nome do próprio estudante contemplado."
+                          },
+                          {
+                                    "label": "Termo de responsabilidade",
+                                    "text": "Leia antes de finalizar. Ao concluir a inscrição, você confirma que as informações prestadas são verdadeiras."
+                          }
+                ],
+                "highlight": "Dados divergentes podem impedir a finalização da inscrição."
+      },
+
+  {
+                "_comentario": "PÁGINA 8: Regras técnicas de upload de arquivos (tamanho máximo de 2MB, formatação e assinaturas válidas).",
+                "kicker": "07 | UPLOAD",
+                "title": "Documentos: como enviar sem erro",
+                "subtitle": "A maior parte dos problemas ocorre por arquivo incompleto, ilegível ou fora do padrão.",
+                "type": "check",
+                "items": [
+                          "Arquivos em PDF ou imagem, conforme permitido pelo sistema.",
+                          "Tamanho máximo: 2 MB por arquivo.",
+                          "Documento com mais de uma página deve estar em arquivo único.",
+                          "Documento deve estar legível, completo e sem rasuras.",
+                          "Declarações devem estar preenchidas, datadas e assinadas.",
+                          "Assinatura física no documento ou assinatura eletrônica gov.br são aceitas, conforme orientação.",
+                          "Assinatura recortada/colada não é aceita."
+                ],
+                "highlight": "Antes de enviar, abra o arquivo e confira se todas as páginas aparecem corretamente."
+      },
+
+  {
+                "_comentario": "PÁGINA 9: Explicação sobre o conceito de grupo familiar socioeconômico, incluindo avós e familiares que moram fora.",
+                "kicker": "08 | COMPOSIÇÃO FAMILIAR",
+                "title": "Grupo familiar",
+                "subtitle": "Nem sempre é só quem mora na mesma casa.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Ideia central",
+                                    "text": "Grupo familiar representa a realidade familiar e econômica do estudante: quem depende, quem contribui e quem participa da manutenção do grupo."
+                          },
+                          {
+                                    "label": "Irmão que mora fora",
+                                    "text": "Se recebe ajuda da família, pode precisar ser informado, mesmo morando em outra cidade."
+                          },
+                          {
+                                    "label": "Avó que mora junto",
+                                    "text": "Se reside no mesmo domicílio, pode integrar o grupo familiar, inclusive se tiver aposentadoria."
+                          },
+                          {
+                                    "label": "Estudante que mora sozinho",
+                                    "text": "Morar sozinho não significa automaticamente independência financeira. Ajuda dos pais ou responsáveis deve ser informada."
+                          },
+                          {
+                                    "label": "Familiar sem renda",
+                                    "text": "Mesmo sem renda, deve ser informado se faz parte do grupo familiar."
+                          }
+                ],
+                "highlight": "O mais importante é retratar a realidade com transparência."
+      },
+
+  {
+                "_comentario": "PÁGINA 10: Fórmula matemática simples e exemplos práticos para o cálculo da renda familiar per capita.",
+                "kicker": "09 | CÁLCULO SIMPLES",
+                "title": "Renda per capita",
+                "subtitle": "É a renda por pessoa do grupo familiar.",
+                "type": "formula",
+                "formula": "Renda total do grupo familiar ÷ número de pessoas = renda per capita",
+                "cards": [
+                          {
+                                    "label": "Exemplo",
+                                    "text": "Uma família tem renda total de R$ 3.000,00 e 4 pessoas no grupo familiar."
+                          },
+                          {
+                                    "label": "Cálculo",
+                                    "text": "R$ 3.000,00 ÷ 4 = R$ 750,00 por pessoa."
+                          },
+                          {
+                                    "label": "Resultado",
+                                    "text": "R$ 750,00 é a renda familiar per capita."
+                          }
+                ],
+                "highlight": "Informe renda e grupo familiar corretamente: isso interfere diretamente na análise socioeconômica."
+      },
+
+  {
+                "_comentario": "PÁGINA 11: Condições e limites para o aproveitamento de documentos enviados em processos anteriores.",
+                "kicker": "10 | VETERANOS",
+                "title": "Aproveitamento de documentos",
+                "subtitle": "Nem todo estudante pode reaproveitar a documentação anterior.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Quando pode",
+                                    "text": "O veterano com inscrição deferida anteriormente pode solicitar reaproveitamento se não houve nenhuma alteração na realidade socioeconômica."
+                          },
+                          {
+                                    "label": "Quando não pode",
+                                    "text": "Se mudou renda, emprego, moradia, composição familiar, modalidades solicitadas ou qualquer condição relevante, deve fazer inscrição completa."
+                          },
+                          {
+                                    "label": "Atualização socioeconômica",
+                                    "text": "Quem realizou atualização socioeconômica ou ajuste de pontuação deve fazer nova inscrição, conforme orientação do edital."
+                          },
+                          {
+                                    "label": "Atenção",
+                                    "text": "Se for constatada mudança apesar do reaproveitamento, a inscrição pode ser indeferida."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 12: Esclarecimento sobre o CNIS (Extrato de Contribuições do INSS), sua finalidade e obtenção no portal Meu INSS.",
+                "kicker": "11 | DOCUMENTO DO INSS",
+                "title": "CNIS: o que é e quando usar",
+                "subtitle": "O CNIS é o Extrato de Contribuições do INSS.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "O que mostra",
+                                    "text": "Vínculos de trabalho, remunerações, contribuições previdenciárias ou ausência de vínculos."
+                          },
+                          {
+                                    "label": "Onde obter",
+                                    "text": "Pelo Portal Meu INSS, usando conta gov.br. Também pode ser obtido em agência do INSS/Previdência, conforme orientação do órgão."
+                          },
+                          {
+                                    "label": "Quem deve emitir",
+                                    "text": "Conforme solicitação documental, pode ser necessário para membros do grupo familiar, inclusive quem nunca trabalhou."
+                          }
+                ],
+                "highlight": "Mesmo quem nunca trabalhou pode precisar baixar o extrato que informa ausência de vínculos."
+      },
+
+  {
+                "_comentario": "PÁGINA 13: Passo a passo de emissão do CNIS para membros familiares que já trabalharam ou possuem contribuições.",
+                "kicker": "12 | CNIS COM VÍNCULOS",
+                "title": "CNIS: quem já teve vínculos",
+                "subtitle": "Passo a passo para quem já trabalhou ou teve contribuição.",
+                "type": "timeline",
+                "steps": [
+                          {
+                                    "title": "1. Acesse o Meu INSS",
+                                    "text": "Entre no Portal Meu INSS e clique em “Entrar com gov.br”."
+                          },
+                          {
+                                    "title": "2. Faça login",
+                                    "text": "Informe CPF e senha da conta gov.br."
+                          },
+                          {
+                                    "title": "3. Procure o CNIS",
+                                    "text": "Clique em “Extrato de contribuição (CNIS)”."
+                          },
+                          {
+                                    "title": "4. Baixe o documento",
+                                    "text": "Ao aparecer a lista de vínculos, clique em “Baixar Documento”."
+                          },
+                          {
+                                    "title": "5. Escolha o tipo correto",
+                                    "text": "Selecione “Vínculos, contribuições e remunerações”."
+                          },
+                          {
+                                    "title": "6. Envie no sistema",
+                                    "text": "Faça upload do PDF no campo correspondente da inscrição do Auxílio Estudantil."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 14: Como obter a certidão ou extrato negativo do CNIS para familiares que nunca trabalharam.",
+                "kicker": "13 | CNIS SEM VÍNCULOS",
+                "title": "CNIS: quem nunca trabalhou",
+                "subtitle": "Ausência de vínculo também precisa ser comprovada quando solicitada.",
+                "type": "timeline",
+                "steps": [
+                          {
+                                    "title": "1. Acesse o Meu INSS",
+                                    "text": "Entre com sua conta gov.br."
+                          },
+                          {
+                                    "title": "2. Valide os dados",
+                                    "text": "Na primeira vez, pode ser necessário validar o Selo INSS, autorizar uso de dados e responder perguntas."
+                          },
+                          {
+                                    "title": "3. Abra o CNIS",
+                                    "text": "Clique em “Extrato de contribuição (CNIS)”."
+                          },
+                          {
+                                    "title": "4. Confira a mensagem",
+                                    "text": "Se aparecer “não constam vínculos para essa inscrição”, isso também é uma comprovação."
+                          },
+                          {
+                                    "title": "5. Baixe o PDF",
+                                    "text": "Clique em “Baixar PDF” e envie no sistema do auxílio."
+                          }
+                ],
+                "highlight": "Se errar as perguntas de validação, pode ser necessário aguardar para tentar novamente."
+      },
+
+  {
+                "_comentario": "PÁGINA 15: Definição da situação tributária do IRPF (Imposto de Renda da Pessoa Física) de cada familiar.",
+                "kicker": "14 | RECEITA FEDERAL",
+                "title": "IRPF: declarante ou isento?",
+                "subtitle": "Primeiro, descubra qual é a situação da pessoa no Imposto de Renda.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Conta gov.br",
+                                    "text": "Para acessar o Portal Meu Imposto de Renda, a conta gov.br precisa ser nível Prata ou Ouro."
+                          },
+                          {
+                                    "label": "Quem declarou",
+                                    "text": "Deve apresentar cópia completa da Declaração de Imposto de Renda e o Recibo de Entrega."
+                          },
+                          {
+                                    "label": "Quem não declarou",
+                                    "text": "Deve comprovar a situação de isento/não declarante com print da consulta oficial, conforme orientação."
+                          }
+                ],
+                "highlight": "Conta gov.br Bronze pode não permitir acesso às informações necessárias."
+      },
+
+  {
+                "_comentario": "PÁGINA 16: Instruções para baixar a cópia da declaração e o recibo de entrega do IRPF pelo Portal Meu Imposto de Renda.",
+                "kicker": "15 | IRPF DECLARANTE",
+                "title": "IRPF: quem declarou",
+                "subtitle": "Como baixar a declaração e o recibo.",
+                "type": "timeline",
+                "steps": [
+                          {
+                                    "title": "1. Acesse o Portal MIR",
+                                    "text": "Entre no Portal Meu Imposto de Renda pelo gov.br."
+                          },
+                          {
+                                    "title": "2. Consultar meu imposto",
+                                    "text": "Clique em “Consultar meu imposto de renda” e depois em “Iniciar”."
+                          },
+                          {
+                                    "title": "3. Faça login",
+                                    "text": "Use sua conta gov.br nível Prata ou Ouro."
+                          },
+                          {
+                                    "title": "4. Selecione o exercício",
+                                    "text": "Abra o ano correspondente solicitado no edital."
+                          },
+                          {
+                                    "title": "5. Baixe os documentos",
+                                    "text": "Baixe “Cópia do Recibo da Declaração” e “Cópia da Declaração”."
+                          },
+                          {
+                                    "title": "6. Junte em PDF único",
+                                    "text": "Una os dois documentos em um único PDF e envie no sistema."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 17: Regras para tirar e comprovar a isenção tributária do Imposto de Renda através de captura de tela (printscreen) oficial.",
+                "kicker": "16 | IRPF ISENTO",
+                "title": "IRPF: isento/não declarante",
+                "subtitle": "Como comprovar que não foi entregue declaração.",
+                "type": "check",
+                "items": [
+                          "Acesse o Portal Meu Imposto de Renda com gov.br Prata ou Ouro.",
+                          "Verifique o exercício correspondente solicitado no edital.",
+                          "Se aparecer “Não entregue”, tire print da tela.",
+                          "O print deve mostrar nome completo e CPF no canto superior direito.",
+                          "Também deve aparecer “IRPF [ano] - Não Entregue”.",
+                          "O rodapé deve mostrar data e hora da consulta da Receita Federal."
+                ],
+                "highlight": "O print precisa estar completo e legível para servir como comprovante."
+      },
+
+  {
+                "_comentario": "PÁGINA 18: Como concluir a inscrição, aceitar os termos de compromisso e garantir a geração do protocolo oficial de entrega.",
+                "kicker": "17 | ÚLTIMA ETAPA",
+                "title": "Finalizar a inscrição",
+                "subtitle": "A inscrição só termina quando há protocolo gerado pelo sistema.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Checklist",
+                                    "text": "O sistema pode apontar divergências. Se houver erro, volte às etapas anteriores e corrija."
+                          },
+                          {
+                                    "label": "Dados bancários",
+                                    "text": "Confira se a conta está no nome do estudante e se os dados foram preenchidos corretamente."
+                          },
+                          {
+                                    "label": "Termo de responsabilidade",
+                                    "text": "Leia antes de finalizar, pois ele confirma sua responsabilidade pelas informações prestadas."
+                          },
+                          {
+                                    "label": "Protocolo",
+                                    "text": "A inscrição estará finalizada somente quando o sistema gerar o protocolo. Uma cópia também é enviada ao e-mail principal cadastrado."
+                          }
+                ],
+                "highlight": "Sem protocolo, considere que a inscrição ainda não foi concluída."
+      },
+
+  {
+                "_comentario": "PÁGINA 19: Cuidados pós-inscrição, como acompanhar comunicados de complementação documental no Portal do Aluno.",
+                "kicker": "18 | ACOMPANHAMENTO",
+                "title": "Depois de enviar",
+                "subtitle": "A responsabilidade continua após o protocolo.",
+                "type": "check",
+                "items": [
+                          "Acompanhe a Plataforma de Inscrição regularmente.",
+                          "Verifique o e-mail principal cadastrado no Portal do Aluno.",
+                          "Confira também SPAM e lixo eletrônico.",
+                          "Responda eventual complementação documental dentro do prazo.",
+                          "Guarde o protocolo e os comprovantes enviados.",
+                          "Acompanhe comunicados oficiais da ASSAE/NUAPE."
+                ],
+                "highlight": "A complementação documental costuma ter prazo curto. Não deixe para depois."
+      },
+
+  {
+                "_comentario": "PÁGINA 20: Significado prático do vocabulário de resultados publicados (Deferido, Indeferido, Lista de Espera, Recurso).",
+                "kicker": "19 | SITUAÇÃO DA INSCRIÇÃO",
+                "title": "Resultado da inscrição",
+                "subtitle": "Entenda os principais termos usados na divulgação.",
+                "type": "cards",
+                "cards": [
+                          {
+                                    "label": "Deferido",
+                                    "text": "A inscrição foi aceita."
+                          },
+                          {
+                                    "label": "Indeferido",
+                                    "text": "A inscrição foi negada. Leia o motivo e verifique se há prazo de recurso."
+                          },
+                          {
+                                    "label": "Contemplado",
+                                    "text": "O estudante foi selecionado para receber o auxílio."
+                          },
+                          {
+                                    "label": "Lista de espera",
+                                    "text": "A inscrição foi aceita, mas o estudante ainda aguarda contemplação por disponibilidade orçamentária ou vacância."
+                          },
+                          {
+                                    "label": "Recurso",
+                                    "text": "Pedido de reanálise feito pelo estudante dentro do prazo e pelo meio indicado no edital."
+                          }
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 21: Procedimentos para o estudante contemplado (manutenção de dados bancários e reporte de alteração financeira).",
+                "kicker": "20 | PRIMEIROS CUIDADOS",
+                "title": "Se for contemplado(a)",
+                "subtitle": "Depois da contemplação, mantenha atenção aos dados e comunicados.",
+                "type": "check",
+                "items": [
+                          "Confira a modalidade concedida.",
+                          "Mantenha dados bancários atualizados no Portal do Aluno.",
+                          "Use conta bancária em nome do próprio estudante.",
+                          "Acompanhe pagamentos e comunicados oficiais.",
+                          "Use o auxílio com responsabilidade, priorizando sua permanência acadêmica.",
+                          "Informe mudanças de renda, moradia, estágio, bolsa ou composição familiar."
+                ],
+                "highlight": "O auxílio é para apoiar sua permanência na universidade."
+      },
+
+  {
+                "_comentario": "PÁGINA 22: Relação dos erros mais recorrentes que resultam no indeferimento das solicitações.",
+                "kicker": "21 | PREVENÇÃO",
+                "title": "Erros comuns que prejudicam",
+                "subtitle": "Evite problemas que podem indeferir ou atrasar sua inscrição.",
+                "type": "check",
+                "items": [
+                          "Perder prazo do edital ou da complementação.",
+                          "Não olhar e-mail e SPAM.",
+                          "Enviar documento ilegível, cortado ou incompleto.",
+                          "Esquecer membro do grupo familiar.",
+                          "Omitir renda, estágio, bolsa ou ajuda financeira.",
+                          "Usar conta bancária de outra pessoa.",
+                          "Não finalizar a inscrição e ficar sem protocolo.",
+                          "Reaproveitar documentos mesmo tendo mudança socioeconômica.",
+                          "Deixar de comprovar CNIS ou IRPF quando solicitado."
+                ],
+                "highlight": "A maioria dos erros pode ser evitada com conferência antes de enviar."
+      },
+
+  {
+                "_comentario": "PÁGINA 23: Dicionário simplificado de termos burocráticos e siglas comuns na Assistência Estudantil.",
+                "kicker": "22 | TRADUZINDO O EDITAL",
+                "title": "Dicionário do auxílio",
+                "subtitle": "Termos administrativos em linguagem simples.",
+                "type": "dictionary",
+                "terms": [
+                          [
+                                    "Deferido",
+                                    "inscrição aceita."
+                          ],
+                          [
+                                    "Indeferido",
+                                    "inscrição negada; exige atenção ao motivo."
+                          ],
+                          [
+                                    "Pecúnia",
+                                    "dinheiro depositado na conta."
+                          ],
+                          [
+                                    "Per capita",
+                                    "valor por pessoa."
+                          ],
+                          [
+                                    "Grupo familiar",
+                                    "pessoas consideradas na análise familiar e econômica."
+                          ],
+                          [
+                                    "Complementação",
+                                    "correção ou envio de documento solicitado."
+                          ],
+                          [
+                                    "Homologado",
+                                    "documento aceito ou validado."
+                          ],
+                          [
+                                    "Recurso",
+                                    "pedido de reanálise."
+                          ],
+                          [
+                                    "Contemplado",
+                                    "estudante selecionado para receber o auxílio."
+                          ],
+                          [
+                                    "NUAPE",
+                                    "setor de apoio ao estudante no campus."
+                          ],
+                          [
+                                    "ASSAE",
+                                    "setor ligado à Assistência Estudantil."
+                          ],
+                          [
+                                    "Edital",
+                                    "documento oficial com regras, prazos e critérios."
+                          ]
+                ]
+      },
+
+  {
+                "_comentario": "PÁGINA 24: Checklist geral de revisão de todas as etapas e documentos antes da geração do protocolo final.",
+                "kicker": "23 | ÚLTIMA CONFERÊNCIA",
+                "title": "Checklist antes de enviar",
+                "subtitle": "Use esta página como revisão final.",
+                "type": "checklist",
+                "items": [
+                          "Li o edital vigente e conferi os prazos.",
+                          "Acessei corretamente o Portal do Aluno e a Plataforma de Inscrição.",
+                          "Preenchi o questionário socioeconômico com atenção.",
+                          "Cadastrei todos os membros do grupo familiar.",
+                          "Selecionei as modalidades corretas.",
+                          "Enviei documentos legíveis, completos e no formato correto.",
+                          "Conferi CNIS e IRPF quando solicitados.",
+                          "Revisei dados bancários e termo de responsabilidade.",
+                          "Finalizei e salvei o protocolo.",
+                          "Estou acompanhando e-mail, SPAM e plataforma."
+                ],
+                "highlight": "Só considere finalizada a inscrição quando o protocolo for gerado."
+      },
+
+  {
+                "_comentario": "PÁGINA 25: Canais oficiais de contato no campus Francisco Beltrão (e-mail, telefone/WhatsApp e plantão de dúvidas).",
+                "kicker": "24 | ENCERRAMENTO",
+                "title": "Contatos e orientação final",
+                "subtitle": "Não espere o prazo passar para pedir orientação.",
+                "type": "contact",
+                "cards": [
+                          {
+                                    "label": "E-mail",
+                                    "text": "auxilioestudantil-fb@utfpr.edu.br"
+                          },
+                          {
+                                    "label": "WhatsApp",
+                                    "text": "(46) 3151-1213"
+                          },
+                          {
+                                    "label": "Orientação",
+                                    "text": "Procure a ASSAE/NUAPE sempre que tiver dúvida sobre inscrição, documentos, prazos ou complementação."
+                          },
+                          {
+                                    "label": "Mensagem final",
+                                    "text": "Organização, transparência e atenção aos prazos são essenciais para uma inscrição segura."
+                          }
+                ],
+                "footer": "A UTFPR está com você."
+      }
+      ]</script>
+    <script>
+      // 1. CARREGAMENTO DOS DADOS: Importa e parseia o JSON estático embutido na tag <script id="pagesData">
+      let pages = JSON.parse(document.getElementById("pagesData").textContent);
+      let idx = 0; // Índice da página ativa exibida
+      let editMode = true; // Define se os elementos de texto são editáveis
+
+      // Auxiliar para escapar caracteres HTML especiais prevenindo falhas de injeção
+      function esc(s) {
+        return (s || "").replace(
+          /[&<>"]/g,
+          (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[m],
+        );
+      }
+
+      // Função que gera o HTML do elemento editável com suporte a duplo clique/foco e sincronização de dados
+      function editable(content, path, cls = "") {
+        return `<span class="editable ${cls}" contenteditable="${editMode}" data-path="${path}" onblur="saveEdit(this)">${esc(content)}</span>`;
+      }
+
+      // 2. SINCRONIZAÇÃO EM TEMPO REAL: Atualiza a variável global 'pages' quando um campo perde o foco (blur)
+      function saveEdit(el) {
+        let path = el.dataset.path.split(".");
+        let ref = pages[idx];
+        // Navega dinamicamente no objeto/array JSON usando a notação por pontos
+        for (let i = 0; i < path.length - 1; i++) {
+          ref = ref[path[i]];
+        }
+        // Aplica o novo texto na folha final do objeto
+        ref[path[path.length - 1]] = el.innerText;
+        toast("Alteração salva.");
+        renderThumbs();
+        renderLayers();
+      }
+
+      // Renderiza as miniaturas das páginas na barra lateral esquerda
+      function renderThumbs() {
+        const t = document.getElementById("thumbs");
+        t.innerHTML = "";
+        pages.forEach((p, i) => {
+          const d = document.createElement("button");
+          d.className = "thumb" + (i === idx ? " active" : "");
+          d.innerHTML = `<div class="num">PÁG. ${String(i + 1).padStart(2, "0")}</div><div class="ttl">${esc(p.title)}</div>`;
+          d.onclick = () => {
+            idx = i;
+            render();
+          };
+          t.appendChild(d);
+        });
+      }
+
+      // Mapeia todas as propriedades editáveis da página atual e as lista no painel direito
+      function renderLayers() {
+        const l = document.getElementById("layers");
+        const p = pages[idx];
+        let arr = ["kicker", "title", "subtitle"];
+        if (p.cards)
+          p.cards.forEach((c, i) => {
+            arr.push(`cards.${i}.label`);
+            arr.push(`cards.${i}.text`);
+          });
+        if (p.items) p.items.forEach((_, i) => arr.push(`items.${i}`));
+        if (p.steps)
+          p.steps.forEach((s, i) => {
+            arr.push(`steps.${i}.title`);
+            arr.push(`steps.${i}.text`);
+          });
+        if (p.terms) p.terms.forEach((_, i) => arr.push(`terms.${i}`));
+        if (p.groups) p.groups.forEach((g, i) => arr.push(`groups.${i}.title`));
+        if (p.highlight) arr.push("highlight");
+        l.innerHTML = arr.map((a) => `<div class="layer">${a}</div>`).join("");
+      }
+
+      // Função que gera a estrutura de conteúdo HTML interno de uma página, usada para exibição individual e impressão de todas as páginas
+      function getPageHTML(p, index) {
+        let html = "";
+        html += `<div class="page-content"><div class="topbar"><div class="kicker">${editable(p.kicker, "kicker")}</div><div class="mini-logo">UT<span>F</span>PR</div></div>`;
+        if (p.type === "cover") {
+          html += `<div style="margin:auto 0"><div class="yellow-bar"></div><h1 class="title">${editable(p.title, "title")}</h1><p class="subtitle">${editable(p.subtitle, "subtitle")}</p><div class="label">${editable(p.accent || "", "accent")}</div></div><div class="content-area">${(p.cards || []).map((c, i) => card(c, i)).join("")}</div>`;
+        } else {
+          html += `<h1 class="title">${editable(p.title, "title")}</h1><p class="subtitle">${editable(p.subtitle, "subtitle")}</p><div class="yellow-bar"></div><div class="content-area">`;
+          if (p.type === "toc") html += renderTOC(p);
+          else if (p.type === "check" || p.type === "checklist")
+            html += renderCheck(p);
+          else if (p.type === "timeline") html += renderTimeline(p);
+          else if (p.type === "formula")
+            html +=
+              `<div class="formula">${editable(p.formula, "formula")}</div>` +
+              (p.cards || []).map((c, i) => card(c, i)).join("");
+          else if (p.type === "dictionary") html += renderDict(p);
+          else html += (p.cards || []).map((c, i) => card(c, i)).join("");
+          html += `</div>`;
+          if (p.highlight)
+            html += `<div class="highlight"><div class="icon">!</div><div class="htext">${editable(p.highlight, "highlight")}</div></div>`;
+        }
+        html += `<div class="footer"><span>Guia Prático do Auxílio Estudantil UTFPR</span><span>Página ${String(index + 1).padStart(2, "0")}</span></div></div>`;
+        return html;
+      }
+
+      // 3. MOTOR DE RENDERIZAÇÃO: Reconstrói dinamicamente o HTML da página ativa baseado no tipo do layout (cover, toc, check, checklist, timeline, formula, dictionary)
+      function render() {
+        renderThumbs();
+        renderLayers();
+        const p = pages[idx];
+        document.getElementById("pageIndicator").innerText =
+          `PÁGINA ${idx + 1} DE ${pages.length}`;
+        const pg = document.getElementById("page");
+        pg.className = "page " + (p.type === "cover" ? "cover" : "");
+        pg.innerHTML = getPageHTML(p, idx);
+      }
+
+      // Funções auxiliares para renderização de subcomponentes específicos (Cards, Checklist, Cronograma, Dicionário e Sumário)
+      function card(c, i) {
+        return `<div class="card gray"><div class="label">${editable(c.label, `cards.${i}.label`)}</div><div class="text">${editable(c.text, `cards.${i}.text`)}</div></div>`;
+      }
+      function renderCheck(p) {
+        return `<div class="check-list">${(p.items || []).map((it, i) => `<div class="check-item"><div class="check-dot">✓</div><div class="check-text">${editable(it, `items.${i}`)}</div></div>`).join("")}</div>`;
+      }
+      function renderTimeline(p) {
+        return `<div class="timeline">${(p.steps || []).map((s, i) => `<div class="step"><div class="step-title">${editable(s.title, `steps.${i}.title`)}</div><div class="step-text">${editable(s.text, `steps.${i}.text`)}</div></div>`).join("")}</div>`;
+      }
+      function renderDict(p) {
+        return `<div class="dict">${(p.terms || []).map((t, i) => `<div class="term"><strong>${editable(t[0], `terms.${i}.0`)}</strong><span>${editable(t[1], `terms.${i}.1`)}</span></div>`).join("")}</div>`;
+      }
+      function renderTOC(p) {
+        return `<div class="toc-grid">` + (p.groups || [])
+          .map(
+            (g, i) =>
+              `<div class="toc-row"><div class="toc-num">${editable(g.n, `groups.${i}.n`)}</div><div class="toc-box"><div class="toc-title">${editable(g.title, `groups.${i}.title`)}</div><ul class="toc-items">${g.items.map((it, j) => `<li>${editable(it, `groups.${i}.items.${j}`)}</li>`).join("")}</ul></div></div>`,
+          )
+          .join("") + `</div>`;
+      }
+
+      // 3b. EVENTOS DE IMPRESSÃO: Prepara o documento renderizando todas as páginas na tela ao imprimir
+      window.onbeforeprint = function() {
+        const canvasInner = document.querySelector(".canvas-inner");
+        
+        // Oculta elementos de navegação e edição
+        document.querySelector(".navline").style.display = "none";
+        const editNote = document.querySelector(".edit-note");
+        if (editNote) editNote.style.display = "none";
+        
+        // Oculta a página única ativa
+        const pg = document.getElementById("page");
+        pg.style.display = "none";
+        
+        // Renderiza todas as páginas da lista consecutivamente para que sejam capturadas pelo sistema de impressão
+        pages.forEach((p, i) => {
+          const pageDiv = document.createElement("div");
+          pageDiv.className = "page print-page " + (p.type === "cover" ? "cover" : "");
+          pageDiv.id = "print-page-" + i;
+          pageDiv.innerHTML = getPageHTML(p, i);
+          canvasInner.appendChild(pageDiv);
+        });
+      };
+      
+      window.onafterprint = function() {
+        const canvasInner = document.querySelector(".canvas-inner");
+        
+        // Remove todos os elementos adicionados para impressão
+        document.querySelectorAll(".print-page").forEach(el => el.remove());
+        
+        // Restaura a visualização da página única e dos elementos de navegação
+        document.querySelector(".navline").style.display = "";
+        const editNote = document.querySelector(".edit-note");
+        if (editNote) editNote.style.display = "";
+        
+        const pg = document.getElementById("page");
+        pg.style.display = "";
+        
+        render();
+      };
+
+      // 4. CONTROLES DE PÁGINAS E MODOS
+      function prevPage() {
+        if (idx > 0) {
+          idx--;
+          render();
+        }
+      }
+      function nextPage() {
+        if (idx < pages.length - 1) {
+          idx++;
+          render();
+        }
+      }
+      function toggleEdit() {
+        editMode = !editMode;
+        document.getElementById("editBtn").innerText = editMode
+          ? "Modo visualização"
+          : "Ativar edição";
+        render();
+      }
+
+      // Exibe balão temporário de feedback
+      function toast(msg) {
+        const t = document.getElementById("toast");
+        t.innerText = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 1800);
+      }
+
+      // 5. SALVAR E EXPORTAR: Serializa o objeto JS de volta para a tag script e gera o download do arquivo HTML completo modificado
+      function downloadEditedHTML() {
+        document.getElementById("pagesData").textContent = JSON.stringify(
+          pages,
+          null,
+          2,
+        );
+        const blob = new Blob(
+          ["<!DOCTYPE html>\n" + document.documentElement.outerHTML],
+          { type: "text/html;charset=utf-8" },
+        );
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "Guia_Pratico_Auxilio_Estudantil_UTFPR_EDITAVEL.html";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+
+      // Inicializa a renderização na primeira carga
+      render();
+    </script>
+  </body>
+</html>
