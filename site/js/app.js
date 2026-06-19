@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebar = document.getElementById('sidebar');
   const menuToggle = document.getElementById('menuToggle');
   const sidebarOverlay = document.getElementById('sidebarOverlay');
-  const themeToggle = document.getElementById('themeToggle');
+  const themeButtons = document.querySelectorAll('.theme-opt-btn');
   const themeToggleMobile = document.getElementById('themeToggleMobile');
   const navMenu = document.getElementById('navigationMenu');
   const searchInput = document.getElementById('searchInput');
@@ -40,38 +40,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('nextBtn');
 
   // ==========================================================================
-  // 2. TEMA (CLARO / ESCURO)
+  // 2. TEMAS DE LEITURA (CLARO, ESCURO, SÉPIA, UTFPR)
   // ==========================================================================
   
+  const themesList = ['light', 'dark', 'sepia', 'utfpr'];
+
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('guia_utfpr_theme', theme);
-    currentTheme = theme;
+    const finalTheme = themesList.includes(theme) ? theme : 'light';
+    document.documentElement.setAttribute('data-theme', finalTheme);
+    localStorage.setItem('guia_utfpr_theme', finalTheme);
+    currentTheme = finalTheme;
     
-    // Atualiza ícones dos botões de tema
-    const sunIcons = document.querySelectorAll('.sun-icon');
-    const moonIcons = document.querySelectorAll('.moon-icon');
-    
-    if (theme === 'dark') {
-      sunIcons.forEach(icon => icon.style.display = 'none');
-      moonIcons.forEach(icon => icon.style.display = 'block');
-    } else {
-      sunIcons.forEach(icon => icon.style.display = 'block');
-      moonIcons.forEach(icon => icon.style.display = 'none');
-    }
+    // Atualiza o estado visual ativo dos botões de seleção de tema
+    themeButtons.forEach(btn => {
+      if (btn.getAttribute('data-theme-val') === finalTheme) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
   }
 
   // Inicializa tema
   applyTheme(currentTheme);
 
-  // Eventos de clique para alternar tema
-  themeToggle.addEventListener('click', () => {
-    applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+  // Cliques nos botões de tema da sidebar
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-theme-val');
+      applyTheme(selected);
+    });
   });
   
+  // Botão mobile cicla sequencialmente entre os temas
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener('click', () => {
-      applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+      const currentIndex = themesList.indexOf(currentTheme);
+      const nextIndex = (currentIndex + 1) % themesList.length;
+      applyTheme(themesList[nextIndex]);
     });
   }
 
