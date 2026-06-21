@@ -9,18 +9,17 @@
   <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
-  <!-- Container principal do App -->
-  <div class="app-container">
-    
-    <!-- Barra Superior Mobile -->
-    <header class="mobile-header">
+
+  <!-- Cabeçalho Superior Unificado (Visual dos Portais da UTFPR) -->
+  <header class="app-header">
+    <div class="header-left">
+      <!-- Botão Hambúrguer para Mobile -->
       <button id="menuToggle" class="menu-toggle-btn" aria-label="Abrir Menu">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -28,11 +27,55 @@
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
-      <span class="mobile-logo-text">Guia UTFPR</span>
-      <button id="themeToggleMobile" class="theme-toggle-btn" aria-label="Mudar Tema">
-        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      
+      <!-- Logotipo UTFPR estilizado em SVG -->
+      <div class="logo-area">
+        <svg class="utfpr-logo" viewBox="0 0 160 45" width="120" height="34" fill="currentColor">
+          <text x="5" y="32" font-family="'Montserrat', sans-serif" font-weight="900" font-size="28" letter-spacing="-1">
+            <tspan fill="#ffffff">UTF</tspan><tspan fill="#F3C400">PR</tspan>
+          </text>
+          <!-- Listras horizontais institucionais -->
+          <rect x="5" y="38" width="60" height="3" fill="#F3C400" />
+          <rect x="65" y="38" width="40" height="3" fill="#ffffff" />
+        </svg>
+        <div class="header-divider"></div>
+        <div class="system-title">
+          <h1>Guia de Auxílio Estudantil</h1>
+          <span class="system-subtitle">Informativo Prático</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles da Direita: Seletor de Temas e Acessibilidade -->
+    <div class="header-right">
+      <div class="theme-selector">
+        <span class="theme-label">Acessibilidade:</span>
+        <div class="theme-options-row">
+          <button class="theme-opt-btn opt-light" data-theme-val="light" title="Tema Claro (Padrão)" aria-label="Tema Claro"></button>
+          <button class="theme-opt-btn opt-dark" data-theme-val="dark" title="Tema Escuro" aria-label="Tema Escuro"></button>
+          <button class="theme-opt-btn opt-sepia" data-theme-val="sepia" title="Tema Sépia" aria-label="Tema Sépia"></button>
+          <button class="theme-opt-btn opt-utfpr" data-theme-val="utfpr" title="Contraste UTFPR" aria-label="Tema UTFPR"></button>
+        </div>
+      </div>
+      <!-- Botão para ciclar temas no mobile -->
+      <button id="themeToggleMobile" class="theme-toggle-btn-mobile" aria-label="Mudar Tema">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
       </button>
-    </header>
+    </div>
+  </header>
+
+  <!-- Container principal do App -->
+  <div class="app-container">
 
     <!-- Overlay para fechar menu mobile -->
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
@@ -40,13 +83,10 @@
     <!-- Barra Lateral (Sidebar) -->
     <aside id="sidebar" class="sidebar">
       
-      <!-- Cabeçalho da Sidebar -->
+      <!-- Cabeçalho da Sidebar (Foco no menu) -->
       <div class="sidebar-header">
-        <div class="logo-area">
-          <span class="badge-primary">UTFPR</span>
-          <h2>Guia Prático</h2>
-        </div>
-        <p class="subtitle">Auxílio Estudantil</p>
+        <h3>Menu de Navegação</h3>
+        <p class="subtitle">Selecione uma seção do guia</p>
       </div>
 
       <!-- Barra de Busca -->
@@ -64,14 +104,11 @@
         <!-- Inserido dinamicamente via JS -->
       </nav>
 
-      <!-- Rodapé da Sidebar (Configurações) -->
+      <!-- Rodapé da Sidebar (Informações Institucionais do Câmpus) -->
       <div class="sidebar-footer">
-        <div class="theme-selector-label">Tema do Guia</div>
-        <div class="theme-options-row">
-          <button class="theme-opt-btn opt-light" data-theme-val="light" title="Tema Claro" aria-label="Tema Claro"></button>
-          <button class="theme-opt-btn opt-dark" data-theme-val="dark" title="Tema Escuro" aria-label="Tema Escuro"></button>
-          <button class="theme-opt-btn opt-sepia" data-theme-val="sepia" title="Tema Sépia" aria-label="Tema Sépia"></button>
-          <button class="theme-opt-btn opt-utfpr" data-theme-val="utfpr" title="Tema UTFPR" aria-label="Tema UTFPR"></button>
+        <div class="footer-info">
+          <p class="section-name">ASSAE / NUAPE</p>
+          <p class="campus-name">UTFPR Câmpus Francisco Beltrão</p>
         </div>
       </div>
 

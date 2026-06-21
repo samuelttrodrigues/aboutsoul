@@ -7,46 +7,36 @@ const GUIA_DATA = [
     "pages": [
       {
         "index": 0,
-        "title": "CAPA",
-        "eyebrow": "GUIA PRÁTICO",
-        "subtitle": "Auxílio Estudantil UTFPR",
+        "title": "GUIA DE AUXÍLIO ESTUDANTIL",
+        "eyebrow": "PORTAL INFORMATIVO",
+        "subtitle": "Passo a passo prático para solicitação e documentos (Edital 01/2026)",
         "highlight": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE/NUAPE.",
-        "dark": true,
+        "dark": false,
         "elements": [
-          {
-            "type": "image",
-            "cls": "image",
-            "content": ""
-          },
           {
             "type": "text",
             "cls": "text eyebrowText",
-            "content": "GUIA PRÁTICO"
-          },
-          {
-            "type": "shape",
-            "cls": "shape",
-            "content": ""
+            "content": "PORTAL INFORMATIVO"
           },
           {
             "type": "text",
             "cls": "text titleText",
-            "content": "CAPA"
+            "content": "GUIA DE AUXÍLIO ESTUDANTIL"
           },
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Auxílio Estudantil UTFPR"
+            "content": "Passo a passo prático para solicitação e documentos (Edital 01/2026)"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "Passo a passo para solicitar o auxílio sem se perder no processo."
+            "content": "Organização linear em etapas para acompanhar o processo do início ao fim."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "Material de apoio para estudantes da UTFPR organizarem documentos, acompanharem prazos e evitarem erros comuns."
+            "content": "Instruções específicas para emissão sem erros do CNIS e IRPF."
           },
           {
             "type": "highlight",
@@ -62,6 +52,7 @@ const GUIA_DATA = [
         "subtitle": "Organize tudo antes de acessar o sistema",
         "highlight": "Não deixe para reunir documentos no último dia. Isso aumenta o risco de erro ou perda de prazo.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -81,27 +72,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Leia o edital vigente com atenção e confira o cronograma."
+            "content": "Ler o edital vigente com atenção e confira o cronograma."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Separe seus documentos e os documentos do grupo familiar antes de iniciar."
+            "content": "Separar seus documentos e do grupo familiar antes de iniciar (veja os modelos na <a href='#page-27'>Central de Downloads</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Confira se seus dados no Portal do Aluno estão atualizados."
+            "content": "Conferir se seus dados no Portal do Aluno estão atualizados."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acompanhe o e-mail cadastrado e a caixa de spam durante todo o processo."
+            "content": "Acompanhar o e-mail cadastrado e a caixa de spam durante todo o processo."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Não deixe para reunir documentos no último dia. Isso aumenta o risco de erro ou perda de prazo."
+            "content": "Pronto para prosseguir? Verifique agora os critérios de eligibilidade em <a href='#page-3'>Quem Pode Solicitar</a>."
           }
         ]
       },
@@ -112,6 +103,7 @@ const GUIA_DATA = [
         "subtitle": "Entenda os critérios gerais",
         "highlight": "A inscrição deve seguir exatamente as regras do edital vigente. Conferir os requisitos evita indeferimento.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -131,27 +123,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Estudantes regularmente matriculados em cursos presenciais da UTFPR."
+            "content": "Estudante regularmente matriculado em curso presencial da UTFPR."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• É necessário estar cursando ao menos uma disciplina, conforme edital."
+            "content": "Estar cursando ao menos uma disciplina, conforme edital."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• A análise considera a realidade socioeconômica do estudante e de seu grupo familiar."
+            "content": "Possuir renda familiar condizente com a análise socioeconômica de vulnerabilidade."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• A renda familiar per capita é critério central para classificação e prioridade."
+            "content": "Possuir renda familiar per capita dentro do critério de classificação e prioridade."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "A inscrição deve seguir exatamente as regras do edital vigente. Conferir os requisitos evita indeferimento."
+            "content": "Se enquadra nos requisitos? Conheça os benefícios disponíveis na seção <a href='#page-4'>Quais Auxílios Existem</a>."
           }
         ]
       },
@@ -162,6 +154,7 @@ const GUIA_DATA = [
         "subtitle": "Benefícios previstos no Auxílio Estudantil",
         "highlight": "O estudante deve selecionar as modalidades pretendidas durante a inscrição, conforme sua realidade.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -181,27 +174,41 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Auxílio Básico: apoio financeiro para permanência do estudante."
+            "content": "<b>Auxílio Básico:</b> apoio financeiro mensal para manutenção e permanência do estudante."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Auxílio Moradia: apoio para estudantes que têm despesas com moradia."
+            "content": "<b>Auxílio Moradia:</b> auxílio para estudantes que necessitam morar fora do domicílio de origem."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Auxílio Alimentação: acesso ao RU ou pagamento em pecúnia quando previsto."
+            "content": "<b>Auxílio Alimentação:</b> acesso subsidiado ou pecúnia para refeições no RU."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Auxílio Infância: apoio para estudante com filho(a) em idade prevista no edital."
+            "content": "<b>Auxílio Infância:</b> apoio mensal para estudantes com filhos sob sua guarda e sustento."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "O estudante deve selecionar as modalidades pretendidas durante a inscrição, conforme sua realidade."
+            "content": "Escolheu suas modalidades? Antes de acessar a plataforma, simule sua situação no <a href='#page-1'>Passo a Passo Personalizado</a>."
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "title": "PASSO A PASSO PERSONALIZADO",
+        "eyebrow": "SIMULADOR INTERATIVO",
+        "subtitle": "Verifique sua elegibilidade e veja seu caminho de documentos recomendado",
+        "dark": false,
+        "elements": [
+          {
+            "type": "wizard",
+            "id": "eligibility-wizard",
+            "content": "Template do simulador de elegibilidade interativo baseado nas perguntas do edital."
           }
         ]
       }
@@ -219,6 +226,7 @@ const GUIA_DATA = [
         "subtitle": "O caminho básico dentro do sistema",
         "highlight": "A inscrição só é considerada finalizada quando o sistema gera o protocolo.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -238,57 +246,65 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "1. Acessar o Portal do Aluno"
+            "content": "1. Acessar o Portal do Aluno."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "2. Clicar em Inscrição - Auxílio Estudantil"
+            "content": "2. Clicar em Inscrição - Auxílio Estudantil."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "3. Entrar na Plataforma de Inscrição"
+            "content": "3. Entrar na Plataforma de Inscrição."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "4. Ler o aviso inicial e clicar em Ciente"
+            "content": "4. Ler o aviso inicial e clicar em Ciente."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "5. Preencher o Questionário Socioeconômico"
+            "content": "5. Preencher o Questionário Socioeconômico (consulte como fazer em <a href='#page-6'>Preenchendo a Inscrição</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "6. Cadastrar o grupo familiar"
+            "content": "6. Cadastrar o grupo familiar (consulte as regras de composição em <a href='#page-8'>Grupo Familiar</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "7. Selecionar as modalidades"
+            "content": "7. Selecionar as modalidades (veja o que é cada uma em <a href='#page-4'>Quais Auxílios Existem</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "8. Enviar os documentos"
+            "content": "8. Enviar os documentos (veja como preparar sem erros em <a href='#page-7'>Documentos Sem Erro</a>, e veja os guias de <a href='#page-12'>CNIS</a> e <a href='#page-15'>IRPF</a>)."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "A inscrição só é considerada finalizada quando o sistema gera o protocolo."
+            "content": "A inscrição só é considerada finalizada quando o sistema gera o protocolo de entrega."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "9. Conferir checklist, dados bancários e termo"
+            "content": "9. Conferir checklist, dados bancários e termo (veja as orientações em <a href='#page-18'>Finalizar a Inscrição</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "10. Finalizar e guardar o protocolo"
+            "content": "10. Finalizar e guardar o protocolo gerado."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial de Inscrição (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.6 MB",
+            "url": "documentos/tutorial inscrição.pdf",
+            "description": "Manual oficial ilustrado completo ensinando como fazer a inscrição passo a passo."
           }
         ]
       },
@@ -299,6 +315,7 @@ const GUIA_DATA = [
         "subtitle": "Informações precisam ser coerentes",
         "highlight": "Informação incompleta, contraditória ou omitida pode prejudicar a análise.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -318,27 +335,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Preencha dados pessoais, curso, moradia e situação socioeconômica com atenção."
+            "content": "Preencher dados pessoais, curso, moradia e situação socioeconômica com atenção."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Informe corretamente a renda, inclusive ajudas financeiras, bolsas, estágio e trabalho informal."
+            "content": "Informe corretamente a renda, inclusive ajudas financeiras, bolsas, estágio e trabalho informal."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Cadastre todos os membros do grupo familiar, começando pelo próprio estudante."
+            "content": "Cadastrar todos os membros do grupo familiar, começando pelo próprio estudante."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Revise antes de salvar e avançar para os documentos."
+            "content": "Revise antes de salvar e avançar para os documentos."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Informação incompleta, contraditória ou omitida pode prejudicar a análise."
+            "content": "Antes de fazer o upload, veja as orientações fundamentais de como enviar seus <a href='#page-7'>Documentos Sem Erro</a>."
           }
         ]
       },
@@ -349,6 +366,7 @@ const GUIA_DATA = [
         "subtitle": "Como enviar arquivos sem prejudicar a análise",
         "highlight": "Antes de enviar, abra o arquivo e confira se todas as páginas aparecem corretamente.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -368,32 +386,32 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Use PDF ou imagem, conforme o sistema aceitar."
+            "content": "Usar formato PDF ou imagem, conforme o sistema aceitar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• O arquivo deve estar legível, completo e sem rasuras."
+            "content": "Garantir que o arquivo esteja legível, completo e sem rasuras."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Documentos com mais de uma página devem estar em um único arquivo."
+            "content": "Documentos com mais de uma página devem ser unificados em um único arquivo PDF."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Declarações precisam estar preenchidas, datadas e assinadas."
+            "content": "Declarações precisam estar preenchidas por completo, datadas e assinadas (baixe os modelos em <a href='#page-27'>Modelos de Declarações</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Assinatura recortada ou colada não é aceita."
+            "content": "A assinatura deve ser manual ou digitalICP-Brasil; assinaturas recortadas e coladas como imagem não são aceitas."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Antes de enviar, abra o arquivo e confira se todas as páginas aparecem corretamente."
+            "content": "Se for veterano (deferido em 2025), confira as regras de <a href='#page-11'>Aproveitamento de Documentos</a>. Caso contrário, confira quem entra no seu <a href='#page-8'>Grupo Familiar</a>."
           }
         ]
       },
@@ -404,6 +422,7 @@ const GUIA_DATA = [
         "subtitle": "Quem entra na análise socioeconômica",
         "highlight": "Omissão de pessoas ou rendas pode gerar inconsistência na inscrição.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -423,27 +442,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Grupo familiar envolve as pessoas que compõem a realidade econômica do estudante."
+            "content": "Grupo familiar envolve todas as pessoas que residem com o estudante ou que compõem sua realidade econômica e subsistência."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Não se limita apenas a quem mora na mesma casa."
+            "content": "Não se limita apenas a quem mora na mesma casa; dependentes econômicos em outras cidades contam."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Pessoas que contribuem ou dependem da renda familiar podem integrar a análise."
+            "content": "Pessoas que contribuem financeiramente ou dependem da renda familiar do estudante devem integrar a análise."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Membros sem renda também devem ser informados quando fizerem parte do grupo familiar."
+            "content": "Membros do grupo familiar sem renda ativa também devem ser obrigatoriamente informados."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Omissão de pessoas ou rendas pode gerar inconsistência na inscrição."
+            "content": "Para entender melhor quem incluir em situações específicas, confira os <a href='#page-9'>Exemplos de Grupo Familiar</a>."
           }
         ]
       },
@@ -454,6 +473,7 @@ const GUIA_DATA = [
         "subtitle": "Situações que costumam gerar dúvida",
         "highlight": "Cada caso depende da realidade apresentada e dos documentos enviados.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -473,27 +493,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Irmão que mora fora, mas recebe ajuda da família: pode integrar a análise."
+            "content": "Irmão que mora fora para estudar, mas depende e recebe ajuda financeira da família: deve integrar o grupo familiar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Avó que mora junto e tem aposentadoria: pode integrar o grupo e a renda."
+            "content": "Avó que reside sob o mesmo teto e possui aposentadoria: deve integrar o grupo familiar e sua renda deve ser somada."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Estudante que mora sozinho, mas recebe ajuda dos pais: não é automaticamente independente."
+            "content": "Estudante que mora sozinho, mas recebe ajuda financeira regular dos pais: deve declarar o grupo familiar de origem (não é automaticamente independente)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Familiar sem renda também deve ser informado, se fizer parte do grupo familiar."
+            "content": "Familiar desempregado ou sem renda: deve ser incluído no questionário e apresentar declaração correspondente."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Cada caso depende da realidade apresentada e dos documentos enviados."
+            "content": "Mapeou o grupo? Agora veja como realizar o cálculo da sua <a href='#page-10'>Renda Per Capita</a>."
           }
         ]
       },
@@ -504,6 +524,7 @@ const GUIA_DATA = [
         "subtitle": "Renda por pessoa do grupo familiar",
         "highlight": "Renda per capita = renda total do grupo familiar ÷ número de pessoas.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -523,27 +544,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Some todas as rendas do grupo familiar."
+            "content": "Somar todas as rendas brutas mensais dos membros do grupo familiar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Divida o valor total pelo número de pessoas do grupo familiar."
+            "content": "Dividir o valor total obtido pelo número de integrantes do grupo familiar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Exemplo: renda total de R$ 3.200,00 dividida por 4 pessoas = R$ 800,00 por pessoa."
+            "content": "Exemplo: Renda total de R$ 3.200,00 dividida por 4 pessoas = R$ 800,00 per capita."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• A renda per capita ajuda a definir prioridade e classificação."
+            "content": "O valor final é usado pelo sistema para classificar os estudantes em vulnerabilidade social."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Renda per capita = renda total do grupo familiar ÷ número de pessoas."
+            "content": "Calculou? Se for veterano e teve inscrição deferida em 2025, consulte as regras de <a href='#page-11'>Aproveitamento de Documentos</a>. Caso contrário, siga para obter o <a href='#page-12'>CNIS</a>."
           }
         ]
       }
@@ -557,15 +578,16 @@ const GUIA_DATA = [
       {
         "index": 11,
         "title": "APROVEITAMENTO DE DOCUMENTOS",
-        "eyebrow": "VETERANOS",
-        "subtitle": "Quando é possível reaproveitar documentos",
-        "highlight": "Reaproveitar documentos sem manter a mesma realidade socioeconômica pode causar indeferimento.",
+        "eyebrow": "REGRAS VETERANOS",
+        "subtitle": "Edital 01/2026 PROGRAD/ASSAE",
+        "highlight": "Reaproveitar documentos sem manter exatamente a mesma realidade socioeconômica pode causar o indeferimento da inscrição a qualquer momento.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
             "cls": "text eyebrowText",
-            "content": "VETERANOS"
+            "content": "REGRAS VETERANOS"
           },
           {
             "type": "text",
@@ -575,32 +597,45 @@ const GUIA_DATA = [
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Quando é possível reaproveitar documentos"
+            "content": "Edital 01/2026 PROGRAD/ASSAE"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Pode ser solicitado por estudante com inscrição deferida anteriormente, quando permitido."
+            "content": "Estudante veterano com inscrição deferida no Processo de Seleção de 2025 (Edital 01/2025)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Só utilize se não houve mudança na renda, moradia, grupo familiar ou modalidades solicitadas."
+            "content": "Manter composição do grupo familiar, renda, moradia e modalidades idênticas (sem qualquer alteração)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Se houve qualquer alteração, faça inscrição completa com documentos atualizados."
+            "content": "Não ter sofrido alteração socioeconômica (como novos membros, óbitos, desemprego ou novos empregos)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Quem fez atualização socioeconômica ou ajuste de pontuação deve observar as regras específicas."
+            "content": "Não ter realizado Atualização Socioeconômica ou Ajuste de Pontuação em 2025."
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "Ter tido desempenho acadêmico em 2025/2 com reprovação/cancelamento em no máximo 33% das matérias (ou interpor recurso nos dias 09 e 10/03/2026)."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Reaproveitar documentos sem manter a mesma realidade socioeconômica pode causar indeferimento."
+            "content": "Se enquadra nessas regras? Você pode solicitar reaproveitamento. Caso contrário, deve emitir o extrato do <a href='#page-12'>CNIS</a>."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial Reaproveitamento (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial reaproveitamento.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como fazer o reaproveitamento."
           }
         ]
       },
@@ -630,27 +665,35 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• O CNIS mostra vínculos de trabalho, remunerações e contribuições."
+            "content": "O CNIS registra vínculos de trabalho, contribuições previdenciárias e remunerações da pessoa física."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Também serve para comprovar ausência de vínculos quando a pessoa nunca trabalhou."
+            "content": "Serve para comprovar a renda oficial ou a ausência de vínculos empregatícios de cada membro do grupo familiar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• É emitido pelo Meu INSS com conta gov.br."
+            "content": "A emissão é feita online através do Portal ou App Meu INSS usando uma conta gov.br."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Pode ser exigido para membros do grupo familiar, conforme edital."
+            "content": "O documento deve constar para o estudante e demais integrantes maiores de idade do grupo familiar."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Mesmo quem nunca trabalhou pode precisar apresentar CNIS sem vínculos."
+            "content": "Entendeu o conceito? Veja como emitir se você <a href='#page-13'>Já Teve Vínculos de Trabalho</a> ou se você <a href='#page-14'>Nunca Trabalhou</a>."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial CNIS (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial cnis.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir o CNIS."
           }
         ]
       },
@@ -661,6 +704,7 @@ const GUIA_DATA = [
         "subtitle": "Como baixar o extrato completo",
         "highlight": "O arquivo correto deve mostrar vínculos, contribuições e remunerações.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -680,37 +724,45 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "1. Acesse Meu INSS"
+            "content": "Acessar o site ou aplicativo Meu INSS."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "2. Entre com gov.br"
+            "content": "Fazer login usando sua conta gov.br."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "3. Clique em Extrato de contribuição (CNIS)"
+            "content": "Buscar pela opção 'Extrato de Contribuição (CNIS)' no menu de serviços."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "4. Baixe o documento"
+            "content": "Clicar em 'Baixar PDF' no canto inferior da tela."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "5. Selecione Vínculos, contribuições e remunerações"
+            "content": "Selecionar a opção 'Relações Previdenciárias e Remunerações' (extrato completo) e confirmar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "6. Envie o PDF no sistema do auxílio"
+            "content": "Salvar o arquivo PDF gerado e fazer o upload no sistema do auxílio."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "O arquivo correto deve mostrar vínculos, contribuições e remunerações."
+            "content": "Finalizou a emissão do CNIS? Siga agora para a verificação da comprovação do <a href='#page-15'>Imposto de Renda (IRPF)</a>."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial CNIS (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial cnis.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir o CNIS."
           }
         ]
       },
@@ -721,6 +773,7 @@ const GUIA_DATA = [
         "subtitle": "Também precisa emitir comprovante",
         "highlight": "Não basta dizer que nunca trabalhou. É preciso apresentar o extrato emitido pelo sistema.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -740,27 +793,35 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acesse o Meu INSS com gov.br."
+            "content": "Acesse o Portal Meu INSS com sua conta gov.br."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Pode ser necessário validar dados e autorizar uso de informações."
+            "content": "Valide as informações iniciais e autorize o uso de dados cadastrais caso seja o primeiro acesso."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Se aparecer “não constam vínculos para essa inscrição”, baixe o PDF."
+            "content": "Verifique o extrato (deve constar que não existem vínculos de trabalho ativos registrados no CPF)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Envie esse PDF no campo correspondente do sistema."
+            "content": "Baixe o PDF gerado pelo sistema e faça o upload no respectivo campo do edital."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Não basta dizer que nunca trabalhou. É preciso apresentar o extrato emitido pelo sistema."
+            "content": "Após obter o comprovante sem vínculos, avance para a verificação do <a href='#page-15'>Imposto de Renda (IRPF)</a> do grupo familiar."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial CNIS (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial cnis.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir o CNIS."
           }
         ]
       },
@@ -768,8 +829,8 @@ const GUIA_DATA = [
         "index": 15,
         "title": "IRPF: DECLARANTE OU ISENTO?",
         "eyebrow": "IMPOSTO DE RENDA",
-        "subtitle": "Verifique a situação de cada pessoa",
-        "highlight": "Confira o ano/exercício indicado pelo edital antes de baixar ou tirar print.",
+        "subtitle": "Verifique a situação de cada pessoa do grupo familiar",
+        "highlight": "ETAPA 1 (1º Semestre) exige IRPF 2025 (ano-calendário 2024). ETAPA 2 (2º Semestre) exige IRPF 2026 (ano-calendário 2025).",
         "dark": false,
         "elements": [
           {
@@ -785,47 +846,56 @@ const GUIA_DATA = [
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Verifique a situação de cada pessoa"
+            "content": "Verifique a situação de cada pessoa do grupo familiar"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Quem declarou deve apresentar a declaração e o recibo."
+            "content": "<b>Quem declarou Imposto de Renda:</b> deve apresentar a cópia integral da declaração do IRPF anual acompanhada de seu recibo de entrega (consulte o passo a passo em <a href='#page-16'>Quem Declarou</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Quem não declarou deve comprovar a situação de Não Entregue."
+            "content": "<b>Quem é isento:</b> deve obter a certidão ou print direto da Receita Federal que indica situação 'Não entregue' para o CPF (consulte em <a href='#page-17'>Isento/Não Declarante</a>)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• O acesso ao Portal Meu Imposto de Renda exige gov.br nível Prata ou Ouro."
+            "content": "O acesso ao Portal Meu Imposto de Renda (MIR) exige obrigatoriamente conta gov.br de nível <b>Prata ou Ouro</b>."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Conta gov.br Bronze pode não permitir acesso às informações necessárias."
+            "content": "Contas com nível Bronze não têm autorização de acesso ao sistema do IRPF. Recomenda-se realizar o upgrade de nível previamente."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Confira o ano/exercício indicado pelo edital antes de baixar ou tirar print."
+            "content": "Definiu a situação de cada membro? Veja como proceder se a pessoa <a href='#page-16'>Declarou Imposto</a> ou se ela é <a href='#page-17'>Isenta / Não Declarante</a>."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial IRPF (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial irpf.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir ou comprovar isenção de IRPF."
           }
         ]
       },
       {
         "index": 16,
         "title": "IRPF: QUEM DECLAROU",
-        "eyebrow": "DOCUMENTOS",
-        "subtitle": "Declaração + recibo",
-        "highlight": "Declaração sem recibo pode estar incompleta para fins de análise.",
+        "eyebrow": "DOCUMENTOS OBRIGATÓRIOS",
+        "subtitle": "Declaração e recibo unificados em PDF",
+        "highlight": "Uma declaração sem o respectivo recibo de entrega (ou vice-versa) é considerada documento incompleto e causará indeferimento.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
             "cls": "text eyebrowText",
-            "content": "DOCUMENTOS"
+            "content": "DOCUMENTOS OBRIGATÓRIOS"
           },
           {
             "type": "text",
@@ -835,62 +905,66 @@ const GUIA_DATA = [
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Declaração + recibo"
+            "content": "Declaração e recibo unificados em PDF"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "1. Acessar Portal Meu Imposto de Renda"
+            "content": "Acessar o Portal Meu Imposto de Renda (MIR) da Receita Federal."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "2. Clicar em Consultar meu imposto de renda"
+            "content": "Clicar em 'Consultar meu imposto de renda' e autenticar via gov.br (Prata ou Ouro)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "3. Fazer login gov.br"
+            "content": "Selecionar o ano correto (IRPF 2025 para inscrições no 1º Semestre, IRPF 2026 para inscrições no 2º Semestre)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "4. Selecionar o exercício correspondente"
+            "content": "Localizar e acessar a aba 'Documentos e Arquivos (Cópia da Declaração)'."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "5. Baixar Cópia do Recibo da Declaração"
+            "content": "Baixar o PDF completo contendo a Cópia da Declaração e também o PDF do Recibo de Entrega correspondente."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "6. Baixar Cópia da Declaração"
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "7. Juntar os dois documentos em um único PDF"
+            "content": "Unificar ambos os arquivos em um único PDF (limite de 2 MB) e anexá-lo no sistema do auxílio."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Declaração sem recibo pode estar incompleta para fins de análise."
+            "content": "Concluiu o envio do IRPF? Agora você pode avançar para o guia de como <a href='#page-18'>Finalizar a Inscrição</a> sem erros."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial IRPF (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial irpf.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir ou comprovar isenção de IRPF."
           }
         ]
       },
       {
         "index": 17,
         "title": "IRPF: ISENTO/NÃO DECLARANTE",
-        "eyebrow": "COMPROVAÇÃO",
-        "subtitle": "Print correto da Receita Federal",
-        "highlight": "Print cortado, sem CPF ou sem data/hora pode ser recusado.",
+        "eyebrow": "COMPROVAÇÃO DE ISENÇÃO",
+        "subtitle": "Print completo e legível do Portal MIR",
+        "highlight": "Prints cortados, sem CPF visível ou sem a data/hora da consulta no rodapé da Receita Federal serão recusados.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
             "cls": "text eyebrowText",
-            "content": "COMPROVAÇÃO"
+            "content": "COMPROVAÇÃO DE ISENÇÃO"
           },
           {
             "type": "text",
@@ -900,37 +974,50 @@ const GUIA_DATA = [
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Print correto da Receita Federal"
+            "content": "Print completo e legível do Portal MIR"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acesse o Portal Meu Imposto de Renda."
+            "content": "Acessar o Portal Meu Imposto de Renda (MIR) com gov.br."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Verifique se consta IRPF [ano] - Não Entregue."
+            "content": "Selecionar o exercício correto (IRPF 2025 para Etapa 1 / IRPF 2026 para Etapa 2) e constatar a indicação de 'Não entregue'."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Tire print mostrando nome completo e CPF."
+            "content": "Tirar um print legível assegurando que seu nome completo e CPF apareçam no canto superior direito."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• O print deve mostrar a mensagem de não entrega e data/hora da consulta."
+            "content": "Verificar se a mensagem central 'Não Entregue' está perfeitamente nítida."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Envie o print no campo indicado do sistema."
+            "content": "Garantir que a mensagem oficial no rodapé esquerdo com a data e hora exata da consulta esteja visível."
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "Salvar e anexar este print ou arquivo PDF sem edições no sistema."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Print cortado, sem CPF ou sem data/hora pode ser recusado."
+            "content": "Anexou todos os comprovantes? Vá para a etapa final e veja como <a href='#page-18'>Finalizar a Inscrição</a> no portal."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial IRPF (PDF)",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial irpf.pdf",
+            "description": "Manual oficial detalhado com imagens passo a passo sobre como emitir ou comprovar isenção de IRPF."
           }
         ]
       }
@@ -948,6 +1035,7 @@ const GUIA_DATA = [
         "subtitle": "Última conferência antes do envio",
         "highlight": "A inscrição só está concluída quando o sistema gera o protocolo de inscrição.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -967,32 +1055,32 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Leia a página de finalização com atenção."
+            "content": "Ler a página de finalização da plataforma com total atenção."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Confira o checklist de documentos."
+            "content": "Conferir o checklist geral de documentos exigidos."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Verifique dados bancários."
+            "content": "Verificar se os dados bancários estão devidamente inseridos e corretos."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Leia o Termo de Responsabilidade."
+            "content": "Ler e concordar com o Termo de Responsabilidade."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Corrija divergências antes de finalizar."
+            "content": "Corrigir qualquer divergência cadastral antes de finalizar."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "A inscrição só está concluída quando o sistema gera o protocolo de inscrição."
+            "content": "Tudo conferido? Finalize a inscrição e guarde o protocolo. Acompanhe os próximos passos na seção <a href='#page-19'>Depois de Enviar</a>."
           }
         ]
       },
@@ -1003,6 +1091,7 @@ const GUIA_DATA = [
         "subtitle": "O processo não acaba no envio",
         "highlight": "Complementação documental costuma ter prazo curto. Não deixe de acompanhar os comunicados.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -1022,27 +1111,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acompanhe a Plataforma de Inscrição."
+            "content": "Acompanhar periodicamente a Plataforma de Inscrição da UTFPR."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Verifique o e-mail principal cadastrado no Portal do Aluno."
+            "content": "Verificar diariamente o e-mail cadastrado no Portal do Aluno."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Olhe também a caixa de spam/lixo eletrônico."
+            "content": "Checar com frequência a pasta de spam e lixo eletrônico."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Responda solicitações de complementação dentro do prazo."
+            "content": "Responder a eventuais solicitações de complementação documental dentro do prazo estabelecido."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Complementação documental costuma ter prazo curto. Não deixe de acompanhar os comunicados."
+            "content": "Fique atento! Acompanhe as formas de divulgação e prazos de recursos em <a href='#page-20'>Resultado da Inscrição</a>."
           }
         ]
       },
@@ -1092,7 +1181,7 @@ const GUIA_DATA = [
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Leia o resultado com atenção e observe se existe prazo para recurso."
+            "content": "Sua inscrição foi aceita e você foi contemplado(a)? Veja os próximos passos em <a href='#page-21'>Se For Contemplado(a)</a>."
           }
         ]
       },
@@ -1103,6 +1192,7 @@ const GUIA_DATA = [
         "subtitle": "O que fazer após a concessão",
         "highlight": "Receber o auxílio também exige atenção às regras de manutenção.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -1122,27 +1212,27 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Confira dados bancários e mantenha-os atualizados."
+            "content": "Conferir se seus dados bancários no Portal do Aluno estão atualizados e corretos."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acompanhe pagamentos e comunicados oficiais."
+            "content": "Acompanhar a liberação dos pagamentos mensais e eventuais comunicados."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Use o auxílio com responsabilidade para sua permanência."
+            "content": "Utilizar os valores recebidos de forma responsável para sua manutenção nos estudos."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Comunique mudanças de renda, moradia, estágio, bolsa ou composição familiar."
+            "content": "Comunicar de imediato alterações de renda, composição familiar, estágio ou moradia."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Receber o auxílio também exige atenção às regras de manutenção."
+            "content": "Para certificar-se de que tudo correrá bem, revise a lista de <a href='#page-22'>Erros Comuns</a>."
           }
         ]
       }
@@ -1160,6 +1250,7 @@ const GUIA_DATA = [
         "subtitle": "O que mais prejudica a inscrição",
         "highlight": "A maioria dos erros pode ser evitada com organização, leitura atenta e acompanhamento do sistema.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -1179,52 +1270,52 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Perder prazo do edital."
+            "content": "Perder o prazo de inscrição ou de recurso do edital."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Não acompanhar e-mail e spam."
+            "content": "Não acompanhar o e-mail cadastrado e a caixa de spam."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Enviar documento ilegível ou incompleto."
+            "content": "Enviar documento com páginas faltando, cortado ou ilegível."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Esquecer membro do grupo familiar."
+            "content": "Esquecer de cadastrar algum membro do grupo familiar no questionário."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Omitir renda ou ajuda financeira."
+            "content": "Omitir rendas (como pensão, trabalho informal, estágio ou ajuda de terceiros)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Usar conta bancária de terceiro."
+            "content": "Cadastrar conta bancária de outra pessoa ou conta poupabilidade não aceita."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Não finalizar a inscrição."
+            "content": "Não finalizar o processo de inscrição no sistema (apenas salvar dados)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Não guardar protocolo."
+            "content": "Não salvar e não guardar o número do protocolo de entrega."
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "Ignorar avisos e pedidos de complementação documental no painel do aluno."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "A maioria dos erros pode ser evitada com organização, leitura atenta e acompanhamento do sistema."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• Ignorar pedido de complementação."
+            "content": "Evite esses erros! Para esclarecer siglas e termos burocráticos do edital, acesse o <a href='#page-23'>Dicionário do Auxílio</a>."
           }
         ]
       },
@@ -1254,52 +1345,52 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Deferido: inscrição aceita."
+            "content": "• Deferido: inscrição aceita no processo."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Indeferido: inscrição negada."
+            "content": "• Indeferido: inscrição negada por pendência ou critério não atendido."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Pecúnia: dinheiro depositado na conta."
+            "content": "• Pecúnia: benefício pago em dinheiro depositado diretamente na conta."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Per capita: valor por pessoa."
+            "content": "• Per capita: valor calculado individualmente por membro familiar."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Complementação: envio ou correção de documento solicitado."
+            "content": "• Complementação: solicitação para corrigir ou reenviar documento no sistema."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Recurso: pedido de reanálise."
+            "content": "• Recurso: pedido formal para reanálise em caso de indeferimento."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Homologado: documento aceito/validado."
+            "content": "• Homologado: documento aprovado e validado pela assistente social."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• NUAPE: setor de apoio ao estudante."
+            "content": "• NUAPE: Núcleo de Acompanhamento Psicopedagógico e Assistência Estudantil."
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "• ASSAE: Assessoria de Assuntos Estudantis da Reitoria."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Quando um termo parecer confuso, procure orientação antes de perder prazo."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• ASSAE: assessoria ligada à assistência estudantil."
+            "content": "Esclareceu os conceitos? Faça agora uma checagem geral no seu processo com o <a href='#page-24'>Checklist Final</a>."
           }
         ]
       },
@@ -1310,6 +1401,7 @@ const GUIA_DATA = [
         "subtitle": "Confira tudo com calma",
         "highlight": "Se alguma resposta for não, resolva antes de finalizar a inscrição.",
         "dark": false,
+        "checklist": true,
         "elements": [
           {
             "type": "text",
@@ -1329,57 +1421,57 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Li o edital vigente?"
+            "content": "Li o edital oficial vigente com atenção?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Conferi os prazos?"
+            "content": "Conferi o cronograma e os prazos limite?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Atualizei meus dados no Portal do Aluno?"
+            "content": "Atualizei meus dados pessoais e escolares no Portal do Aluno?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Cadastrei o grupo familiar corretamente?"
+            "content": "Cadastrei todos os membros do grupo familiar sem omissões?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Separei documentos de todos?"
+            "content": "Separei os documentos de identificação e renda de todos?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Os arquivos estão legíveis e completos?"
+            "content": "Os arquivos anexados estão perfeitamente legíveis, completos e sem cortes?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Conferi dados bancários?"
+            "content": "Conferi e inseri os dados bancários corretos?"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Li o Termo de Responsabilidade?"
+            "content": "Li o Termo de Responsabilidade por completo?"
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "Finalizei a inscrição de forma correta e guardei o protocolo?"
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "Estou acompanhando diariamente os comunicados e meu e-mail?"
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Se alguma resposta for não, resolva antes de finalizar a inscrição."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• Finalizei e salvei o protocolo?"
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• Estou acompanhando e-mail e sistema?"
+            "content": "Se tudo estiver 'Sim', sua inscrição está pronta! Caso precise de suporte, consulte os <a href='#page-25'>Contatos e Orientação Final</a>."
           }
         ]
       },
@@ -1430,6 +1522,157 @@ const GUIA_DATA = [
             "type": "highlight",
             "cls": "highlight bodyText",
             "content": "Você não precisa enfrentar o processo sozinho. Informação correta evita problemas futuros."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "documentos_tutoriais",
+    "title": "Central de Downloads",
+    "badge": "06",
+    "pages": [
+      {
+        "index": 26,
+        "title": "TUTORIAIS EM PDF",
+        "eyebrow": "DOWNLOADS",
+        "subtitle": "Manuais e guias passo a passo oficiais em PDF",
+        "dark": false,
+        "elements": [
+          {
+            "type": "download",
+            "title": "Edital Oficial Auxílio Estudantil",
+            "fileType": "pdf",
+            "fileSize": "19.2 MB",
+            "url": "documentos/edital aux.pdf",
+            "description": "Edital nº 01/2026 PROGRAD/ASSAE que regula as concessões e manutenção dos auxílios estudantis."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial de Inscrição",
+            "fileType": "pdf",
+            "fileSize": "1.6 MB",
+            "url": "documentos/tutorial inscrição.pdf",
+            "description": "Guia passo a passo ilustrado ensinando como se inscrever na plataforma oficial."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial CNIS",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial cnis.pdf",
+            "description": "Instruções completas sobre como emitir seu extrato de contribuições CNIS (com ou sem vínculos)."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial IRPF",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial irpf.pdf",
+            "description": "Passo a passo para obter cópia da Declaração de Imposto de Renda e recibo de entrega ou comprovar isenção."
+          },
+          {
+            "type": "download",
+            "title": "Tutorial Reaproveitamento",
+            "fileType": "pdf",
+            "fileSize": "1.1 MB",
+            "url": "documentos/tutorial reaproveitamento.pdf",
+            "description": "Procedimento para estudantes veteranos solicitarem aproveitamento de documentos deferidos em 2025."
+          }
+        ]
+      },
+      {
+        "index": 27,
+        "title": "MODELOS DE DECLARAÇÕES",
+        "eyebrow": "DOWNLOADS",
+        "subtitle": "Arquivos em formato Word (.docx) para preenchimento",
+        "dark": false,
+        "elements": [
+          {
+            "type": "download",
+            "title": "Declaração 1 - Renda",
+            "fileType": "docx",
+            "fileSize": "63 KB",
+            "url": "documentos/Declaração 1 - Renda.docx",
+            "description": "Modelo para declaração de renda familiar ou rendimentos próprios."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 2 - Situação moradia estudante",
+            "fileType": "docx",
+            "fileSize": "62 KB",
+            "url": "documentos/Declaração 2 - Situação moradia estudante.docx",
+            "description": "Comprovação de situação de moradia do estudante para fins de auxílio."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 3 - Rural",
+            "fileType": "docx",
+            "fileSize": "122 KB",
+            "url": "documentos/Declaração 3 - Rural.docx",
+            "description": "Modelo específico para declaração de rendimentos provenientes de atividade rural."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 4 - Independência financeira",
+            "fileType": "docx",
+            "fileSize": "63 KB",
+            "url": "documentos/Declaração 4 - Independência financeira.docx",
+            "description": "Termo de declaração de independência financeira do núcleo familiar de origem."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 5 - Diversas situações",
+            "fileType": "docx",
+            "fileSize": "62 KB",
+            "url": "documentos/Declaração 5 - Diversas situações.docx",
+            "description": "Modelo para justificativa de outras realidades não cobertas pelas demais declarações."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 6 - Pagamento de aluguel",
+            "fileType": "docx",
+            "fileSize": "62 KB",
+            "url": "documentos/Declaração 6 - Pagamento de aluguel.docx",
+            "description": "Declaração de pagamento de aluguel ou moradia estudantil financiada."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 7 - Não obrigatoriedade IR",
+            "fileType": "docx",
+            "fileSize": "62 KB",
+            "url": "documentos/Declaração 7 - Não obrigatoriedade IR.docx",
+            "description": "Declaração de isenção e não obrigatoriedade de apresentação do Imposto de Renda."
+          },
+          {
+            "type": "download",
+            "title": "Declaração 8 - Renda terceiros",
+            "fileType": "docx",
+            "fileSize": "63 KB",
+            "url": "documentos/Declaração 8 - Renda terceiros .docx",
+            "description": "Modelo para comprovação de recebimento de pensão ou ajuda de terceiros."
+          },
+          {
+            "type": "download",
+            "title": "Termo de Desligamento Voluntário",
+            "fileType": "docx",
+            "fileSize": "51 KB",
+            "url": "documentos/TERMO DE DESLIGAMENTO VOLUNTÁRIO - AUXÍLIO ESTUDANTIL - UTFPR.docx",
+            "description": "Modelo oficial para solicitação de cancelamento voluntário do Auxílio Estudantil."
+          }
+        ]
+      },
+      {
+        "index": 28,
+        "title": "EDITAL OFICIAL",
+        "eyebrow": "DOCUMENTO BASE",
+        "subtitle": "Edital de Seleção e Manutenção",
+        "dark": false,
+        "elements": [
+          {
+            "type": "pdf-viewer",
+            "title": "Edital Oficial nº 01/2026 PROGRAD/ASSAE",
+            "url": "documentos/edital aux.pdf"
           }
         ]
       }
