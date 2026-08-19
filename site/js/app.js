@@ -792,11 +792,19 @@ document.addEventListener('DOMContentLoaded', () => {
       <span class="capa-eyebrow">${page.eyebrow}</span>
       <h1 class="capa-title">${page.title}</h1>
       
-      <div class="capa-credits-box" style="margin: 0 auto 28px auto; max-width: 800px; width: 100%; padding: 18px 22px; background-color: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: left; font-size: 0.95rem; line-height: 1.6; color: var(--text-main);">
-        <p style="font-weight: 700; font-size: 1.05rem; color: var(--primary); margin-bottom: 4px;">Projeto SOMA 2026</p>
-        <p style="margin-bottom: 6px;">Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão:</p>
-        <p style="font-weight: 600; margin-bottom: 6px;">• Andrey Luisi Dantas Matias<br>• Samuel Thiago Telles Rodrigues</p>
-        <p style="font-size: 0.9rem; color: var(--text-muted);"><strong>Orientação:</strong> Kleber Durati</p>
+      <div class="capa-credits-area" style="margin: 0 auto 36px auto; max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <span style="display: inline-flex; align-items: center; padding: 4px 16px; background-color: var(--bg-card-hover); border: 1px solid var(--border); color: var(--primary); font-size: 0.82rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; border-radius: 20px;">
+          Projeto SOMA 2026
+        </span>
+        <p style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.5; margin: 4px 0 0 0;">
+          Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão
+        </p>
+        <p style="font-size: 1.08rem; font-weight: 650; color: var(--text-main); line-height: 1.4; margin: 0;">
+          Andrey Luisi Dantas Matias &bull; Samuel Thiago Telles Rodrigues
+        </p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
+          <strong style="color: var(--text-main);">Orientação:</strong> Kleber Durat
+        </p>
       </div>
       
       <div class="capa-description-box">

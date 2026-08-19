@@ -26,7 +26,7 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "<b>Projeto SOMA 2026</b><br>Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão:<br>• Andrey Luisi Dantas Matias<br>• Samuel Thiago Telles Rodrigues<br><b>Orientação:</b> Kleber Durati"
+            "content": "<b>Projeto SOMA 2026</b><br>Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão:<br>• Andrey Luisi Dantas Matias<br>• Samuel Thiago Telles Rodrigues<br><b>Orientação:</b> Kleber Durat"
           },
           {
             "type": "highlight",
