@@ -497,39 +497,40 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
       </div>
 
-      <!-- Passo 2: Ingressante ou Veterano -->
-      <div class="wizard-step" id="step-vinculo" style="display: none; margin-top: 24px;">
+      <!-- Passo 2: Vínculo (Enrollment Type) -->
+      <div class="wizard-step hidden" id="step-vinculo" style="margin-top: 24px;">
         <p class="wizard-question">2. Qual o seu vínculo de matrícula com a UTFPR?</p>
         <div class="wizard-options">
           <button class="wizard-opt-btn" data-value="calouro">Estudante Calouro (Ingressante em 2026)</button>
           <button class="wizard-opt-btn" data-value="veterano">Estudante Veterano</button>
         </div>
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
-        
-        <!-- Sub-passo 2.1 para Veteranos: Reaproveitamento -->
-        <div class="wizard-substep" id="substep-reaproveitamento" style="display: none; margin-top: 16px; border-left: 2px dashed var(--border); padding-left: 16px;">
-          <p class="wizard-question" style="font-size: 0.9rem;">2.1. Você participou do Edital de Auxílio de 2025, obteve status DEFERIDO e sua situação familiar/renda continua 100% IDÊNTICA?</p>
-          <div class="wizard-options">
-            <button class="wizard-opt-btn btn-sm" data-value="sim">Sim (Elegível para Reaproveitamento)</button>
-            <button class="wizard-opt-btn btn-sm" data-value="nao">Não / Tive alterações na renda ou família</button>
-          </div>
-          <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
-        </div>
-
-        <!-- Sub-passo 2.2 para Veteranos: Desempenho -->
-        <div class="wizard-substep" id="substep-desempenho" style="display: none; margin-top: 16px; border-left: 2px dashed var(--border); padding-left: 16px;">
-          <p class="wizard-question" style="font-size: 0.9rem;">2.2. Teve reprovação ou cancelamento em mais de 33% das matérias no semestre anterior (2025/2)?</p>
-          <div class="wizard-options">
-            <button class="wizard-opt-btn btn-sm" data-value="sim">Sim, tive reprovações acima de 33%</button>
-            <button class="wizard-opt-btn btn-sm" data-value="nao">Não, reprovações menores ou iguais a 33%</button>
-          </div>
-          <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
-        </div>
       </div>
 
-      <!-- Passo 3: Independência Financeira -->
-      <div class="wizard-step" id="step-independencia" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">3. Você é financeiramente independente dos seus pais/núcleo familiar de origem?</p>
+      <!-- Passo 2.1: Reaproveitamento (Previous Edital Status) -->
+      <div class="wizard-step hidden" id="step-reaproveitamento" style="margin-top: 24px;">
+        <p class="wizard-question">2.1. Você participou do Edital de Auxílio de 2025, obteve status DEFERIDO e sua situação familiar/renda continua 100% IDÊNTICA?</p>
+        <div class="wizard-options">
+          <button class="wizard-opt-btn" data-value="sim">Sim (Elegível para Reaproveitamento)</button>
+          <button class="wizard-opt-btn" data-value="nao">Não / Tive alterações na renda ou família</button>
+        </div>
+        <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+      </div>
+
+      <!-- Passo 3: Desempenho Acadêmico (Academic Performance) -->
+      <div class="wizard-step hidden" id="step-desempenho" style="margin-top: 24px;">
+        <p class="wizard-question">3. O seu índice de reprovações ou cancelamentos de disciplinas ultrapassou 33% das disciplinas cursadas?</p>
+        <p class="wizard-note">Nota: O estudante não precisa calcular o índice de atenuação. Essa análise é realizada internamente pela UTFPR.</p>
+        <div class="wizard-options">
+          <button class="wizard-opt-btn" data-value="sim">Sim, ultrapassou 33%</button>
+          <button class="wizard-opt-btn" data-value="nao">Não, estou dentro do limite</button>
+        </div>
+        <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+      </div>
+
+      <!-- Passo 4: Independência Financeira -->
+      <div class="wizard-step hidden" id="step-independencia" style="margin-top: 24px;">
+        <p class="wizard-question">4. Você é financeiramente independente dos seus pais/núcleo familiar de origem?</p>
         <div class="wizard-options">
           <button class="wizard-opt-btn" data-value="sim">Sim, sou independente e me sustento por conta própria</button>
           <button class="wizard-opt-btn" data-value="nao">Não, dependo deles ou resido junto</button>
@@ -537,9 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
       </div>
 
-      <!-- Passo 4: Moradia -->
-      <div class="wizard-step" id="step-moradia" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">4. Qual é a sua situação de moradia na cidade onde estuda?</p>
+      <!-- Passo 5: Moradia -->
+      <div class="wizard-step hidden" id="step-moradia" style="margin-top: 24px;">
+        <p class="wizard-question">5. Qual é a sua situação de moradia na cidade onde estuda?</p>
         <div class="wizard-options-vertical">
           <button class="wizard-opt-btn text-left" data-value="familia_propria">Moro com meus pais/grupo familiar de origem em imóvel próprio/quitado</button>
           <button class="wizard-opt-btn text-left" data-value="familia_alugada">Moro com meus pais/grupo familiar de origem em imóvel alugado ou financiado</button>
@@ -555,9 +556,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
       </div>
 
-      <!-- Passo 5: Fontes de Renda -->
-      <div class="wizard-step" id="step-fontes-renda" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">5. Quais são as fontes de renda existentes no seu grupo familiar? (Selecione todas que se aplicam)</p>
+      <!-- Passo 6: Fontes de Renda -->
+      <div class="wizard-step hidden" id="step-fontes-renda" style="margin-top: 24px;">
+        <p class="wizard-question">6. Quais são as fontes de renda existentes no seu grupo familiar? (Selecione todas que se aplicam)</p>
         <div class="wizard-options-vertical checkbox-group" style="gap: 10px;">
           <label class="wizard-checkbox-label">
             <input type="checkbox" name="fonte-renda" value="clt">
@@ -608,14 +609,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>Recebe benefício de programa social (ex: Bolsa Família, Benefício Estadual)</span>
           </label>
         </div>
-        <button id="wizard-btn-renda-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Avançar</button>
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+        <button id="wizard-btn-renda-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Avançar</button>
       </div>
 
-      <!-- Passo 6: Renda Per Capita -->
-      <div class="wizard-step" id="step-renda" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">6. Simulador de Renda Familiar Per Capita</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Informe a quantidade total de pessoas do seu grupo familiar (incluindo você) e o somatório das rendas brutas mensais.</p>
+      <!-- Passo 7: Renda Per Capita -->
+      <div class="wizard-step hidden" id="step-renda" style="margin-top: 24px;">
+        <p class="wizard-question">7. Simulador de Renda Familiar Per Capita</p>
+        <p class="wizard-note">Informe a quantidade total de pessoas do seu grupo familiar (incluindo você) e o somatório das rendas brutas mensais.</p>
         <div class="wizard-calc-grid">
           <div class="wizard-input-group">
             <label for="wizard-membros" style="font-size: 0.85rem; font-weight: 600;">Membros da família:</label>
@@ -626,13 +627,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="number" id="wizard-renda-bruta" class="wizard-input" value="0" min="0" step="100">
           </div>
         </div>
-        <button id="wizard-btn-calcular" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Calcular Renda Per Capita</button>
         <div class="wizard-feedback" style="display: none; margin-top: 16px;"></div>
+        <button id="wizard-btn-calcular" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Calcular Renda Per Capita</button>
       </div>
 
-      <!-- Passo 7: Imposto de Renda -->
-      <div class="wizard-step" id="step-irpf" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">7. Qual a situação do Imposto de Renda (IRPF) dos membros maiores de 18 anos?</p>
+      <!-- Passo 8: Imposto de Renda -->
+      <div class="wizard-step hidden" id="step-irpf" style="margin-top: 24px;">
+        <p class="wizard-question">8. Qual a situação do Imposto de Renda (IRPF) dos membros maiores de 18 anos?</p>
         <div class="wizard-options-vertical">
           <button class="wizard-opt-btn text-left" data-value="todos_declararam">Todos os membros maiores de 18 anos declararam IRPF</button>
           <button class="wizard-opt-btn text-left" data-value="isentos_mir">Existem membros isentos e todos conseguem emitir o comprovante pelo Portal MIR (gov.br Prata/Ouro)</button>
@@ -641,9 +642,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
       </div>
 
-      <!-- Passo 8: Situações Especiais -->
-      <div class="wizard-step" id="step-especiais" style="display: none; margin-top: 24px;">
-        <p class="wizard-question">8. Algum membro do seu grupo familiar se enquadra em alguma dessas situações adicionais? (Selecione se aplicável)</p>
+      <!-- Passo 9: Situações Especiais -->
+      <div class="wizard-step hidden" id="step-especiais" style="margin-top: 24px;">
+        <p class="wizard-question">9. Algum membro do seu grupo familiar se enquadra em alguma dessas situações adicionais? (Selecione se aplicável)</p>
         <div class="wizard-options-vertical checkbox-group" style="gap: 10px;">
           <label class="wizard-checkbox-label">
             <input type="checkbox" name="situacao-especial" value="separacao_verbal">
@@ -666,12 +667,52 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>Outras situações atípicas (ex: abandono, perda de moradia, justificação excepcional)</span>
           </label>
         </div>
-        <button id="wizard-btn-especiais-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Gerar Roteiro Personalizado</button>
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+        <button id="wizard-btn-especiais-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;">Avançar</button>
       </div>
 
-      <!-- Passo 9: Resultado / Checklist Personalizado -->
-      <div class="wizard-step" id="step-resultado" style="display: none; margin-top: 24px;">
+      <!-- Passo 10: Confirmação de Pré-requisitos Obrigatórios (NEW) -->
+      <div class="wizard-step hidden" id="step-prerequisitos" style="margin-top: 24px;">
+        <p class="wizard-question">10. Confirmação de Pré-requisitos Obrigatórios</p>
+        <p class="wizard-note">Por favor, declare ciência e confirme os pré-requisitos fundamentais para a sua inscrição:</p>
+        <div class="wizard-options-vertical checkbox-group" style="gap: 10px;">
+          <label class="wizard-checkbox-label">
+            <input type="checkbox" id="prereq-dados">
+            <span>Confirmo que meus dados (renda, endereço, composição familiar, estágio/bolsa) estão 100% atualizados no Portal do Aluno.</span>
+          </label>
+          <label class="wizard-checkbox-label">
+            <input type="checkbox" id="prereq-conta">
+            <span>Declaro que possuo conta bancária ativa estritamente em MEU NOME (não é permitido conta de terceiros).</span>
+          </label>
+          <label class="wizard-checkbox-label">
+            <input type="checkbox" id="prereq-email">
+            <span>Estou ciente de que devo verificar regularmente meu e-mail institucional e a caixa de SPAM para comunicações oficiais.</span>
+          </label>
+        </div>
+        <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+        <button id="wizard-btn-prereq-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;" disabled>Avançar</button>
+      </div>
+
+      <!-- Passo 11: Termos de Uso Consciente & RU Rules (NEW) -->
+      <div class="wizard-step hidden" id="step-termos" style="margin-top: 24px;">
+        <p class="wizard-question">11. Termos de Uso Consciente e Regras do Restaurante Universitário (RU)</p>
+        <p class="wizard-note">Declare sua ciência quanto ao uso dos auxílios financeiros e do benefício do RU:</p>
+        <div class="wizard-options-vertical checkbox-group" style="gap: 10px;">
+          <label class="wizard-checkbox-label">
+            <input type="checkbox" id="termo-uso">
+            <span>Compreendo que os auxílios (R$ 350 Básico/Infância, R$ 450 Moradia) devem ser priorizados para alimentação, moradia, transporte, internet ou materiais acadêmicos.</span>
+          </label>
+          <label class="wizard-checkbox-label">
+            <input type="checkbox" id="termo-ru">
+            <span>Estou ciente de que o acesso ao Restaurante Universitário (RU) é um benefício ESTRITAMENTE PESSOAL, intransferível e válido apenas para almoço e jantar.</span>
+          </label>
+        </div>
+        <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
+        <button id="wizard-btn-termos-next" class="wizard-btn-calc" style="margin-top: 16px; width: 100%;" disabled>Gerar Roteiro Personalizado</button>
+      </div>
+
+      <!-- Passo 12: Resultado / Checklist Personalizado -->
+      <div class="wizard-step hidden" id="step-resultado" style="margin-top: 24px;">
         <div class="wizard-result-box">
           <h3 style="color: var(--text-title); margin-bottom: 12px; font-weight: 700; border-bottom: 2px solid var(--primary); padding-bottom: 8px;">Caminho de Inscrição Recomendado</h3>
           <div id="wizard-result-eligibility" style="margin-bottom: 16px;"></div>
@@ -680,6 +721,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Gerado via JS -->
           </ul>
           
+          <div style="margin-top: 24px; padding: 14px; background-color: var(--bg-card-hover); border-radius: var(--radius-md); border: 1px solid var(--border); font-size: 0.88rem; line-height: 1.5; color: var(--text-main); font-weight: 500;">
+            <p>💡 <strong>Apoio ao Estudante:</strong> Dificuldades ao longo do semestre? Não espere a situação piorar! O NUAPE oferece apoio pedagógico, social e psicológico. Procure ajuda no seu campus.</p>
+          </div>
+
           <div style="margin-top: 24px; display: flex; justify-content: center;">
             <button id="wizard-btn-reiniciar" class="wizard-btn-reiniciar">Reiniciar Simulação</button>
           </div>
@@ -689,6 +734,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     container.appendChild(wizardCard);
     
+    const SALARIO_MINIMO = 1518; // Mínimo 2026
+
     let wizardState = {
       edital: null,
       vinculo: null,
@@ -705,6 +752,22 @@ document.addEventListener('DOMContentLoaded', () => {
       situacoesEspeciais: []
     };
 
+    const stepOrder = [
+      'step-edital',
+      'step-vinculo',
+      'step-reaproveitamento',
+      'step-desempenho',
+      'step-independencia',
+      'step-moradia',
+      'step-fontes-renda',
+      'step-renda',
+      'step-irpf',
+      'step-especiais',
+      'step-prerequisitos',
+      'step-termos',
+      'step-resultado'
+    ];
+
     function showFeedback(stepEl, type, html) {
       const feedbackEl = stepEl.querySelector('.wizard-feedback');
       feedbackEl.style.display = 'block';
@@ -714,13 +777,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function revealStep(id) {
       const stepEl = wizardCard.querySelector(`#${id}`);
-      if (stepEl.style.display === 'none') {
-        stepEl.style.display = 'block';
-        stepEl.classList.add('fade-in');
+      if (stepEl) {
+        stepEl.classList.remove('hidden');
+        stepEl.classList.add('active');
         
         setTimeout(() => {
           stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
+      }
+    }
+
+    function hideDownstream(currentStepId) {
+      const idx = stepOrder.indexOf(currentStepId);
+      if (idx === -1) return;
+      
+      for (let i = idx + 1; i < stepOrder.length; i++) {
+        const stepEl = wizardCard.querySelector(`#${stepOrder[i]}`);
+        if (stepEl) {
+          stepEl.classList.add('hidden');
+          stepEl.classList.remove('active');
+          
+          // Limpa seleções dentro do passo ocultado
+          stepEl.querySelectorAll('.wizard-opt-btn').forEach(btn => btn.classList.remove('selected'));
+          const feedback = stepEl.querySelector('.wizard-feedback');
+          if (feedback) {
+            feedback.style.display = 'none';
+            feedback.innerHTML = '';
+          }
+          // Reseta checkboxes
+          stepEl.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+          });
+          // Re-desabilita botões se aplicável
+          const nextBtn = stepEl.querySelector('.wizard-btn-calc');
+          if (nextBtn && (stepOrder[i] === 'step-prerequisitos' || stepOrder[i] === 'step-termos')) {
+            nextBtn.disabled = true;
+          }
+          // Oculta botões de navegação dinâmica criados no DOM
+          if (stepOrder[i] === 'step-independencia') {
+            const indBtn = stepEl.querySelector('#btn-independencia-next');
+            if (indBtn) indBtn.style.display = 'none';
+          }
+          if (stepOrder[i] === 'step-moradia') {
+            const morBtn = stepEl.querySelector('#btn-moradia-next');
+            if (morBtn) morBtn.style.display = 'none';
+          }
+          if (stepOrder[i] === 'step-renda') {
+            const rendaBtn = stepEl.querySelector('#btn-renda-next-step');
+            if (rendaBtn) rendaBtn.style.display = 'none';
+          }
+          if (stepOrder[i] === 'step-irpf') {
+            const irpfBtn = stepEl.querySelector('#btn-irpf-next-step');
+            if (irpfBtn) irpfBtn.style.display = 'none';
+          }
+
+        }
       }
     }
 
@@ -734,6 +845,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.edital = val;
+        
+        hideDownstream('step-edital');
         
         if (val === 'nao') {
           showFeedback(stepEdital, 'warning', `
@@ -753,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Passo 2: Vínculo
     const stepVinculo = wizardCard.querySelector('#step-vinculo');
-    const btnsVinculo = stepVinculo.querySelectorAll('.wizard-opt-btn:not(.btn-sm)');
+    const btnsVinculo = stepVinculo.querySelectorAll('.wizard-opt-btn');
     btnsVinculo.forEach(btn => {
       btn.addEventListener('click', () => {
         btnsVinculo.forEach(b => b.classList.remove('selected'));
@@ -762,19 +875,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const val = btn.getAttribute('data-value');
         wizardState.vinculo = val;
         
-        const substepReaproveitamento = stepVinculo.querySelector('#substep-reaproveitamento');
-        const substepDesempenho = stepVinculo.querySelector('#substep-desempenho');
-        const feedbackVinculo = stepVinculo.querySelector('.wizard-feedback');
+        hideDownstream('step-vinculo');
         
-        if (val === 'veterano') {
-          feedbackVinculo.style.display = 'none';
-          substepReaproveitamento.style.display = 'block';
-          substepDesempenho.style.display = 'none';
-          wizardState.reaproveitamento = null;
-          wizardState.desempenhoOk = null;
-        } else {
-          substepReaproveitamento.style.display = 'none';
-          substepDesempenho.style.display = 'none';
+        if (val === 'calouro') {
           wizardState.reaproveitamento = 'nao';
           wizardState.desempenhoOk = true;
           showFeedback(stepVinculo, 'success', `
@@ -782,13 +885,19 @@ document.addEventListener('DOMContentLoaded', () => {
             Estudantes calouros são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
           `);
           revealStep('step-independencia');
+        } else {
+          showFeedback(stepVinculo, 'success', `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Estudante veterano. Prossiga para verificar a opção de reaproveitamento.
+          `);
+          revealStep('step-reaproveitamento');
         }
       });
     });
 
-    // Substep 2.1 para Veteranos: Reaproveitamento
-    const substepReaproveitamento = stepVinculo.querySelector('#substep-reaproveitamento');
-    const btnsReaproveitamento = substepReaproveitamento.querySelectorAll('.wizard-opt-btn');
+    // Passo 2.1: Reaproveitamento
+    const stepReaproveitamento = wizardCard.querySelector('#step-reaproveitamento');
+    const btnsReaproveitamento = stepReaproveitamento.querySelectorAll('.wizard-opt-btn');
     btnsReaproveitamento.forEach(btn => {
       btn.addEventListener('click', () => {
         btnsReaproveitamento.forEach(b => b.classList.remove('selected'));
@@ -797,43 +906,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const val = btn.getAttribute('data-value');
         wizardState.reaproveitamento = val;
         
-        const substepDesempenho = stepVinculo.querySelector('#substep-desempenho');
+        hideDownstream('step-reaproveitamento');
         
         if (val === 'sim') {
-          showFeedback(substepReaproveitamento, 'success', `
+          showFeedback(stepReaproveitamento, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <strong>Elegível para Reaproveitamento de Documentos (Item 5.1):</strong> Ótimo! Como veterano com situação idêntica à de 2025, seu processo de envio de documentos é simplificado. Clique no botão abaixo para ver seu roteiro direto.
-            <button id="wizard-btn-skip-to-reaproveitamento" class="wizard-btn-calc" style="margin-top: 12px; width: 100%; display: block; cursor: pointer;">Gerar Roteiro de Reaproveitamento</button>
+            <strong>Elegível para Reaproveitamento de Documentos (Item 5.1):</strong> Ótimo! Como veterano com situação idêntica à de 2025, seu processo de envio de documentos é simplificado. Prossiga para avaliar o desempenho acadêmico.
           `);
-          
-          substepDesempenho.style.display = 'none';
-          
-          // Ação para pular direto para o resultado
-          setTimeout(() => {
-            const btnSkip = substepReaproveitamento.querySelector('#wizard-btn-skip-to-reaproveitamento');
-            if (btnSkip) {
-              btnSkip.addEventListener('click', () => {
-                wizardState.desempenhoOk = true;
-                wizardState.rendaElegivel = true;
-                generateResults();
-                revealStep('step-resultado');
-              });
-            }
-          }, 50);
         } else {
-          showFeedback(substepReaproveitamento, 'warning', `
+          showFeedback(stepReaproveitamento, 'warning', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             Entendido. Como houve alteração ou não participou do último edital, você fará uma inscrição completa. Prossiga para avaliar o desempenho acadêmico.
           `);
-          substepDesempenho.style.display = 'block';
-          wizardState.desempenhoOk = null;
         }
+        
+        revealStep('step-desempenho');
       });
     });
 
-    // Substep 2.2 para Veteranos: Desempenho
-    const substepDesempenho = stepVinculo.querySelector('#substep-desempenho');
-    const btnsDesempenho = substepDesempenho.querySelectorAll('.wizard-opt-btn');
+    // Passo 3: Desempenho
+    const stepDesempenho = wizardCard.querySelector('#step-desempenho');
+    const btnsDesempenho = stepDesempenho.querySelectorAll('.wizard-opt-btn');
+    
     btnsDesempenho.forEach(btn => {
       btn.addEventListener('click', () => {
         btnsDesempenho.forEach(b => b.classList.remove('selected'));
@@ -841,24 +935,35 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         
+        hideDownstream('step-desempenho');
+        
         if (val === 'sim') {
           wizardState.desempenhoOk = false;
-          showFeedback(substepDesempenho, 'danger', `
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <strong>Alerta crítico (Item 5.4):</strong> Veteranos com mais de 33% de reprovações ou cancelamentos em 2025/2 terão o pedido indeferido de início. Será obrigatório anexar uma justificativa oficial/recurso pedagógico nos dias 09 e 10 de março de 2026.
+          showFeedback(stepDesempenho, 'danger', `
+            <div class="wizard-alert">
+              <strong>Atenção:</strong> Você precisará abrir um <strong>PROCESSO DE RECURSO</strong>.
+              Prepare a seguinte documentação justificativa: Relatórios de monitoria ou P.Aluno; Laudos, declarações e certificados; Comprovação documental para justificar faltas.
+            </div>
           `);
         } else {
           wizardState.desempenhoOk = true;
-          showFeedback(substepDesempenho, 'success', `
+          showFeedback(stepDesempenho, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Desempenho acadêmico qualificado (reprovações menores ou iguais a 33%).
           `);
         }
-        revealStep('step-independencia');
+        
+        setTimeout(() => {
+          if (wizardState.reaproveitamento === 'sim') {
+            revealStep('step-prerequisitos');
+          } else {
+            revealStep('step-independencia');
+          }
+        }, 800);
       });
     });
 
-    // Passo 3: Independência Financeira
+    // Passo 4: Independência Financeira
     const stepIndependencia = wizardCard.querySelector('#step-independencia');
     const btnsIndependencia = stepIndependencia.querySelectorAll('.wizard-opt-btn');
     btnsIndependencia.forEach(btn => {
@@ -869,23 +974,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const val = btn.getAttribute('data-value');
         wizardState.independencia = val;
         
+        hideDownstream('step-independencia');
+        
         if (val === 'sim') {
           showFeedback(stepIndependencia, 'warning', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             <strong>Atenção:</strong> Declarar independência financeira exige comprovação de residência e renda próprias que cubram sua subsistência, separada dos pais. Você precisará preencher a <strong>Declaração 4 (Independência Financeira)</strong> assinada pelos seus pais confirmando que não te dão apoio financeiro, e indicar duas referências de testemunhas.
           `);
+          
+          let nextBtn = stepIndependencia.querySelector('#btn-independencia-next');
+          if (!nextBtn) {
+            nextBtn = document.createElement('button');
+            nextBtn.id = 'btn-independencia-next';
+            nextBtn.className = 'wizard-btn-calc';
+            nextBtn.style.marginTop = '12px';
+            nextBtn.style.width = '100%';
+            nextBtn.innerText = 'Avançar';
+            stepIndependencia.appendChild(nextBtn);
+            nextBtn.addEventListener('click', () => {
+              revealStep('step-moradia');
+            });
+          } else {
+            nextBtn.style.display = 'block';
+          }
         } else {
           showFeedback(stepIndependencia, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Entendido. Sua análise socioeconômica considerará o grupo familiar de origem.
           `);
+          
+          const nextBtn = stepIndependencia.querySelector('#btn-independencia-next');
+          if (nextBtn) nextBtn.style.display = 'none';
+          
+          revealStep('step-moradia');
         }
-        
-        revealStep('step-moradia');
       });
     });
 
-    // Passo 4: Moradia
+    // Passo 5: Moradia
     const stepMoradia = wizardCard.querySelector('#step-moradia');
     const btnsMoradia = stepMoradia.querySelectorAll('.wizard-opt-btn');
     btnsMoradia.forEach(btn => {
@@ -895,6 +1021,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.moradia = val;
+        
+        hideDownstream('step-moradia');
         
         if (val.includes('aluguel') || val.includes('pensionato') || val.includes('compartilhada') || val.includes('casado_aluguel')) {
           showFeedback(stepMoradia, 'success', `
@@ -912,11 +1040,26 @@ document.addEventListener('DOMContentLoaded', () => {
             Residindo com a família. A análise considerará as condições de habitação e despesas do domicílio de origem.
           `);
         }
-        revealStep('step-fontes-renda');
+        
+        let nextBtn = stepMoradia.querySelector('#btn-moradia-next');
+        if (!nextBtn) {
+          nextBtn = document.createElement('button');
+          nextBtn.id = 'btn-moradia-next';
+          nextBtn.className = 'wizard-btn-calc';
+          nextBtn.style.marginTop = '12px';
+          nextBtn.style.width = '100%';
+          nextBtn.innerText = 'Avançar';
+          stepMoradia.appendChild(nextBtn);
+          nextBtn.addEventListener('click', () => {
+            revealStep('step-fontes-renda');
+          });
+        } else {
+          nextBtn.style.display = 'block';
+        }
       });
     });
 
-    // Passo 5: Fontes de Renda
+    // Passo 6: Fontes de Renda
     const stepFontesRenda = wizardCard.querySelector('#step-fontes-renda');
     const btnRendaNext = stepFontesRenda.querySelector('#wizard-btn-renda-next');
     btnRendaNext.addEventListener('click', () => {
@@ -936,6 +1079,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
+      hideDownstream('step-fontes-renda');
+      
       showFeedback(stepFontesRenda, 'success', `
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
         Fontes de renda mapeadas. Prossiga para a simulação de valores per capita.
@@ -944,7 +1089,7 @@ document.addEventListener('DOMContentLoaded', () => {
       revealStep('step-renda');
     });
 
-    // Passo 6: Renda Per Capita
+    // Passo 7: Renda Per Capita
     const stepRenda = wizardCard.querySelector('#step-renda');
     const inputMembros = stepRenda.querySelector('#wizard-membros');
     const inputRenda = stepRenda.querySelector('#wizard-renda-bruta');
@@ -960,8 +1105,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const perCapita = renda / membros;
       wizardState.perCapita = perCapita;
       
-      const SALARIO_MINIMO = 1518; // Mínimo 2026
-      const LIMITE_RENDA = 1.5 * SALARIO_MINIMO;
+      const LIMITE_RENDA = 1 * SALARIO_MINIMO;
+      
+      hideDownstream('step-renda');
       
       let html = '';
       if (perCapita <= LIMITE_RENDA) {
@@ -969,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         html = `
           <div class="feedback-inner-success" style="padding: 4px 0;">
             <strong>Cálculo Concluído:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong> (equivalente a ${(perCapita / SALARIO_MINIMO).toFixed(2)} salários mínimos por pessoa).
-            <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${LIMITE_RENDA.toFixed(2)} per capita, correspondente a 1.5 salários mínimos - Item 3.2).</p>
+            <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salários mínimos - Item 3.2).</p>
           </div>
         `;
         showFeedback(stepRenda, 'success', html);
@@ -978,16 +1124,30 @@ document.addEventListener('DOMContentLoaded', () => {
         html = `
           <div class="feedback-inner-danger" style="padding: 4px 0;">
             <strong>Alerta de Limite Excedido:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong>.
-            <p style="margin-top: 6px;">Sua renda per capita estimada excede o teto de R$ ${LIMITE_RENDA.toFixed(2)} previsto no edital (Item 3.2). Inscrições acima da renda regulamentar estão sujeitas a indeferimento pela equipe de análise.</p>
+            <p style="margin-top: 6px;">Sua renda per capita estimada excede o teto de R$ ${SALARIO_MINIMO.toFixed(2)} previsto no edital (Item 3.2). Inscrições acima da renda regulamentar estão sujeitas a indeferimento pela equipe de análise.</p>
           </div>
         `;
         showFeedback(stepRenda, 'danger', html);
       }
       
-      revealStep('step-irpf');
+      let nextBtn = stepRenda.querySelector('#btn-renda-next-step');
+      if (!nextBtn) {
+        nextBtn = document.createElement('button');
+        nextBtn.id = 'btn-renda-next-step';
+        nextBtn.className = 'wizard-btn-calc';
+        nextBtn.style.marginTop = '12px';
+        nextBtn.style.width = '100%';
+        nextBtn.innerText = 'Avançar';
+        stepRenda.appendChild(nextBtn);
+        nextBtn.addEventListener('click', () => {
+          revealStep('step-irpf');
+        });
+      } else {
+        nextBtn.style.display = 'block';
+      }
     });
 
-    // Passo 7: Imposto de Renda
+    // Passo 8: Imposto de Renda
     const stepIrpf = wizardCard.querySelector('#step-irpf');
     const btnsIrpf = stepIrpf.querySelectorAll('.wizard-opt-btn');
     btnsIrpf.forEach(btn => {
@@ -997,6 +1157,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.irpf = val;
+        
+        hideDownstream('step-irpf');
         
         if (val === 'isentos_sem_mir') {
           showFeedback(stepIrpf, 'warning', `
@@ -1015,11 +1177,25 @@ document.addEventListener('DOMContentLoaded', () => {
           `);
         }
         
-        revealStep('step-especiais');
+        let nextBtn = stepIrpf.querySelector('#btn-irpf-next-step');
+        if (!nextBtn) {
+          nextBtn = document.createElement('button');
+          nextBtn.id = 'btn-irpf-next-step';
+          nextBtn.className = 'wizard-btn-calc';
+          nextBtn.style.marginTop = '12px';
+          nextBtn.style.width = '100%';
+          nextBtn.innerText = 'Avançar';
+          stepIrpf.appendChild(nextBtn);
+          nextBtn.addEventListener('click', () => {
+            revealStep('step-especiais');
+          });
+        } else {
+          nextBtn.style.display = 'block';
+        }
       });
     });
 
-    // Passo 8: Situações Especiais
+    // Passo 9: Situações Especiais
     const stepEspeciais = wizardCard.querySelector('#step-especiais');
     const btnEspeciaisNext = stepEspeciais.querySelector('#wizard-btn-especiais-next');
     btnEspeciaisNext.addEventListener('click', () => {
@@ -1031,13 +1207,64 @@ document.addEventListener('DOMContentLoaded', () => {
       
       wizardState.situacoesEspeciais = selectedEspeciais;
       
+      hideDownstream('step-especiais');
+      
       showFeedback(stepEspeciais, 'success', `
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        Simulação e mapeamento finalizados! Confira seu roteiro completo de documentos e declarações abaixo.
+        Mapeamento de situações especiais finalizado. Prossiga para as declarações finais de ciência.
       `);
       
-      generateResults();
-      revealStep('step-resultado');
+      revealStep('step-prerequisitos');
+    });
+
+    // Passo 10: Prerequisites Check (NEW)
+    const stepPrereq = wizardCard.querySelector('#step-prerequisitos');
+    const btnPrereqNext = stepPrereq.querySelector('#wizard-btn-prereq-next');
+    const prereqCbs = [
+      stepPrereq.querySelector('#prereq-dados'),
+      stepPrereq.querySelector('#prereq-conta'),
+      stepPrereq.querySelector('#prereq-email')
+    ];
+    function checkPrereq() {
+      const allChecked = prereqCbs.every(cb => cb.checked);
+      btnPrereqNext.disabled = !allChecked;
+    }
+    prereqCbs.forEach(cb => cb.addEventListener('change', checkPrereq));
+
+    btnPrereqNext.addEventListener('click', () => {
+      hideDownstream('step-prerequisitos');
+      showFeedback(stepPrereq, 'success', `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Pré-requisitos confirmados. Prossiga para a declaração de termos de uso do benefício.
+      `);
+      
+      revealStep('step-termos');
+    });
+
+    // Passo 11: Terms of Use & RU Rules (NEW)
+    const stepTermos = wizardCard.querySelector('#step-termos');
+    const btnTermosNext = stepTermos.querySelector('#wizard-btn-termos-next');
+    const termosCbs = [
+      stepTermos.querySelector('#termo-uso'),
+      stepTermos.querySelector('#termo-ru')
+    ];
+    function checkTermos() {
+      const allChecked = termosCbs.every(cb => cb.checked);
+      btnTermosNext.disabled = !allChecked;
+    }
+    termosCbs.forEach(cb => cb.addEventListener('change', checkTermos));
+
+    btnTermosNext.addEventListener('click', () => {
+      hideDownstream('step-termos');
+      showFeedback(stepTermos, 'success', `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Termos declarados e aceitos! Gerando o seu roteiro de documentos personalizado...
+      `);
+      
+      setTimeout(() => {
+        generateResults();
+        revealStep('step-resultado');
+      }, 1000);
     });
 
     function generateResults() {
@@ -1069,12 +1296,12 @@ document.addEventListener('DOMContentLoaded', () => {
           statusHtml = `
             <div class="status-badge danger-badge">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              Risco Alto de Indeferimento
+              Restrições Encontradas (Alerta de Indeferimento)
             </div>
             <p style="margin-top: 8px; font-size: 0.9rem; font-weight: 550; color: var(--text-main);">Sua simulação aponta restrições importantes que descumprem itens obrigatórios do edital:</p>
             <ul style="margin-left: 18px; margin-top: 4px; font-size: 0.85rem; line-height: 1.4; color: var(--danger);">
-              ${wizardState.desempenhoOk === false ? '<li style="font-weight: 600;">Desempenho acadêmico inferior ao exigido no semestre anterior (reprovações > 33% em 2025/2). Será obrigatório apresentar Recurso Pedagógico oficial nos dias 09 e 10/03/2026.</li>' : ''}
-              ${wizardState.rendaElegivel === false ? `<li style="font-weight: 600;">Renda familiar per capita de R$ ${wizardState.perCapita.toFixed(2)} excede o limite regulamentar de R$ 2.277,00 (1.5 salários mínimos - Item 3.2).</li>` : ''}
+              ${wizardState.desempenhoOk === false ? '<li style="font-weight: 600;">Desempenho acadêmico inferior ao exigido no semestre anterior (reprovações > 33% em 2025/2). Será obrigatório abrir Processo de Recurso.</li>' : ''}
+              ${wizardState.rendaElegivel === false ? `<li style="font-weight: 600;">Renda familiar per capita de R$ ${wizardState.perCapita.toFixed(2)} excede o limite regulamentar de R$ ${SALARIO_MINIMO.toFixed(2)} (1 salário mínimo - Item 3.2).</li>` : ''}
             </ul>
           `;
         }
@@ -1144,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (wizardState.moradia === 'estudante_alojamento') {
           docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> e informe no texto a residência gratuita em alojamento estudantil oferecido pela UTFPR.');
         } else if (wizardState.moradia === 'estudante_casado_aluguel') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Resido com cônjuge/filhos e pago R$ ...). Informe nome e CPF dos familiares.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Resido com cônjuge/filhos e pago R$ ...). Informou nome e CPF dos familiares.');
           docsList.push('<b>Contrato de Locação e Recibos:</b> Contrato de aluguel e recibo recente em nome do estudante ou cônjuge.');
         } else if (wizardState.moradia === 'estudante_casado_proprio') {
           docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 6</b> (Resido com cônjuge/filhos e não pago aluguel).');
@@ -1225,10 +1452,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wizardState.situacoesEspeciais.includes('outros_casos')) {
           docsList.push('<b>Declaração V - Diversas Situações (<a href="#page-27">Baixar Modelo 5</a>):</b> Preenchida por você ou membro familiar justificando a realidade excepcional não prevista (ex: abandono, perda de contato, etc.). Deve conter duas referências.');
         }
-        
-        if (wizardState.desempenhoOk === false) {
-          docsList.push('<span style="color: var(--danger); font-weight: 600;">Formulário de Recurso Pedagógico:</span> Relatório/recurso pedagógico circunstanciado justificando o motivo do baixo desempenho e reprovações superiores a 33% em 2025/2, a ser preenchido e anexado na plataforma de inscrição nos dias de interposição do cronograma.');
-        }
+      }
+      
+      // Se tiver reprovações > 33%, adiciona obrigatoriamente a comprovação de recurso para calouros/veteranos
+      if (wizardState.desempenhoOk === false) {
+        docsList.push('<span style="color: var(--danger); font-weight: 600;">Formulário e Justificativas de Recurso:</span> Como seu índice de reprovações/cancelamentos superou 33%, você deve abrir um processo de recurso juntando comprovantes de monitoria, laudos, declarações e justificação formal de faltas.');
       }
       
       // Renderiza na lista
@@ -1242,50 +1470,66 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDocs.appendChild(li);
       });
   
-       const btnReiniciar = wizardCard.querySelector('#wizard-btn-reiniciar');
-       btnReiniciar.addEventListener('click', () => {
-         wizardState = {
-           edital: null,
-           vinculo: null,
-           reaproveitamento: null,
-           desempenhoOk: null,
-           independencia: null,
-           moradia: null,
-           fontesRenda: [],
-           membros: 1,
-           renda: 0,
-           perCapita: 0,
-           rendaElegivel: null,
-           irpf: null,
-           situacoesEspeciais: []
-         };
-         
-         wizardCard.querySelectorAll('.wizard-opt-btn').forEach(btn => btn.classList.remove('selected'));
-         wizardCard.querySelectorAll('.wizard-feedback').forEach(fb => {
-           fb.style.display = 'none';
-           fb.innerHTML = '';
-         });
-         
-         wizardCard.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-         
-         inputMembros.value = 1;
-         inputRenda.value = 0;
-         
-         wizardCard.querySelector('#substep-reaproveitamento').style.display = 'none';
-         wizardCard.querySelector('#substep-desempenho').style.display = 'none';
-         wizardCard.querySelector('#step-vinculo').style.display = 'none';
-         wizardCard.querySelector('#step-independencia').style.display = 'none';
-         wizardCard.querySelector('#step-moradia').style.display = 'none';
-         wizardCard.querySelector('#step-fontes-renda').style.display = 'none';
-         wizardCard.querySelector('#step-renda').style.display = 'none';
-         wizardCard.querySelector('#step-irpf').style.display = 'none';
-         wizardCard.querySelector('#step-especiais').style.display = 'none';
-         wizardCard.querySelector('#step-resultado').style.display = 'none';
-         
-         wizardCard.querySelector('#step-edital').scrollIntoView({ behavior: 'smooth' });
-       });
+      const btnReiniciar = wizardCard.querySelector('#wizard-btn-reiniciar');
+      btnReiniciar.addEventListener('click', () => {
+        wizardState = {
+          edital: null,
+          vinculo: null,
+          reaproveitamento: null,
+          desempenhoOk: null,
+          independencia: null,
+          moradia: null,
+          fontesRenda: [],
+          membros: 1,
+          renda: 0,
+          perCapita: 0,
+          rendaElegivel: null,
+          irpf: null,
+          situacoesEspeciais: []
+        };
+        
+        wizardCard.querySelectorAll('.wizard-opt-btn').forEach(btn => btn.classList.remove('selected'));
+        wizardCard.querySelectorAll('.wizard-feedback').forEach(fb => {
+          fb.style.display = 'none';
+          fb.innerHTML = '';
+        });
+        
+        wizardCard.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.checked = false;
+          cb.dispatchEvent(new Event('change'));
+        });
+        
+        inputMembros.value = 1;
+        inputRenda.value = 0;
+        
+        // Oculta todos os passos exceto o primeiro
+        wizardCard.querySelectorAll('.wizard-step').forEach(stepEl => {
+          if (stepEl.id === 'step-edital') {
+            stepEl.classList.remove('hidden');
+            stepEl.classList.add('active');
+          } else {
+            stepEl.classList.add('hidden');
+            stepEl.classList.remove('active');
+          }
+        });
+        
+        // Oculta botões dinâmicos criados no DOM
+        const dynamicIndNav = stepIndependencia.querySelector('#btn-independencia-next');
+        if (dynamicIndNav) dynamicIndNav.style.display = 'none';
+        
+        const dynamicMoradiaNav = stepMoradia.querySelector('#btn-moradia-next');
+        if (dynamicMoradiaNav) dynamicMoradiaNav.style.display = 'none';
+
+        const dynamicRendaNav = stepRenda.querySelector('#btn-renda-next-step');
+        if (dynamicRendaNav) dynamicRendaNav.style.display = 'none';
+        
+        const dynamicIrpfNav = stepIrpf.querySelector('#btn-irpf-next-step');
+        if (dynamicIrpfNav) dynamicIrpfNav.style.display = 'none';
+        
+        stepEdital.scrollIntoView({ behavior: 'smooth' });
+      });
     }
-   }
+  }
 
 
   // ==========================================================================
