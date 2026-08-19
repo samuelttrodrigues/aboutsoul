@@ -475,98 +475,216 @@ document.addEventListener('DOMContentLoaded', () => {
     pageContainer.appendChild(pageWrapper);
   }
 
-  // Dados de contato e horários dos 13 Câmpus da UTFPR (ASSAE) em ordem alfabética
+  // Dados de contato, telefones, responsáveis e horários dos 13 Câmpus da UTFPR (ASSAE) em ordem alfabética
   const CAMPI_CONTACTS_DATA = [
     {
       name: 'Apucarana',
       assaeEmail: 'assae-ap@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(43) 3162-1369 / (43) 3162-1200',
-      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+      phone: '(43) 3162-1369',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h',
+      responsavel: {
+        nome: 'Michelle Andrade Klaiber',
+        cargo: 'Docente',
+        email: 'michelle@utfpr.edu.br'
+      },
+      substituto: null,
+      social: {
+        label: 'instagram.com/nuapeapucarana',
+        url: 'https://instagram.com/nuapeapucarana/'
+      }
     },
     {
       name: 'Campo Mourão',
       assaeEmail: 'assae-cm@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(44) 3518-1453 / (44) 3518-1465',
-      hours: 'Seg, Ter e Sex: 08h às 12h e 13h às 17h | Qua e Qui: 13h às 17h e 18h às 22h'
+      phone: '(44) 3518-1453',
+      hours: 'Seg, Ter e Sex: 08h às 12h e 13h às 17h | Qua e Qui: 13h às 17h e 18h às 22h',
+      responsavel: {
+        nome: 'Fabrício Rodrigues de Moura',
+        cargo: 'Psicólogo',
+        email: 'fabriciomoura@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Cornélio Procópio',
       assaeEmail: 'assae-cp@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(43) 3133-3000',
-      hours: 'Segunda a sexta-feira: 08h às 20h'
+      phone: '(43) 3133-3704',
+      hours: 'Segunda a sexta-feira: 08h às 20h',
+      responsavel: {
+        nome: 'Amanda Letícia Magro',
+        cargo: 'Assistente Social',
+        email: 'amandamagro@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Curitiba',
-      assaeEmail: 'assae-ct@utfpr.edu.br',
+      assaeEmail: 'nuape-ct@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(41) 3310-4545',
-      hours: 'Segunda a sexta-feira: 08h30 às 12h e das 13h às 17h30'
+      phone: '(41) 3310-4726',
+      hours: 'Segunda a sexta-feira: 08h30 às 12h e das 13h às 17h30',
+      responsavel: {
+        nome: 'Carla de Oliveira Vaz Chiarello',
+        cargo: 'Psicóloga',
+        email: 'carlachiarello@utfpr.edu.br'
+      },
+      substituto: null,
+      social: {
+        label: 'instagram.com/nuape.ct',
+        url: 'https://instagram.com/nuape.ct/'
+      }
     },
     {
       name: 'Dois Vizinhos',
       assaeEmail: 'assae-dv@utfpr.edu.br',
       auxilioEmail: 'auxilio_estudantil-dv@utfpr.edu.br',
-      phone: '(46) 3536-8900',
-      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+      phone: '(46) 3536-8929',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h',
+      responsavel: {
+        nome: 'Juliana Palavezzini',
+        cargo: 'Assistente Social',
+        email: 'julianap@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Francisco Beltrão',
       assaeEmail: 'assae-fb@utfpr.edu.br',
       auxilioEmail: 'auxilioestudantil-fb@utfpr.edu.br',
-      phone: '(46) 3151-1213 (WhatsApp e Fone)',
-      hours: 'Segunda a sexta-feira: 13h30 às 17h30'
+      phone: '(46) 3151-1213',
+      hours: 'Segunda a sexta-feira: 13h30 às 17h30',
+      responsavel: {
+        nome: 'Paula Spiazzi Bottega',
+        cargo: 'Psicóloga',
+        email: 'paulasbc@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Guarapuava',
       assaeEmail: 'assae-gp@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(42) 3141-6850',
-      hours: 'Seg, Qua e Sex: 08h às 12h e 13h às 20h | Ter e Qui: 08h às 12h e 13h às 17h'
+      phone: '(42) 3035-8079 ramal: 2200',
+      hours: 'Seg, Qua e Sex: 08h às 12h e 13h às 20h | Ter e Qui: 08h às 12h e 13h às 17h',
+      responsavel: {
+        nome: 'Belmiro Marcos Beloni',
+        cargo: 'Técnico em Assuntos Educacionais',
+        email: 'belmiro@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Londrina',
       assaeEmail: 'assae-ld@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(43) 3315-6100',
-      hours: 'Seg e Sex: 08h às 12h e 14h às 18h | Ter, Qua e Qui: 08h às 12h e 14h às 20h'
+      phone: '(43) 3315-6129',
+      hours: 'Seg e Sex: 08h às 12h e 14h às 18h | Ter, Qua e Qui: 08h às 12h e 14h às 20h',
+      responsavel: {
+        nome: 'Léia Rodrigues Domingos',
+        cargo: 'Pedagoga',
+        email: 'leiadomingos@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Medianeira',
       assaeEmail: 'assae-md@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(45) 3240-8000',
-      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+      phone: '(45) 3240-8104',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h',
+      responsavel: {
+        nome: 'Caroline de Sousa Gomes Brandão',
+        cargo: 'Odontóloga',
+        email: 'carolinebrandao@utfpr.edu.br'
+      },
+      substituto: null,
+      social: {
+        label: 'facebook.com/nuape-md',
+        url: 'https://facebook.com/nuape-md'
+      }
     },
     {
       name: 'Pato Branco',
       assaeEmail: 'assae-pb@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(46) 3220-2500',
-      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h30 às 17h30'
+      phone: '(46) 3220-2513',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h30 às 17h30',
+      responsavel: {
+        nome: 'Vilmar da Silva',
+        cargo: 'Assistente Social',
+        email: 'vilmarsilva@utfpr.edu.br'
+      },
+      substituto: {
+        nome: 'Eliane Terezinha Farias',
+        cargo: 'Pedagoga',
+        email: 'farias@utfpr.edu.br'
+      },
+      social: null
     },
     {
       name: 'Ponta Grossa',
       assaeEmail: 'assae-pg@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(42) 3220-4800',
-      hours: 'Seg, Qua e Sex: 09h às 18h | Ter e Qui: 10h às 19h'
+      phone: '(42) 3220-4826 / 4894 / 4896 / 4897',
+      hours: 'Seg, Qua e Sex: 09h às 18h | Ter e Qui: 10h às 19h',
+      responsavel: {
+        nome: 'Maria Marilei Soistak Christo',
+        cargo: 'Pedagoga',
+        email: 'msoistak@utfpr.edu.br'
+      },
+      substituto: {
+        nome: 'Cintia Azevedo Gonçalves',
+        cargo: 'Psicóloga',
+        email: 'cintia@utfpr.edu.br'
+      },
+      social: {
+        label: 'instagram.com/nuape_assae_pg',
+        url: 'https://instagram.com/nuape_assae_pg/'
+      }
     },
     {
       name: 'Santa Helena',
       assaeEmail: 'assae-sh@utfpr.edu.br',
       auxilioEmail: 'auxilioestudantil-sh@utfpr.edu.br',
-      phone: '(45) 3268-8800',
-      hours: 'Seg a Qui: 13h às 21h30 | Sex: 08h às 12h e das 13h às 17h'
+      phone: '(45) 3268-3700',
+      hours: 'Seg a Qui: 13h às 21h30 | Sex: 08h às 12h e das 13h às 17h',
+      responsavel: {
+        nome: 'Luara de Souza Lima Viana',
+        cargo: 'Pedagoga',
+        email: 'luaraviana@utfpr.edu.br'
+      },
+      substituto: null,
+      social: null
     },
     {
       name: 'Toledo',
       assaeEmail: 'assae-td@utfpr.edu.br',
       auxilioEmail: null,
-      phone: '(45) 3379-6800',
-      hours: 'Seg, Qua e Qui: 07h30 às 11h30 e 13h às 20h | Ter e Sex: 07h30 às 11h30 e 13h às 17h'
+      phone: '(45) 3379-6846',
+      hours: 'Seg, Qua e Qui: 07h30 às 11h30 e 13h às 20h | Ter e Sex: 07h30 às 11h30 e 13h às 17h',
+      responsavel: {
+        nome: 'Amália Senger',
+        cargo: 'Assistente Social',
+        email: 'amalia@utfpr.edu.br'
+      },
+      substituto: {
+        nome: 'Karen Hyelmager Gongora Bariccatti',
+        cargo: 'Pedagoga',
+        email: 'karenhg@utfpr.edu.br'
+      },
+      social: {
+        label: 'facebook.com/nuape-td',
+        url: 'https://facebook.com/nuape-td'
+      }
     }
   ];
 
@@ -611,8 +729,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div><strong>Horário de Atendimento:</strong> <span>${campus.hours}</span></div>
           </div>
           <div class="campus-detail-row">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div><strong>Telefone:</strong> <span>${campus.phone}</span></div>
+          </div>
+          <div class="campus-detail-row">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <div><strong>E-mail ASSAE (Atendimento Câmpus):</strong> <a href="mailto:${campus.assaeEmail}">${campus.assaeEmail}</a></div>
+            <div><strong>E-mail de Atendimento:</strong> <a href="mailto:${campus.assaeEmail}">${campus.assaeEmail}</a></div>
           </div>
           ${campus.auxilioEmail ? `
             <div class="campus-detail-row">
@@ -620,10 +742,22 @@ document.addEventListener('DOMContentLoaded', () => {
               <div><strong>E-mail Específico de Auxílio Estudantil:</strong> <a href="mailto:${campus.auxilioEmail}">${campus.auxilioEmail}</a></div>
             </div>
           ` : ''}
-          ${campus.phone ? `
+          ${campus.responsavel ? `
             <div class="campus-detail-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <div><strong>Telefone / Atendimento:</strong> <span>${campus.phone}</span></div>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <div><strong>Responsável:</strong> <span>${campus.responsavel.nome} (${campus.responsavel.cargo})</span> — <a href="mailto:${campus.responsavel.email}">${campus.responsavel.email}</a></div>
+            </div>
+          ` : ''}
+          ${campus.substituto ? `
+            <div class="campus-detail-row">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <div><strong>Substituto(a):</strong> <span>${campus.substituto.nome} (${campus.substituto.cargo})</span> — <a href="mailto:${campus.substituto.email}">${campus.substituto.email}</a></div>
+            </div>
+          ` : ''}
+          ${campus.social ? `
+            <div class="campus-detail-row">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <div><strong>Página / Rede Social:</strong> <a href="${campus.social.url}" target="_blank" rel="noopener noreferrer">${campus.social.label}</a></div>
             </div>
           ` : ''}
         </div>
