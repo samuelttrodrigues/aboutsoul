@@ -839,7 +839,10 @@ document.addEventListener('DOMContentLoaded', () => {
       perCapita: 0,
       rendaElegivel: null,
       irpf: null,
-      situacoesEspeciais: []
+      situacoesEspeciais: [],
+      prereqOk: false,
+      termosOk: false,
+      isCompleted: false
     };
 
     const stepOrder = [
@@ -857,6 +860,14 @@ document.addEventListener('DOMContentLoaded', () => {
       'step-termos',
       'step-resultado'
     ];
+
+    function saveWizardState() {
+      try {
+        localStorage.setItem('guia_utfpr_wizard_state', JSON.stringify(wizardState));
+      } catch (e) {
+        console.error('Erro ao salvar estado do wizard:', e);
+      }
+    }
 
     function showFeedback(stepEl, type, html) {
       const feedbackEl = stepEl.querySelector('.wizard-feedback');
@@ -920,9 +931,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const irpfBtn = stepEl.querySelector('#btn-irpf-next-step');
             if (irpfBtn) irpfBtn.style.display = 'none';
           }
-
         }
       }
+
+      // Limpa propriedades a jusante do estado
+      if (idx <= stepOrder.indexOf('step-edital')) wizardState.vinculo = null;
+      if (idx <= stepOrder.indexOf('step-vinculo')) wizardState.reaproveitamento = null;
+      if (idx <= stepOrder.indexOf('step-reaproveitamento')) wizardState.desempenhoOk = null;
+      if (idx <= stepOrder.indexOf('step-desempenho')) wizardState.independencia = null;
+      if (idx <= stepOrder.indexOf('step-independencia')) wizardState.moradia = null;
+      if (idx <= stepOrder.indexOf('step-moradia')) wizardState.fontesRenda = [];
+      if (idx <= stepOrder.indexOf('step-fontes-renda')) { wizardState.rendaElegivel = null; wizardState.perCapita = 0; }
+      if (idx <= stepOrder.indexOf('step-renda')) wizardState.irpf = null;
+      if (idx <= stepOrder.indexOf('step-irpf')) wizardState.situacoesEspeciais = [];
+      if (idx <= stepOrder.indexOf('step-especiais')) wizardState.prereqOk = false;
+      if (idx <= stepOrder.indexOf('step-prerequisitos')) { wizardState.termosOk = false; wizardState.isCompleted = false; }
+
+      saveWizardState();
     }
 
     // Passo 1: Edital
@@ -935,6 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.edital = val;
+        saveWizardState();
         
         hideDownstream('step-edital');
         
@@ -970,12 +996,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (val === 'calouro') {
           wizardState.reaproveitamento = 'nao';
           wizardState.desempenhoOk = true;
+          saveWizardState();
           showFeedback(stepVinculo, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Estudantes calouros são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
           `);
           revealStep('step-independencia');
         } else {
+          saveWizardState();
           showFeedback(stepVinculo, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Estudante veterano. Prossiga para verificar a opção de reaproveitamento.
@@ -995,6 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.reaproveitamento = val;
+        saveWizardState();
         
         hideDownstream('step-reaproveitamento');
         
@@ -1029,6 +1058,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (val === 'sim') {
           wizardState.desempenhoOk = false;
+          saveWizardState();
           showFeedback(stepDesempenho, 'danger', `
             <div class="wizard-alert">
               <strong>Atenção:</strong> Você precisará abrir um <strong>PROCESSO DE RECURSO</strong>.
@@ -1037,6 +1067,7 @@ document.addEventListener('DOMContentLoaded', () => {
           `);
         } else {
           wizardState.desempenhoOk = true;
+          saveWizardState();
           showFeedback(stepDesempenho, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Desempenho acadêmico qualificado (reprovações menores ou iguais a 33%).
@@ -1063,6 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.independencia = val;
+        saveWizardState();
         
         hideDownstream('step-independencia');
         
@@ -1111,6 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.moradia = val;
+        saveWizardState();
         
         hideDownstream('step-moradia');
         
@@ -1169,6 +1202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
+      saveWizardState();
       hideDownstream('step-fontes-renda');
       
       showFeedback(stepFontesRenda, 'success', `
@@ -1219,6 +1253,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         showFeedback(stepRenda, 'danger', html);
       }
+
+      saveWizardState();
       
       let nextBtn = stepRenda.querySelector('#btn-renda-next-step');
       if (!nextBtn) {
@@ -1247,6 +1283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const val = btn.getAttribute('data-value');
         wizardState.irpf = val;
+        saveWizardState();
         
         hideDownstream('step-irpf');
         
@@ -1296,6 +1333,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       wizardState.situacoesEspeciais = selectedEspeciais;
+      saveWizardState();
       
       hideDownstream('step-especiais');
       
@@ -1322,6 +1360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     prereqCbs.forEach(cb => cb.addEventListener('change', checkPrereq));
 
     btnPrereqNext.addEventListener('click', () => {
+      wizardState.prereqOk = true;
+      saveWizardState();
       hideDownstream('step-prerequisitos');
       showFeedback(stepPrereq, 'success', `
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1345,6 +1385,9 @@ document.addEventListener('DOMContentLoaded', () => {
     termosCbs.forEach(cb => cb.addEventListener('change', checkTermos));
 
     btnTermosNext.addEventListener('click', () => {
+      wizardState.termosOk = true;
+      wizardState.isCompleted = true;
+      saveWizardState();
       hideDownstream('step-termos');
       showFeedback(stepTermos, 'success', `
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1561,64 +1604,443 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   
       const btnReiniciar = wizardCard.querySelector('#wizard-btn-reiniciar');
-      btnReiniciar.addEventListener('click', () => {
-        wizardState = {
-          edital: null,
-          vinculo: null,
-          reaproveitamento: null,
-          desempenhoOk: null,
-          independencia: null,
-          moradia: null,
-          fontesRenda: [],
-          membros: 1,
-          renda: 0,
-          perCapita: 0,
-          rendaElegivel: null,
-          irpf: null,
-          situacoesEspeciais: []
-        };
-        
-        wizardCard.querySelectorAll('.wizard-opt-btn').forEach(btn => btn.classList.remove('selected'));
-        wizardCard.querySelectorAll('.wizard-feedback').forEach(fb => {
-          fb.style.display = 'none';
-          fb.innerHTML = '';
-        });
-        
-        wizardCard.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-          cb.checked = false;
-          cb.dispatchEvent(new Event('change'));
-        });
-        
-        inputMembros.value = 1;
-        inputRenda.value = 0;
-        
-        // Oculta todos os passos exceto o primeiro
-        wizardCard.querySelectorAll('.wizard-step').forEach(stepEl => {
-          if (stepEl.id === 'step-edital') {
-            stepEl.classList.remove('hidden');
-            stepEl.classList.add('active');
-          } else {
-            stepEl.classList.add('hidden');
-            stepEl.classList.remove('active');
-          }
-        });
-        
-        // Oculta botões dinâmicos criados no DOM
-        const dynamicIndNav = stepIndependencia.querySelector('#btn-independencia-next');
-        if (dynamicIndNav) dynamicIndNav.style.display = 'none';
-        
-        const dynamicMoradiaNav = stepMoradia.querySelector('#btn-moradia-next');
-        if (dynamicMoradiaNav) dynamicMoradiaNav.style.display = 'none';
-
-        const dynamicRendaNav = stepRenda.querySelector('#btn-renda-next-step');
-        if (dynamicRendaNav) dynamicRendaNav.style.display = 'none';
-        
-        const dynamicIrpfNav = stepIrpf.querySelector('#btn-irpf-next-step');
-        if (dynamicIrpfNav) dynamicIrpfNav.style.display = 'none';
-        
-        stepEdital.scrollIntoView({ behavior: 'smooth' });
-      });
+      if (btnReiniciar) {
+        btnReiniciar.onclick = resetWizard;
+      }
     }
+
+    function resetWizard() {
+      wizardState = {
+        edital: null,
+        vinculo: null,
+        reaproveitamento: null,
+        desempenhoOk: null,
+        independencia: null,
+        moradia: null,
+        fontesRenda: [],
+        membros: 1,
+        renda: 0,
+        perCapita: 0,
+        rendaElegivel: null,
+        irpf: null,
+        situacoesEspeciais: [],
+        prereqOk: false,
+        termosOk: false,
+        isCompleted: false
+      };
+      
+      try {
+        localStorage.removeItem('guia_utfpr_wizard_state');
+      } catch (e) {}
+
+      const banner = wizardCard.querySelector('.wizard-restored-banner');
+      if (banner) banner.remove();
+      
+      wizardCard.querySelectorAll('.wizard-opt-btn').forEach(btn => btn.classList.remove('selected'));
+      wizardCard.querySelectorAll('.wizard-feedback').forEach(fb => {
+        fb.style.display = 'none';
+        fb.innerHTML = '';
+      });
+      
+      wizardCard.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      
+      inputMembros.value = 1;
+      inputRenda.value = 0;
+      btnPrereqNext.disabled = true;
+      btnTermosNext.disabled = true;
+      
+      // Oculta todos os passos exceto o primeiro
+      wizardCard.querySelectorAll('.wizard-step').forEach(stepEl => {
+        if (stepEl.id === 'step-edital') {
+          stepEl.classList.remove('hidden');
+          stepEl.classList.add('active');
+        } else {
+          stepEl.classList.add('hidden');
+          stepEl.classList.remove('active');
+        }
+      });
+      
+      // Oculta botões dinâmicos criados no DOM
+      const dynamicIndNav = stepIndependencia.querySelector('#btn-independencia-next');
+      if (dynamicIndNav) dynamicIndNav.style.display = 'none';
+      
+      const dynamicMoradiaNav = stepMoradia.querySelector('#btn-moradia-next');
+      if (dynamicMoradiaNav) dynamicMoradiaNav.style.display = 'none';
+
+      const dynamicRendaNav = stepRenda.querySelector('#btn-renda-next-step');
+      if (dynamicRendaNav) dynamicRendaNav.style.display = 'none';
+      
+      const dynamicIrpfNav = stepIrpf.querySelector('#btn-irpf-next-step');
+      if (dynamicIrpfNav) dynamicIrpfNav.style.display = 'none';
+      
+      stepEdital.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function restoreWizardState() {
+      const saved = localStorage.getItem('guia_utfpr_wizard_state');
+      if (!saved) return;
+      
+      try {
+        const savedState = JSON.parse(saved);
+        if (!savedState || typeof savedState !== 'object') return;
+        
+        // Verifica se há algo preenchido
+        const hasData = savedState.edital || savedState.vinculo || (savedState.fontesRenda && savedState.fontesRenda.length > 0);
+        if (!hasData) return;
+
+        // Banner informativo
+        const banner = document.createElement('div');
+        banner.className = 'wizard-restored-banner';
+        banner.style.cssText = 'background-color: var(--primary-glow); border: 1px solid var(--primary); border-radius: var(--radius-md); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--text-main); margin-bottom: 20px;';
+        banner.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--primary); flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span><strong>Simulação Restaurada:</strong> Suas respostas anteriores foram recuperadas.</span>
+          </div>
+          <button id="btn-banner-reiniciar" style="background: none; border: none; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: underline; font-size: 0.82rem; white-space: nowrap; margin-left: 10px;">Recomeçar</button>
+        `;
+        
+        const wizardHeader = wizardCard.querySelector('.wizard-header');
+        if (wizardHeader && wizardHeader.parentNode) {
+          wizardHeader.parentNode.insertBefore(banner, wizardHeader.nextSibling);
+        }
+        
+        const btnBannerReiniciar = banner.querySelector('#btn-banner-reiniciar');
+        if (btnBannerReiniciar) {
+          btnBannerReiniciar.addEventListener('click', resetWizard);
+        }
+        
+        // Passo 1: Edital
+        if (savedState.edital) {
+          wizardState.edital = savedState.edital;
+          const btn = stepEdital.querySelector(`.wizard-opt-btn[data-value="${savedState.edital}"]`);
+          if (btn) {
+            btnsEdital.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.edital === 'nao') {
+              showFeedback(stepEdital, 'warning', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <strong>Atenção:</strong> É altamente recomendável ler o edital oficial. Você pode consultá-lo na página <a href="#page-28">Edital Oficial</a> do guia.
+              `);
+            } else {
+              showFeedback(stepEdital, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Excelente! Estar ciente das regras do edital evita erros de preenchimento.
+              `);
+            }
+            revealStep('step-vinculo');
+          }
+        }
+        
+        // Passo 2: Vínculo
+        if (savedState.vinculo) {
+          wizardState.vinculo = savedState.vinculo;
+          const btn = stepVinculo.querySelector(`.wizard-opt-btn[data-value="${savedState.vinculo}"]`);
+          if (btn) {
+            btnsVinculo.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.vinculo === 'calouro') {
+              wizardState.reaproveitamento = 'nao';
+              wizardState.desempenhoOk = true;
+              showFeedback(stepVinculo, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Estudantes calouros são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
+              `);
+              revealStep('step-independencia');
+            } else {
+              showFeedback(stepVinculo, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Estudante veterano. Prossiga para verificar a opção de reaproveitamento.
+              `);
+              revealStep('step-reaproveitamento');
+            }
+          }
+        }
+        
+        // Passo 2.1: Reaproveitamento
+        if (savedState.vinculo === 'veterano' && savedState.reaproveitamento) {
+          wizardState.reaproveitamento = savedState.reaproveitamento;
+          const btn = stepReaproveitamento.querySelector(`.wizard-opt-btn[data-value="${savedState.reaproveitamento}"]`);
+          if (btn) {
+            btnsReaproveitamento.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.reaproveitamento === 'sim') {
+              showFeedback(stepReaproveitamento, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>Elegível para Reaproveitamento de Documentos (Item 5.1):</strong> Ótimo! Como veterano com situação idêntica à de 2025, seu processo de envio de documentos é simplificado. Prossiga para avaliar o desempenho acadêmico.
+              `);
+            } else {
+              showFeedback(stepReaproveitamento, 'warning', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Entendido. Como houve alteração ou não participou do último edital, você fará uma inscrição completa. Prossiga para avaliar o desempenho acadêmico.
+              `);
+            }
+            revealStep('step-desempenho');
+          }
+        }
+        
+        // Passo 3: Desempenho
+        if (savedState.desempenhoOk !== null && savedState.desempenhoOk !== undefined) {
+          wizardState.desempenhoOk = savedState.desempenhoOk;
+          const btnVal = savedState.desempenhoOk ? 'nao' : 'sim';
+          const btn = stepDesempenho.querySelector(`.wizard-opt-btn[data-value="${btnVal}"]`);
+          if (btn) {
+            btnsDesempenho.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (!savedState.desempenhoOk) {
+              showFeedback(stepDesempenho, 'danger', `
+                <div class="wizard-alert">
+                  <strong>Atenção:</strong> Você precisará abrir um <strong>PROCESSO DE RECURSO</strong>.
+                  Prepare a seguinte documentação justificativa: Relatórios de monitoria ou P.Aluno; Laudos, declarações e certificados; Comprovação documental para justificar faltas.
+                </div>
+              `);
+            } else {
+              showFeedback(stepDesempenho, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Desempenho acadêmico qualificado (reprovações menores ou iguais a 33%).
+              `);
+            }
+            if (savedState.reaproveitamento === 'sim') {
+              revealStep('step-prerequisitos');
+            } else {
+              revealStep('step-independencia');
+            }
+          }
+        }
+        
+        // Passo 4: Independência
+        if (savedState.reaproveitamento !== 'sim' && savedState.independencia) {
+          wizardState.independencia = savedState.independencia;
+          const btn = stepIndependencia.querySelector(`.wizard-opt-btn[data-value="${savedState.independencia}"]`);
+          if (btn) {
+            btnsIndependencia.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.independencia === 'sim') {
+              showFeedback(stepIndependencia, 'warning', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <strong>Atenção:</strong> Declarar independência financeira exige comprovação de residência e renda próprias que cubram sua subsistência, separada dos pais. Você precisará preencher a <strong>Declaração 4 (Independência Financeira)</strong> assinada pelos seus pais confirmando que não te dão apoio financeiro, e indicar duas referências de testemunhas.
+              `);
+              let nextBtn = stepIndependencia.querySelector('#btn-independencia-next');
+              if (!nextBtn) {
+                nextBtn = document.createElement('button');
+                nextBtn.id = 'btn-independencia-next';
+                nextBtn.className = 'wizard-btn-calc';
+                nextBtn.style.marginTop = '12px';
+                nextBtn.style.width = '100%';
+                nextBtn.innerText = 'Avançar';
+                stepIndependencia.appendChild(nextBtn);
+                nextBtn.addEventListener('click', () => {
+                  revealStep('step-moradia');
+                });
+              } else {
+                nextBtn.style.display = 'block';
+              }
+            } else {
+              showFeedback(stepIndependencia, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Entendido. Sua análise socioeconômica considerará o grupo familiar de origem.
+              `);
+            }
+            revealStep('step-moradia');
+          }
+        }
+        
+        // Passo 5: Moradia
+        if (savedState.reaproveitamento !== 'sim' && savedState.moradia) {
+          wizardState.moradia = savedState.moradia;
+          const btn = stepMoradia.querySelector(`.wizard-opt-btn[data-value="${savedState.moradia}"]`);
+          if (btn) {
+            btnsMoradia.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.moradia.includes('aluguel') || savedState.moradia.includes('pensionato') || savedState.moradia.includes('compartilhada') || savedState.moradia.includes('casado_aluguel')) {
+              showFeedback(stepMoradia, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Você poderá pleitear o <strong>Auxílio Moradia</strong>. Tenha em mãos o comprovante de pagamento recente e documentos de moradia adicionais recomendados ao final.
+              `);
+            } else if (savedState.moradia.includes('cedido') || savedState.moradia === 'estudante_alojamento') {
+              showFeedback(stepMoradia, 'warning', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Moradia gratuita em imóvel cedido ou alojamento exige preenchimento da <strong>Declaração 2 (Situação de Moradia)</strong> para atestar sua habitação na cidade onde estuda.
+              `);
+            } else {
+              showFeedback(stepMoradia, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Residindo com a família. A análise considerará as condições de habitação e despesas do domicílio de origem.
+              `);
+            }
+            let nextBtn = stepMoradia.querySelector('#btn-moradia-next');
+            if (!nextBtn) {
+              nextBtn = document.createElement('button');
+              nextBtn.id = 'btn-moradia-next';
+              nextBtn.className = 'wizard-btn-calc';
+              nextBtn.style.marginTop = '12px';
+              nextBtn.style.width = '100%';
+              nextBtn.innerText = 'Avançar';
+              stepMoradia.appendChild(nextBtn);
+              nextBtn.addEventListener('click', () => {
+                revealStep('step-fontes-renda');
+              });
+            } else {
+              nextBtn.style.display = 'block';
+            }
+            revealStep('step-fontes-renda');
+          }
+        }
+        
+        // Passo 6: Fontes de Renda
+        if (savedState.reaproveitamento !== 'sim' && Array.isArray(savedState.fontesRenda) && savedState.fontesRenda.length > 0) {
+          wizardState.fontesRenda = savedState.fontesRenda;
+          savedState.fontesRenda.forEach(val => {
+            const cb = stepFontesRenda.querySelector(`input[name="fonte-renda"][value="${val}"]`);
+            if (cb) cb.checked = true;
+          });
+          showFeedback(stepFontesRenda, 'success', `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Fontes de renda mapeadas. Prossiga para a simulação de valores per capita.
+          `);
+          revealStep('step-renda');
+        }
+        
+        // Passo 7: Renda
+        if (savedState.reaproveitamento !== 'sim' && (savedState.rendaElegivel !== null && savedState.rendaElegivel !== undefined)) {
+          wizardState.membros = savedState.membros || 1;
+          wizardState.renda = savedState.renda || 0;
+          wizardState.perCapita = savedState.perCapita || 0;
+          wizardState.rendaElegivel = savedState.rendaElegivel;
+          
+          inputMembros.value = wizardState.membros;
+          inputRenda.value = wizardState.renda;
+          
+          const perCapita = wizardState.perCapita;
+          if (wizardState.rendaElegivel) {
+            showFeedback(stepRenda, 'success', `
+              <div class="feedback-inner-success" style="padding: 4px 0;">
+                <strong>Cálculo Concluído:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong> (equivalente a ${(perCapita / SALARIO_MINIMO).toFixed(2)} salários mínimos por pessoa).
+                <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salários mínimos - Item 3.2).</p>
+              </div>
+            `);
+          } else {
+            showFeedback(stepRenda, 'danger', `
+              <div class="feedback-inner-danger" style="padding: 4px 0;">
+                <strong>Alerta de Limite Excedido:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong>.
+                <p style="margin-top: 6px;">Sua renda per capita estimada excede o teto de R$ ${SALARIO_MINIMO.toFixed(2)} previsto no edital (Item 3.2). Inscrições acima da renda regulamentar estão sujeitas a indeferimento pela equipe de análise.</p>
+              </div>
+            `);
+          }
+          
+          let nextBtn = stepRenda.querySelector('#btn-renda-next-step');
+          if (!nextBtn) {
+            nextBtn = document.createElement('button');
+            nextBtn.id = 'btn-renda-next-step';
+            nextBtn.className = 'wizard-btn-calc';
+            nextBtn.style.marginTop = '12px';
+            nextBtn.style.width = '100%';
+            nextBtn.innerText = 'Avançar';
+            stepRenda.appendChild(nextBtn);
+            nextBtn.addEventListener('click', () => {
+              revealStep('step-irpf');
+            });
+          } else {
+            nextBtn.style.display = 'block';
+          }
+          revealStep('step-irpf');
+        }
+        
+        // Passo 8: IRPF
+        if (savedState.reaproveitamento !== 'sim' && savedState.irpf) {
+          wizardState.irpf = savedState.irpf;
+          const btn = stepIrpf.querySelector(`.wizard-opt-btn[data-value="${savedState.irpf}"]`);
+          if (btn) {
+            btnsIrpf.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if (savedState.irpf === 'isentos_sem_mir') {
+              showFeedback(stepIrpf, 'warning', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <strong>Atenção ao IRPF:</strong> Como há membros isentos sem acesso ao Portal MIR (ou sem conta gov.br qualificada Prata/Ouro), será obrigatório apresentar a <strong>Declaração VII (Não Obrigatoriedade de IRPF)</strong> devidamente preenchida e assinada por esses membros.
+              `);
+            } else if (savedState.irpf === 'isentos_mir') {
+              showFeedback(stepIrpf, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Excelente. Baixe o PDF de consulta "Não entregue" no Portal Meu Imposto de Renda (com status visível, data, hora e código de autenticação) para todos os isentos.
+              `);
+            } else {
+              showFeedback(stepIrpf, 'success', `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Para os declarantes, junte a Declaração de IRPF 2025 completa (ano-calendário 2024) com o respectivo Recibo de Entrega em um único arquivo PDF.
+              `);
+            }
+            let nextBtn = stepIrpf.querySelector('#btn-irpf-next-step');
+            if (!nextBtn) {
+              nextBtn = document.createElement('button');
+              nextBtn.id = 'btn-irpf-next-step';
+              nextBtn.className = 'wizard-btn-calc';
+              nextBtn.style.marginTop = '12px';
+              nextBtn.style.width = '100%';
+              nextBtn.innerText = 'Avançar';
+              stepIrpf.appendChild(nextBtn);
+              nextBtn.addEventListener('click', () => {
+                revealStep('step-especiais');
+              });
+            } else {
+              nextBtn.style.display = 'block';
+            }
+            revealStep('step-especiais');
+          }
+        }
+        
+        // Passo 9: Situações Especiais
+        if (savedState.reaproveitamento !== 'sim' && Array.isArray(savedState.situacoesEspeciais)) {
+          wizardState.situacoesEspeciais = savedState.situacoesEspeciais;
+          savedState.situacoesEspeciais.forEach(val => {
+            const cb = stepEspeciais.querySelector(`input[name="situacao-especial"][value="${val}"]`);
+            if (cb) cb.checked = true;
+          });
+          if (savedState.situacoesEspeciais.length > 0 || savedState.prereqOk) {
+            showFeedback(stepEspeciais, 'success', `
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Mapeamento de situações especiais finalizado. Prossiga para as declarações finais de ciência.
+            `);
+            revealStep('step-prerequisitos');
+          }
+        }
+        
+        // Passo 10: Pré-requisitos
+        if (savedState.prereqOk) {
+          wizardState.prereqOk = true;
+          prereqCbs.forEach(cb => cb.checked = true);
+          btnPrereqNext.disabled = false;
+          showFeedback(stepPrereq, 'success', `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Pré-requisitos confirmados. Prossiga para a declaração de termos de uso do benefício.
+          `);
+          revealStep('step-termos');
+        }
+        
+        // Passo 11: Termos e Resultado
+        if (savedState.termosOk) {
+          wizardState.termosOk = true;
+          termosCbs.forEach(cb => cb.checked = true);
+          btnTermosNext.disabled = false;
+          showFeedback(stepTermos, 'success', `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Termos declarados e aceitos! Gerando o seu roteiro de documentos personalizado...
+          `);
+          if (savedState.isCompleted) {
+            wizardState.isCompleted = true;
+            generateResults();
+            revealStep('step-resultado');
+          }
+        }
+        
+      } catch (e) {
+        console.error('Erro ao restaurar estado do wizard:', e);
+      }
+    }
+
+    // Restaura estado salvo automaticamente se houver
+    restoreWizardState();
   }
 
 

@@ -2023,3 +2023,19 @@ button, input, select {
   line-height: 1.4;
 }
 
+.wizard-restored-banner {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@media (max-width: 576px) {
+  .wizard-restored-banner {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+  
+  .wizard-restored-banner button {
+    margin-left: 24px !important;
+  }
+}
+
