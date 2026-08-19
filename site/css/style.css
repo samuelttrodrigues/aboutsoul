@@ -284,41 +284,42 @@ button, input, select {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   padding: 0;
   outline: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  flex-shrink: 0;
 }
 
 .theme-opt-btn:hover {
   transform: scale(1.2);
+  border-color: #ffffff;
 }
 
 .theme-opt-btn.opt-light {
   background-color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .theme-opt-btn.opt-dark {
   background-color: #1e1e24;
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .theme-opt-btn.opt-sepia {
   background-color: #f4ecd8;
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .theme-opt-btn.opt-utfpr {
-  background: linear-gradient(135deg, #000000 50%, #f3c400 50%);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #111111 0%, #111111 calc(50% - 0.5px), #f3c400 calc(50% + 0.5px), #f3c400 100%);
 }
 
 .theme-opt-btn.active {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(243, 196, 0, 0.6);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px var(--primary);
   transform: scale(1.25);
 }
 
