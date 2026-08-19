@@ -923,7 +923,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="wizard-step hidden" id="step-vinculo" style="margin-top: 24px;">
         <p class="wizard-question">2. Qual o seu vínculo de matrícula com a UTFPR?</p>
         <div class="wizard-options">
-          <button class="wizard-opt-btn" data-value="calouro">Estudante Calouro (Ingressante em 2026)</button>
+          <button class="wizard-opt-btn" data-value="calouro">Estudante Calouro (Ingressante em 2026.2)</button>
           <button class="wizard-opt-btn" data-value="veterano">Estudante Veterano</button>
         </div>
         <div class="wizard-feedback" style="display: none; margin-top: 12px;"></div>
@@ -971,7 +971,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="wizard-opt-btn text-left" data-value="estudante_pensionato">Moro em pensionato ou vaga compartilhada paga (sem contrato)</button>
           <button class="wizard-opt-btn text-left" data-value="estudante_compartilhada">Moro em moradia compartilhada/república dividindo aluguel</button>
           <button class="wizard-opt-btn text-left" data-value="estudante_cedido">Moro em imóvel cedido gratuitamente (por parentes/amigos)</button>
-          <button class="wizard-opt-btn text-left" data-value="estudante_alojamento">Moro em alojamento estudantil gratuito ou moradia universitária da UTFPR</button>
           <button class="wizard-opt-btn text-left" data-value="estudante_casado_aluguel">Resido com meu cônjuge, companheiro(a) e/ou filhos(as) e PAGO aluguel</button>
           <button class="wizard-opt-btn text-left" data-value="estudante_casado_proprio">Resido com meu cônjuge, companheiro(a) e/ou filhos(as) e NÃO pago aluguel (imóvel próprio/cedido)</button>
         </div>
@@ -1144,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
           
           <div style="margin-top: 24px; padding: 14px; background-color: var(--bg-card-hover); border-radius: var(--radius-md); border: 1px solid var(--border); font-size: 0.88rem; line-height: 1.5; color: var(--text-main); font-weight: 500;">
-            <p>💡 <strong>Apoio ao Estudante:</strong> Dificuldades ao longo do semestre? Não espere a situação piorar! O NUAPE oferece apoio pedagógico, social e psicológico. Procure ajuda no seu campus.</p>
+            <p>💡 <strong>Apoio ao Estudante:</strong> Dificuldades ao longo do semestre? Não espere a situação piorar! A ASSAE oferece apoio pedagógico, social e de atendimento. Procure o setor no seu campus.</p>
           </div>
 
           <div style="margin-top: 24px; display: flex; justify-content: center;">
@@ -1156,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     container.appendChild(wizardCard);
     
-    const SALARIO_MINIMO = 1518; // Mínimo 2026
+    const SALARIO_MINIMO = 1621; // Salário Mínimo Vigente (R$ 1.621,00)
 
     let wizardState = {
       edital: null,
@@ -1331,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
           saveWizardState();
           showFeedback(stepVinculo, 'success', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Estudantes calouros são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
+            Estudantes calouros (ingressantes em 2026.2) são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
           `);
           revealStep('step-independencia');
         } else {
@@ -1484,10 +1483,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Você poderá pleitear o <strong>Auxílio Moradia</strong>. Tenha em mãos o comprovante de pagamento recente e documentos de moradia adicionais recomendados ao final.
           `);
-        } else if (val.includes('cedido') || val === 'estudante_alojamento') {
+        } else if (val.includes('cedido')) {
           showFeedback(stepMoradia, 'warning', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            Moradia gratuita em imóvel cedido ou alojamento exige preenchimento da <strong>Declaração 2 (Situação de Moradia)</strong> para atestar sua habitação na cidade onde estuda.
+            Moradia gratuita em imóvel cedido exige preenchimento da <strong>Declaração 2 (Situação de Moradia)</strong> para atestar sua habitação na cidade onde estuda.
           `);
         } else {
           showFeedback(stepMoradia, 'success', `
@@ -1571,7 +1570,7 @@ document.addEventListener('DOMContentLoaded', () => {
         html = `
           <div class="feedback-inner-success" style="padding: 4px 0;">
             <strong>Cálculo Concluído:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong> (equivalente a ${(perCapita / SALARIO_MINIMO).toFixed(2)} salários mínimos por pessoa).
-            <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salários mínimos - Item 3.2).</p>
+            <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salário mínimo - Item 3.2).</p>
           </div>
         `;
         showFeedback(stepRenda, 'success', html);
@@ -1779,7 +1778,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (wizardState.reaproveitamento === 'sim') {
         // Roteiro de Reaproveitamento Simplificado
         docsList.push('<b>Termo de Reaproveitamento de Documentos:</b> Assinado eletronicamente via conta gov.br pelo estudante, manifestando interesse em reaproveitar os dados declarados no Edital 01/2025.');
-        docsList.push('<b>Histórico Acadêmico Atualizado:</b> Histórico escolar oficial completo contendo o rendimento acadêmico do semestre 2025/2, emitido pelo Portal do Aluno da UTFPR.');
         docsList.push('<b>Extrato do CNIS Completo:</b> Extrato de Relações Previdenciárias (Meu INSS) para você e para <b>todos os membros maiores de 18 anos</b> do grupo familiar, emitido no ano corrente.');
       } else {
         // Inscrição Completa
@@ -1787,13 +1785,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Identificação Geral (RG/CPF) de todos
         docsList.push('<b>Documentos de Identificação do Grupo Familiar:</b> Cópia de documento oficial com foto e assinatura (RG, CNH) e CPF de <b>todos os membros</b> do núcleo familiar declarado (inclusive crianças, onde certidão de nascimento é aceita).');
         
-        // 2. Histórico Escolar do Estudante
-        docsList.push('<b>Histórico Escolar Oficial:</b> Histórico completo emitido eletronicamente via Portal do Aluno da UTFPR.');
-        
-        // 3. Extrato CNIS (Obrigatório para todos maiores de 18 anos)
+        // 2. Extrato CNIS (Obrigatório para todos maiores de 18 anos)
         docsList.push('<b>Extrato do CNIS Completo (Relações Previdenciárias):</b> Emitido via Meu INSS de forma completa (com vínculos e remunerações detalhadas) para você e <b>todos os membros do grupo maiores de 18 anos</b>. Atenção: não serve extrato simples ou cartão de benefício.');
         
-        // 4. IRPF (Imposto de Renda)
+        // 3. IRPF (Imposto de Renda)
         if (wizardState.irpf === 'todos_declararam') {
           docsList.push('<b>Declaração de IRPF + Recibo de Entrega (Unificados):</b> Cópia completa da declaração do Imposto de Renda de 2025 (ano-calendário 2024) com o respectivo recibo de entrega da Receita Federal, para <b>todos os membros da família maiores de 18 anos</b>.');
         } else {
@@ -1807,13 +1802,13 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
         
-        // 5. Independência Financeira
+        // 4. Independência Financeira
         if (wizardState.independencia === 'sim') {
           docsList.push('<b>Declaração IV - Independência Financeira (<a href="documentos/Declaração 4 - Independência financeira.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 4 (.docx)</a>):</b> Deve ser preenchida e assinada por seus <b>pais ou responsável legal</b>, atestando expressamente que não contribuem financeira ou materialmente com o estudante. Deve conter as assinaturas e telefones de duas testemunhas externas (não familiares).');
           docsList.push('<b>Comprovantes de Independência:</b> Comprovante de endereço próprio diferente do dos pais, além de comprovante de renda própria suficiente para prover a subsistência.');
         }
         
-        // 6. Comprovante de Situação de Moradia e Declaração 2 / 6
+        // 5. Comprovante de Situação de Moradia e Declaração 2 / 6
         if (wizardState.moradia === 'familia_alugada') {
           docsList.push('<b>Comprovante de Despesa de Moradia:</b> Cópia do contrato de locação em nome de algum membro do grupo familiar e recibo de pagamento do aluguel/financiamento recente.');
         } else if (wizardState.moradia === 'estudante_aluguel_contrato') {
@@ -1833,8 +1828,6 @@ document.addEventListener('DOMContentLoaded', () => {
           docsList.push('<b>Declaração VI - Comprovação de Aluguel (<a href="documentos/Declaração 6 - Pagamento de aluguel.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 6 (.docx)</a>):</b> Caso a república não possua contrato formal assinado, o proprietário deve preencher e assinar a Declaração VI (Opção 1).');
         } else if (wizardState.moradia === 'estudante_cedido') {
           docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Resido sozinho e não pago aluguel - cedido gratuitamente) ou a opção de residência com familiares correspondente. Requer preenchimento de duas testemunhas de referência com dados completos (não familiares).');
-        } else if (wizardState.moradia === 'estudante_alojamento') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> e informe no texto a residência gratuita em alojamento estudantil oferecido pela UTFPR.');
         } else if (wizardState.moradia === 'estudante_casado_aluguel') {
           docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Resido com cônjuge/filhos e pago R$ ...). Informou nome e CPF dos familiares.');
           docsList.push('<b>Contrato de Locação e Recibos:</b> Contrato de aluguel e recibo recente em nome do estudante ou cônjuge.');
@@ -2078,7 +2071,7 @@ document.addEventListener('DOMContentLoaded', () => {
               wizardState.desempenhoOk = true;
               showFeedback(stepVinculo, 'success', `
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Estudantes calouros são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
+                Estudantes calouros (ingressantes em 2026.2) são avaliados puramente pelos critérios socioeconômicos da nova inscrição.
               `);
               revealStep('step-independencia');
             } else {
@@ -2191,10 +2184,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 Você poderá pleitear o <strong>Auxílio Moradia</strong>. Tenha em mãos o comprovante de pagamento recente e documentos de moradia adicionais recomendados ao final.
               `);
-            } else if (savedState.moradia.includes('cedido') || savedState.moradia === 'estudante_alojamento') {
+            } else if (savedState.moradia.includes('cedido')) {
               showFeedback(stepMoradia, 'warning', `
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                Moradia gratuita em imóvel cedido ou alojamento exige preenchimento da <strong>Declaração 2 (Situação de Moradia)</strong> para atestar sua habitação na cidade onde estuda.
+                Moradia gratuita em imóvel cedido exige preenchimento da <strong>Declaração 2 (Situação de Moradia)</strong> para atestar sua habitação na cidade onde estuda.
               `);
             } else {
               showFeedback(stepMoradia, 'success', `
@@ -2250,7 +2243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showFeedback(stepRenda, 'success', `
               <div class="feedback-inner-success" style="padding: 4px 0;">
                 <strong>Cálculo Concluído:</strong> Renda familiar per capita estimada em <strong>R$ ${perCapita.toFixed(2)}</strong> (equivalente a ${(perCapita / SALARIO_MINIMO).toFixed(2)} salários mínimos por pessoa).
-                <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salários mínimos - Item 3.2).</p>
+                <p style="margin-top: 6px;">Você está <strong>dentro do limite regulamentar</strong> do edital (teto de R$ ${SALARIO_MINIMO.toFixed(2)} per capita, correspondente a 1 salário mínimo - Item 3.2).</p>
               </div>
             `);
           } else {

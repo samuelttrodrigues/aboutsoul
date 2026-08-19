@@ -10,7 +10,7 @@ const GUIA_DATA = [
         "title": "GUIA DE AUXÍLIO ESTUDANTIL",
         "eyebrow": "PORTAL INFORMATIVO",
         "subtitle": "Passo a passo prático para solicitação e documentos (Edital 01/2026)",
-        "highlight": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE/NUAPE.",
+        "highlight": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE.",
         "dark": false,
         "elements": [
           {
@@ -41,7 +41,7 @@ const GUIA_DATA = [
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE/NUAPE."
+            "content": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE."
           }
         ]
       },
@@ -580,7 +580,7 @@ const GUIA_DATA = [
         "title": "APROVEITAMENTO DE DOCUMENTOS",
         "eyebrow": "REGRAS VETERANOS",
         "subtitle": "Edital 01/2026 PROAE",
-        "highlight": "Reaproveitar documentos sem manter exatamente a mesma realidade socioeconômica pode causar o indeferimento da inscrição a qualquer momento.",
+        "highlight": "Anexe a documentação completa necessária. Reaproveitar documentos sem manter exatamente a mesma realidade socioeconômica pode causar o indeferimento da inscrição a qualquer momento.",
         "dark": false,
         "checklist": true,
         "elements": [
@@ -625,9 +625,14 @@ const GUIA_DATA = [
             "content": "Ter tido desempenho acadêmico em 2025/2 com reprovação/cancelamento em no máximo 33% das matérias (ou interpor recurso nos dias 09 e 10/03/2026)."
           },
           {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "<b>Documentação obrigatória:</b> Anexe a documentação completa necessária (Termo de Reaproveitamento assinado via gov.br e Extrato CNIS atualizado de todos os membros maiores de 18 anos). Se houve qualquer alteração na família ou renda, envie todos os comprovantes completos de uma nova inscrição."
+          },
+          {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Se enquadra nessas regras? Você pode solicitar reaproveitamento. Caso contrário, deve emitir o extrato do <a href='#page-12'>CNIS</a>."
+            "content": "Se enquadra nessas regras? Anexe a documentação completa necessária e solicite o reaproveitamento. Caso contrário, deve emitir o extrato do <a href='#page-12'>CNIS</a> e apresentar todos os comprovantes."
           },
           {
             "type": "download",
@@ -1375,7 +1380,7 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Homologado: documento aprovado e validado pela assistente social."
+            "content": "• Homologado: documento aprovado e validado pela equipe avaliadora."
           },
           {
             "type": "card",
@@ -1386,11 +1391,6 @@ const GUIA_DATA = [
             "type": "card",
             "cls": "card bodyText",
             "content": "• ASSAE: Assessoria de Assuntos Estudantis (Estrutura local em cada Câmpus responsável pelo atendimento aos estudantes e execução dos auxílios)."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• NUAPE: Núcleo de Acompanhamento Psicopedagógico e Assistência Estudantil (Setor no Câmpus que presta suporte social, pedagógico e psicológico)."
           },
           {
             "type": "highlight",
