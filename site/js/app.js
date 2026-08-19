@@ -34,6 +34,94 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageContainer = document.getElementById('pageContainer');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const themeOptBtns = document.querySelectorAll('.theme-opt-btn');
+  const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+  // ==========================================================================
+  // 2. GERENCIAMENTO DE TEMAS E ACESSIBILIDADE
+  // ==========================================================================
+
+  const themes = ['light', 'dark', 'sepia', 'utfpr'];
+
+  const sunIconSvg = `
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  `;
+
+  const moonIconSvg = `
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  `;
+
+  function applyTheme(themeName) {
+    if (!themes.includes(themeName)) {
+      themeName = 'light';
+    }
+
+    document.documentElement.setAttribute('data-theme', themeName);
+    localStorage.setItem('guia_utfpr_theme', themeName);
+
+    // Atualiza classes ativas nos seletores desktop
+    themeOptBtns.forEach(btn => {
+      if (btn.getAttribute('data-theme-val') === themeName) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    // Atualiza ícone e rótulo no botão mobile
+    if (themeToggleMobile) {
+      if (themeName === 'dark' || themeName === 'utfpr') {
+        themeToggleMobile.innerHTML = sunIconSvg;
+        themeToggleMobile.setAttribute('title', 'Mudar para Tema Claro');
+        themeToggleMobile.setAttribute('aria-label', 'Mudar para Tema Claro');
+      } else {
+        themeToggleMobile.innerHTML = moonIconSvg;
+        themeToggleMobile.setAttribute('title', 'Mudar para Tema Noturno');
+        themeToggleMobile.setAttribute('aria-label', 'Mudar para Tema Noturno');
+      }
+    }
+  }
+
+  // Inicializa tema salvo ou detecta preferência do sistema
+  const savedTheme = localStorage.getItem('guia_utfpr_theme');
+  if (savedTheme && themes.includes(savedTheme)) {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  // Event Listeners nos botões de tema do cabeçalho desktop
+  themeOptBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme-val');
+      applyTheme(selectedTheme);
+    });
+  });
+
+  // Event Listener no botão de alternar tema mobile
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const nextTheme = (currentTheme === 'light') ? 'dark' : 'light';
+      applyTheme(nextTheme);
+    });
+  }
 
   // ==========================================================================
   // 3. CONSTRUÇÃO DA NAVEGAÇÃO LATERAL
@@ -163,11 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Atualiza Breadcrumbs e Progresso da Capa
       breadcrumbs.innerHTML = `<span>Início</span> &rsaquo; <span>Capa</span>`;
+      breadcrumbs.title = 'Início › Capa';
       return;
     }
     
     // Atualiza Breadcrumbs
     breadcrumbs.innerHTML = `<span>${page.categoryTitle}</span> &rsaquo; <span>${page.title}</span>`;
+    breadcrumbs.title = `${page.categoryTitle} › ${page.title}`;
     
     // Header da Página
     const header = document.createElement('header');

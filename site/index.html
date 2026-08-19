@@ -13,6 +13,20 @@
   
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Inicialização Imediata do Tema (Evita FOWT) -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('guia_utfpr_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
