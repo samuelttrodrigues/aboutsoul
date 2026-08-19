@@ -194,14 +194,14 @@ const GUIA_DATA = [
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Escolheu suas modalidades? Antes de acessar a plataforma, simule sua situação no <a href='#page-1'>Passo a Passo Personalizado</a>."
+            "content": "Escolheu suas modalidades? Antes de acessar a plataforma, simule sua situação no <a href='#page-1'>Simulador Interativo</a>."
           }
         ]
       },
       {
         "index": 1,
-        "title": "PASSO A PASSO PERSONALIZADO",
-        "eyebrow": "SIMULADOR INTERATIVO",
+        "title": "SIMULADOR INTERATIVO",
+        "eyebrow": "ROTEIRO E ELEGIBILIDADE",
         "subtitle": "Verifique sua elegibilidade e veja seu caminho de documentos recomendado",
         "dark": false,
         "elements": [
