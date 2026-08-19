@@ -579,7 +579,7 @@ const GUIA_DATA = [
         "index": 11,
         "title": "APROVEITAMENTO DE DOCUMENTOS",
         "eyebrow": "REGRAS VETERANOS",
-        "subtitle": "Edital 01/2026 PROGRAD/ASSAE",
+        "subtitle": "Edital 01/2026 PROAE",
         "highlight": "Reaproveitar documentos sem manter exatamente a mesma realidade socioeconômica pode causar o indeferimento da inscrição a qualquer momento.",
         "dark": false,
         "checklist": true,
@@ -597,7 +597,7 @@ const GUIA_DATA = [
           {
             "type": "text",
             "cls": "text subtitleText",
-            "content": "Edital 01/2026 PROGRAD/ASSAE"
+            "content": "Edital 01/2026 PROAE"
           },
           {
             "type": "card",
@@ -1380,12 +1380,17 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• NUAPE: Núcleo de Acompanhamento Psicopedagógico e Assistência Estudantil."
+            "content": "• PROAE: Pró-Reitoria de Assuntos Estudantis (Estrutura da Reitoria responsável pelas diretrizes, orçamento e editais gerais do Programa de Auxílio Estudantil da UTFPR)."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• ASSAE: Assessoria de Assuntos Estudantis da Reitoria."
+            "content": "• ASSAE: Assessoria de Assuntos Estudantis (Estrutura local em cada Câmpus responsável pelo atendimento aos estudantes e execução dos auxílios)."
+          },
+          {
+            "type": "card",
+            "cls": "card bodyText",
+            "content": "• NUAPE: Núcleo de Acompanhamento Psicopedagógico e Assistência Estudantil (Setor no Câmpus que presta suporte social, pedagógico e psicológico)."
           },
           {
             "type": "highlight",
@@ -1478,50 +1483,34 @@ const GUIA_DATA = [
       {
         "index": 25,
         "title": "CONTATOS E ORIENTAÇÃO FINAL",
-        "eyebrow": "ASSAE/NUAPE",
-        "subtitle": "Na dúvida, procure ajuda antes de enviar",
-        "highlight": "Você não precisa enfrentar o processo sozinho. Informação correta evita problemas futuros.",
+        "eyebrow": "PROAE / ASSAE",
+        "subtitle": "Canais de atendimento dos 13 campi e orientações preventivas",
+        "highlight": "Você não precisa enfrentar o processo sozinho. A equipe de assistência estudantil do seu campus está pronta para te orientar.",
         "dark": false,
         "elements": [
           {
-            "type": "text",
-            "cls": "text eyebrowText",
-            "content": "ASSAE/NUAPE"
-          },
-          {
-            "type": "text",
-            "cls": "text titleText",
-            "content": "CONTATOS E ORIENTAÇÃO FINAL"
-          },
-          {
-            "type": "text",
-            "cls": "text subtitleText",
-            "content": "Na dúvida, procure ajuda antes de enviar"
+            "type": "campi_contacts",
+            "title": "Canais de Atendimento por Câmpus"
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• E-mail: auxilioestudantil-fb@utfpr.edu.br"
+            "content": "• <b>Acompanhamento Contínuo:</b> Acompanhe diariamente o Portal do Aluno e o e-mail institucional (inclusive a caixa de SPAM) durante todas as etapas do processo."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• WhatsApp: (46) 3151-1213"
+            "content": "• <b>Orientação Preventiva:</b> Na dúvida sobre qualquer documento, declaração ou cálculo de renda per capita, procure a ASSAE/NUAPE do seu campus com antecedência."
           },
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• Acompanhe sempre o Portal do Aluno e os comunicados oficiais."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "• Procure orientação antes de enviar informações incompletas."
+            "content": "• <b>Atenção aos Prazos:</b> O sistema não permite envio ou complementação de documentos após o encerramento do prazo fixado em cronograma."
           },
           {
             "type": "highlight",
             "cls": "highlight bodyText",
-            "content": "Você não precisa enfrentar o processo sozinho. Informação correta evita problemas futuros."
+            "content": "A Reitoria (PROAE) estabelece as diretrizes gerais e cada Câmpus (ASSAE) realiza o atendimento direto aos estudantes. Conte sempre com o apoio da assistência estudantil da UTFPR!"
           }
         ]
       }
@@ -1545,7 +1534,7 @@ const GUIA_DATA = [
             "fileType": "pdf",
             "fileSize": "19.2 MB",
             "url": "documentos/edital aux.pdf",
-            "description": "Edital nº 01/2026 PROGRAD/ASSAE que regula as concessões e manutenção dos auxílios estudantis."
+            "description": "Edital nº 01/2026 PROAE que regula as concessões e manutenção dos auxílios estudantis."
           },
           {
             "type": "download",
@@ -1671,7 +1660,7 @@ const GUIA_DATA = [
         "elements": [
           {
             "type": "pdf-viewer",
-            "title": "Edital Oficial nº 01/2026 PROGRAD/ASSAE",
+            "title": "Edital Oficial nº 01/2026 PROAE",
             "url": "documentos/edital aux.pdf"
           }
         ]

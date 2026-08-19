@@ -2039,3 +2039,175 @@ button, input, select {
   }
 }
 
+/* ==========================================================================
+   SELETOR DE CONTATOS DOS 13 CAMPI (ASSAE / NUAPE)
+   ========================================================================== */
+
+.campi-container-block {
+  width: 100%;
+}
+
+.campi-contacts-wrapper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.campi-selector-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campi-selector-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-title);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.campi-selector-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.campi-btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.campus-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.campus-btn:hover {
+  border-color: var(--primary);
+  background-color: var(--bg-card-hover);
+  color: var(--text-title);
+  transform: translateY(-1px);
+}
+
+.campus-btn.active {
+  background-color: var(--primary);
+  color: #000000;
+  border-color: var(--primary);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.campus-info-card {
+  background-color: var(--bg-app);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeIn 0.3s ease-out;
+  border-left: 4px solid var(--primary);
+}
+
+.campus-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.campus-info-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-title);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campus-tag-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--primary-glow);
+  color: var(--text-title);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--primary);
+}
+
+.campus-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.campus-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text-main);
+}
+
+.campus-detail-row svg {
+  flex-shrink: 0;
+  color: var(--primary);
+  margin-top: 3px;
+}
+
+.campus-detail-row a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  word-break: break-all;
+  transition: opacity 0.2s ease;
+}
+
+.campus-detail-row a:hover {
+  opacity: 0.8;
+}
+
+[data-theme="light"] .campus-detail-row a,
+[data-theme="sepia"] .campus-detail-row a {
+  color: #b48500;
+}
+
+@media (max-width: 768px) {
+  .campi-contacts-wrapper {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .campus-info-card {
+    padding: 14px;
+  }
+  
+  .campus-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+

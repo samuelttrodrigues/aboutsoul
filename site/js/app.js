@@ -423,6 +423,11 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
         pageWrapper.appendChild(pdfWrap);
+      } else if (el.type === 'campi_contacts') {
+        const campiWrapper = document.createElement('div');
+        campiWrapper.className = 'campi-container-block';
+        renderCampiContacts(campiWrapper);
+        pageWrapper.appendChild(campiWrapper);
       } else if (el.type === 'wizard') {
         const wizardContainer = document.createElement('div');
         wizardContainer.className = 'wizard-wrapper';
@@ -434,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Insere elementsContainer se tiver elementos dentro
     if (elementsContainer.children.length > 0) {
-      // Se houver algum box de destaque ou vídeo, colocamos o container de cards antes
+      // Se houver algum box de destaque ou vídeo, colocamos o container de cards antes dele
       const firstMediaEl = pageWrapper.querySelector('.highlight-box, .video-wrapper, .pdf-viewer-wrapper');
       if (firstMediaEl) {
         pageWrapper.insertBefore(elementsContainer, firstMediaEl);
@@ -451,6 +456,197 @@ document.addEventListener('DOMContentLoaded', () => {
     pageContainer.appendChild(pageWrapper);
   }
 
+  // Dados de contato e horários dos 13 Câmpus da UTFPR (ASSAE / NUAPE) em ordem alfabética
+  const CAMPI_CONTACTS_DATA = [
+    {
+      name: 'Apucarana',
+      assaeEmail: 'assae-ap@utfpr.edu.br',
+      nuapeEmail: 'nuape-ap@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(43) 3162-1369 / (43) 3162-1200',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+    },
+    {
+      name: 'Campo Mourão',
+      assaeEmail: 'assae-cm@utfpr.edu.br',
+      nuapeEmail: 'nuape-cm@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(44) 3518-1453 / (44) 3518-1465',
+      hours: 'Seg, Ter e Sex: 08h às 12h e 13h às 17h | Qua e Qui: 13h às 17h e 18h às 22h'
+    },
+    {
+      name: 'Cornélio Procópio',
+      assaeEmail: 'assae-cp@utfpr.edu.br',
+      nuapeEmail: 'nuape-cp@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(43) 3133-3000',
+      hours: 'Segunda a sexta-feira: 08h às 20h'
+    },
+    {
+      name: 'Curitiba',
+      assaeEmail: 'assae-ct@utfpr.edu.br',
+      nuapeEmail: 'nuape-ct@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(41) 3310-4545',
+      hours: 'Segunda a sexta-feira: 08h30 às 12h e das 13h às 17h30'
+    },
+    {
+      name: 'Dois Vizinhos',
+      assaeEmail: 'assae-dv@utfpr.edu.br',
+      nuapeEmail: 'nuape-dv@utfpr.edu.br',
+      auxilioEmail: 'auxilio_estudantil-dv@utfpr.edu.br',
+      phone: '(46) 3536-8900',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+    },
+    {
+      name: 'Francisco Beltrão',
+      assaeEmail: 'assae-fb@utfpr.edu.br',
+      nuapeEmail: 'nuape-fb@utfpr.edu.br',
+      auxilioEmail: 'auxilioestudantil-fb@utfpr.edu.br',
+      phone: '(46) 3151-1213 (WhatsApp e Fone)',
+      hours: 'Segunda a sexta-feira: 13h30 às 17h30'
+    },
+    {
+      name: 'Guarapuava',
+      assaeEmail: 'assae-gp@utfpr.edu.br',
+      nuapeEmail: 'nuape-gp@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(42) 3141-6850',
+      hours: 'Seg, Qua e Sex: 08h às 12h e 13h às 20h | Ter e Qui: 08h às 12h e 13h às 17h'
+    },
+    {
+      name: 'Londrina',
+      assaeEmail: 'assae-ld@utfpr.edu.br',
+      nuapeEmail: 'nuape-ld@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(43) 3315-6100',
+      hours: 'Seg e Sex: 08h às 12h e 14h às 18h | Ter, Qua e Qui: 08h às 12h e 14h às 20h'
+    },
+    {
+      name: 'Medianeira',
+      assaeEmail: 'assae-md@utfpr.edu.br',
+      nuapeEmail: 'nuape-md@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(45) 3240-8000',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
+    },
+    {
+      name: 'Pato Branco',
+      assaeEmail: 'assae-pb@utfpr.edu.br',
+      nuapeEmail: 'nuape-pb@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(46) 3220-2500',
+      hours: 'Segunda a sexta-feira: 08h às 12h e das 13h30 às 17h30'
+    },
+    {
+      name: 'Ponta Grossa',
+      assaeEmail: 'assae-pg@utfpr.edu.br',
+      nuapeEmail: 'nuape-pg@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(42) 3220-4800',
+      hours: 'Seg, Qua e Sex: 09h às 18h | Ter e Qui: 10h às 19h'
+    },
+    {
+      name: 'Santa Helena',
+      assaeEmail: 'assae-sh@utfpr.edu.br',
+      nuapeEmail: 'nuape-sh@utfpr.edu.br',
+      auxilioEmail: 'auxilioestudantil-sh@utfpr.edu.br',
+      phone: '(45) 3268-8800',
+      hours: 'Seg a Qui: 13h às 21h30 | Sex: 08h às 12h e das 13h às 17h'
+    },
+    {
+      name: 'Toledo',
+      assaeEmail: 'assae-td@utfpr.edu.br',
+      nuapeEmail: 'nuape-td@utfpr.edu.br',
+      auxilioEmail: null,
+      phone: '(45) 3379-6800',
+      hours: 'Seg, Qua e Qui: 07h30 às 11h30 e 13h às 20h | Ter e Sex: 07h30 às 11h30 e 13h às 17h'
+    }
+  ];
+
+  // Renderiza o seletor interativo dos 13 campi
+  function renderCampiContacts(container) {
+    const wrap = document.createElement('div');
+    wrap.className = 'campi-contacts-wrapper';
+    
+    wrap.innerHTML = `
+      <div class="campi-selector-header">
+        <h3 class="campi-selector-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary); flex-shrink: 0;">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Selecione o seu Câmpus da UTFPR:</span>
+        </h3>
+        <p class="campi-selector-subtitle">Clique no botão correspondente para visualizar os e-mails, telefones e horários de atendimento da ASSAE e NUAPE:</p>
+      </div>
+      <div class="campi-btn-grid" id="campiBtnGrid"></div>
+      <div class="campus-info-card" id="campusInfoCard"></div>
+    `;
+
+    const btnGrid = wrap.querySelector('#campiBtnGrid');
+    const infoCard = wrap.querySelector('#campusInfoCard');
+
+    function updateCampusCard(campus) {
+      infoCard.innerHTML = `
+        <div class="campus-info-header">
+          <div class="campus-info-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--primary); flex-shrink: 0;">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>UTFPR Câmpus ${campus.name}</span>
+          </div>
+          <span class="campus-tag-badge">ASSAE / NUAPE</span>
+        </div>
+        <div class="campus-details-list">
+          <div class="campus-detail-row">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <div><strong>Horário de Atendimento:</strong> <span>${campus.hours}</span></div>
+          </div>
+          <div class="campus-detail-row">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div><strong>E-mail ASSAE (Atendimento Câmpus):</strong> <a href="mailto:${campus.assaeEmail}">${campus.assaeEmail}</a></div>
+          </div>
+          <div class="campus-detail-row">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div><strong>E-mail NUAPE (Apoio ao Estudante):</strong> <a href="mailto:${campus.nuapeEmail}">${campus.nuapeEmail}</a></div>
+          </div>
+          ${campus.auxilioEmail ? `
+            <div class="campus-detail-row">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <div><strong>E-mail Específico de Auxílio Estudantil:</strong> <a href="mailto:${campus.auxilioEmail}">${campus.auxilioEmail}</a></div>
+            </div>
+          ` : ''}
+          ${campus.phone ? `
+            <div class="campus-detail-row">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <div><strong>Telefone / Atendimento:</strong> <span>${campus.phone}</span></div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    CAMPI_CONTACTS_DATA.forEach((campus, idx) => {
+      const btn = document.createElement('button');
+      btn.className = `campus-btn ${idx === 0 ? 'active' : ''}`;
+      btn.innerText = campus.name;
+      btn.setAttribute('type', 'button');
+      btn.addEventListener('click', () => {
+        btnGrid.querySelectorAll('.campus-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateCampusCard(campus);
+      });
+      btnGrid.appendChild(btn);
+    });
+
+    // Exibe o primeiro campus por padrão (Apucarana)
+    updateCampusCard(CAMPI_CONTACTS_DATA[0]);
+
+    container.appendChild(wrap);
+  }
+
   // Renderiza o visual de Capa personalizado
   function renderCapa(container, page) {
     const capaDiv = document.createElement('div');
@@ -462,7 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="capa-subtitle">${page.subtitle}</p>
       
       <div class="capa-description-box">
-        <p>Este informativo interativo foi criado para simplificar o seu processo de inscrição no <strong>Programa de Auxílio Estudantil da UTFPR (Edital 01/2026 PROGRAD/ASSAE)</strong>. Aqui você encontrará instruções diretas, modelos de documentos e listas de verificação para garantir que sua solicitação seja enviada sem erros.</p>
+        <p>Este informativo interativo foi criado para simplificar o seu processo de inscrição no <strong>Programa de Auxílio Estudantil da UTFPR (Edital 01/2026 PROAE)</strong>. Aqui você encontrará instruções diretas, modelos de documentos e listas de verificação para garantir que sua solicitação seja enviada sem erros.</p>
       </div>
       
       <div class="capa-features-grid">
@@ -579,7 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       <!-- Passo 1: Edital em Mãos -->
       <div class="wizard-step active" id="step-edital">
-        <p class="wizard-question">1. Você já leu o Edital 01/2026 PROGRAD/ASSAE ou o tem em mãos?</p>
+        <p class="wizard-question">1. Você já leu o Edital 01/2026 PROAE ou o tem em mãos?</p>
         <div class="wizard-options">
           <button class="wizard-opt-btn" data-value="sim">Sim, já li / estou com ele</button>
           <button class="wizard-opt-btn" data-value="nao">Não li ainda</button>
@@ -1412,7 +1608,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Reaproveitamento de Documentos Autorizado
           </div>
-          <p style="margin-top: 8px; font-size: 0.9rem; font-weight: 550; color: var(--text-main);">Você atende aos critérios do Item 5.1 do Edital 01/2026 PROGRAD/ASSAE. Seu cadastro socioeconômico de 2025 será reaproveitado.</p>
+          <p style="margin-top: 8px; font-size: 0.9rem; font-weight: 550; color: var(--text-main);">Você atende aos critérios do Item 5.1 do Edital 01/2026 PROAE. Seu cadastro socioeconômico de 2025 será reaproveitado.</p>
         `;
       } else {
         let isEligibleGeneral = (wizardState.desempenhoOk !== false) && (wizardState.rendaElegivel !== false);
