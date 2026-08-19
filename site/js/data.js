@@ -9,7 +9,7 @@ const GUIA_DATA = [
         "index": 0,
         "title": "GUIA DE AUXÍLIO ESTUDANTIL",
         "eyebrow": "PORTAL INFORMATIVO",
-        "subtitle": "Passo a passo prático para solicitação e documentos (Edital 01/2026)",
+        "subtitle": "Projeto SOMA 2026",
         "highlight": "Este guia não substitui o edital vigente. Em caso de dúvida, consulte os canais oficiais da ASSAE.",
         "dark": false,
         "elements": [
@@ -24,19 +24,9 @@ const GUIA_DATA = [
             "content": "GUIA DE AUXÍLIO ESTUDANTIL"
           },
           {
-            "type": "text",
-            "cls": "text subtitleText",
-            "content": "Passo a passo prático para solicitação e documentos (Edital 01/2026)"
-          },
-          {
             "type": "card",
             "cls": "card bodyText",
-            "content": "Organização linear em etapas para acompanhar o processo do início ao fim."
-          },
-          {
-            "type": "card",
-            "cls": "card bodyText",
-            "content": "Instruções específicas para emissão sem erros do CNIS e IRPF."
+            "content": "<b>Projeto SOMA 2026</b><br>Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão:<br>• Andrey Luisi Dantas Matias<br>• Samuel Thiago Telles Rodrigues<br><b>Orientação:</b> Kleber Durati"
           },
           {
             "type": "highlight",

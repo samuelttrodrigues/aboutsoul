@@ -791,7 +791,13 @@ document.addEventListener('DOMContentLoaded', () => {
     capaDiv.innerHTML = `
       <span class="capa-eyebrow">${page.eyebrow}</span>
       <h1 class="capa-title">${page.title}</h1>
-      <p class="capa-subtitle">${page.subtitle}</p>
+      
+      <div class="capa-credits-box" style="margin: 0 auto 28px auto; max-width: 800px; width: 100%; padding: 18px 22px; background-color: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: left; font-size: 0.95rem; line-height: 1.6; color: var(--text-main);">
+        <p style="font-weight: 700; font-size: 1.05rem; color: var(--primary); margin-bottom: 4px;">Projeto SOMA 2026</p>
+        <p style="margin-bottom: 6px;">Site desenvolvido pelos estudantes guias da UTFPR – Câmpus Francisco Beltrão:</p>
+        <p style="font-weight: 600; margin-bottom: 6px;">• Andrey Luisi Dantas Matias<br>• Samuel Thiago Telles Rodrigues</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);"><strong>Orientação:</strong> Kleber Durati</p>
+      </div>
       
       <div class="capa-description-box">
         <p>Este informativo interativo foi criado para simplificar o seu processo de inscrição no <strong>Programa de Auxílio Estudantil da UTFPR (Edital 01/2026 PROAE)</strong>. Aqui você encontrará instruções diretas, modelos de documentos e listas de verificação para garantir que sua solicitação seja enviada sem erros.</p>
