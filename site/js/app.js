@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. GERENCIAMENTO DE TEMAS E ACESSIBILIDADE
   // ==========================================================================
 
-  const themes = ['light', 'dark', 'sepia', 'utfpr'];
+  const themes = ['light', 'dark'];
 
   const sunIconSvg = `
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -84,14 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Atualiza ícone e rótulo no botão mobile
     if (themeToggleMobile) {
-      if (themeName === 'dark' || themeName === 'utfpr') {
+      if (themeName === 'dark') {
         themeToggleMobile.innerHTML = sunIconSvg;
         themeToggleMobile.setAttribute('title', 'Mudar para Tema Claro');
         themeToggleMobile.setAttribute('aria-label', 'Mudar para Tema Claro');
       } else {
         themeToggleMobile.innerHTML = moonIconSvg;
-        themeToggleMobile.setAttribute('title', 'Mudar para Tema Noturno');
-        themeToggleMobile.setAttribute('aria-label', 'Mudar para Tema Noturno');
+        themeToggleMobile.setAttribute('title', 'Mudar para Tema Escuro');
+        themeToggleMobile.setAttribute('aria-label', 'Mudar para Tema Escuro');
       }
     }
   }
@@ -151,8 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.className = `page-item-link page-link-${page.index}`;
-        a.textContent = page.title;
-        a.href = `#page-${page.index}`;
+        
+        if (page.externalUrl) {
+          a.href = page.externalUrl;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.innerHTML = `<span>${page.title}</span> <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px; vertical-align: middle; opacity: 0.8;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`;
+        } else {
+          a.textContent = page.title;
+          a.href = `#page-${page.index}`;
+        }
         
         a.addEventListener('click', (e) => {
           // No mobile, fecha a barra lateral ao clicar
@@ -396,33 +404,44 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
         downloadsContainer.appendChild(downloadCard);
-      } else if (el.type === 'pdf-viewer') {
-        const pdfWrap = document.createElement('div');
-        pdfWrap.className = 'pdf-viewer-wrapper';
-        pdfWrap.innerHTML = `
-          <div class="pdf-viewer-header">
-            <h3>Visualização Direta do Documento</h3>
-            <p>Caso o seu navegador não suporte visualização direta de arquivos PDF, você pode baixá-lo no botão inferior.</p>
+      } else if (el.type === 'official_link') {
+        const linkCard = document.createElement('div');
+        linkCard.className = 'official-edital-card';
+        linkCard.innerHTML = `
+          <div class="official-edital-icon-wrap">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
           </div>
-          <div class="pdf-viewer-container">
-            <object data="${el.url}" type="application/pdf" width="100%" height="700px">
-              <iframe src="${el.url}" width="100%" height="700px" style="border: none;">
-                Este navegador não suporta visualização de PDFs.
-              </iframe>
-            </object>
-          </div>
-          <div class="pdf-viewer-footer">
-            <a href="${el.url}" download class="download-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: middle;">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Baixar Documento Completo</span>
-            </a>
+          <div class="official-edital-info">
+            <span class="meta-tag type-pdf" style="margin-bottom: 8px; display: inline-block;">PUBLICAÇÃO SEI-UTFPR</span>
+            <h2 class="official-edital-title">${el.title}</h2>
+            <p class="official-edital-desc">${el.description}</p>
+            <div class="official-edital-actions">
+              <a href="${el.url}" target="_blank" rel="noopener noreferrer" class="btn-edital-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Acessar Publicação Oficial no SEI-UTFPR</span>
+              </a>
+              <a href="documentos/edital aux.pdf" download class="btn-edital-download">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Baixar Cópia em PDF</span>
+              </a>
+            </div>
           </div>
         `;
-        pageWrapper.appendChild(pdfWrap);
+        pageWrapper.appendChild(linkCard);
       } else if (el.type === 'campi_contacts') {
         const campiWrapper = document.createElement('div');
         campiWrapper.className = 'campi-container-block';
@@ -440,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Insere elementsContainer se tiver elementos dentro
     if (elementsContainer.children.length > 0) {
       // Se houver algum box de destaque ou vídeo, colocamos o container de cards antes dele
-      const firstMediaEl = pageWrapper.querySelector('.highlight-box, .video-wrapper, .pdf-viewer-wrapper');
+      const firstMediaEl = pageWrapper.querySelector('.highlight-box, .video-wrapper, .official-edital-card');
       if (firstMediaEl) {
         pageWrapper.insertBefore(elementsContainer, firstMediaEl);
       } else {
@@ -456,12 +475,11 @@ document.addEventListener('DOMContentLoaded', () => {
     pageContainer.appendChild(pageWrapper);
   }
 
-  // Dados de contato e horários dos 13 Câmpus da UTFPR (ASSAE / NUAPE) em ordem alfabética
+  // Dados de contato e horários dos 13 Câmpus da UTFPR (ASSAE) em ordem alfabética
   const CAMPI_CONTACTS_DATA = [
     {
       name: 'Apucarana',
       assaeEmail: 'assae-ap@utfpr.edu.br',
-      nuapeEmail: 'nuape-ap@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(43) 3162-1369 / (43) 3162-1200',
       hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
@@ -469,7 +487,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Campo Mourão',
       assaeEmail: 'assae-cm@utfpr.edu.br',
-      nuapeEmail: 'nuape-cm@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(44) 3518-1453 / (44) 3518-1465',
       hours: 'Seg, Ter e Sex: 08h às 12h e 13h às 17h | Qua e Qui: 13h às 17h e 18h às 22h'
@@ -477,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Cornélio Procópio',
       assaeEmail: 'assae-cp@utfpr.edu.br',
-      nuapeEmail: 'nuape-cp@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(43) 3133-3000',
       hours: 'Segunda a sexta-feira: 08h às 20h'
@@ -485,7 +501,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Curitiba',
       assaeEmail: 'assae-ct@utfpr.edu.br',
-      nuapeEmail: 'nuape-ct@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(41) 3310-4545',
       hours: 'Segunda a sexta-feira: 08h30 às 12h e das 13h às 17h30'
@@ -493,7 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Dois Vizinhos',
       assaeEmail: 'assae-dv@utfpr.edu.br',
-      nuapeEmail: 'nuape-dv@utfpr.edu.br',
       auxilioEmail: 'auxilio_estudantil-dv@utfpr.edu.br',
       phone: '(46) 3536-8900',
       hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
@@ -501,7 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Francisco Beltrão',
       assaeEmail: 'assae-fb@utfpr.edu.br',
-      nuapeEmail: 'nuape-fb@utfpr.edu.br',
       auxilioEmail: 'auxilioestudantil-fb@utfpr.edu.br',
       phone: '(46) 3151-1213 (WhatsApp e Fone)',
       hours: 'Segunda a sexta-feira: 13h30 às 17h30'
@@ -509,7 +522,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Guarapuava',
       assaeEmail: 'assae-gp@utfpr.edu.br',
-      nuapeEmail: 'nuape-gp@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(42) 3141-6850',
       hours: 'Seg, Qua e Sex: 08h às 12h e 13h às 20h | Ter e Qui: 08h às 12h e 13h às 17h'
@@ -517,7 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Londrina',
       assaeEmail: 'assae-ld@utfpr.edu.br',
-      nuapeEmail: 'nuape-ld@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(43) 3315-6100',
       hours: 'Seg e Sex: 08h às 12h e 14h às 18h | Ter, Qua e Qui: 08h às 12h e 14h às 20h'
@@ -525,7 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Medianeira',
       assaeEmail: 'assae-md@utfpr.edu.br',
-      nuapeEmail: 'nuape-md@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(45) 3240-8000',
       hours: 'Segunda a sexta-feira: 08h às 12h e das 13h às 17h'
@@ -533,7 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Pato Branco',
       assaeEmail: 'assae-pb@utfpr.edu.br',
-      nuapeEmail: 'nuape-pb@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(46) 3220-2500',
       hours: 'Segunda a sexta-feira: 08h às 12h e das 13h30 às 17h30'
@@ -541,7 +550,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Ponta Grossa',
       assaeEmail: 'assae-pg@utfpr.edu.br',
-      nuapeEmail: 'nuape-pg@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(42) 3220-4800',
       hours: 'Seg, Qua e Sex: 09h às 18h | Ter e Qui: 10h às 19h'
@@ -549,7 +557,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Santa Helena',
       assaeEmail: 'assae-sh@utfpr.edu.br',
-      nuapeEmail: 'nuape-sh@utfpr.edu.br',
       auxilioEmail: 'auxilioestudantil-sh@utfpr.edu.br',
       phone: '(45) 3268-8800',
       hours: 'Seg a Qui: 13h às 21h30 | Sex: 08h às 12h e das 13h às 17h'
@@ -557,7 +564,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Toledo',
       assaeEmail: 'assae-td@utfpr.edu.br',
-      nuapeEmail: 'nuape-td@utfpr.edu.br',
       auxilioEmail: null,
       phone: '(45) 3379-6800',
       hours: 'Seg, Qua e Qui: 07h30 às 11h30 e 13h às 20h | Ter e Sex: 07h30 às 11h30 e 13h às 17h'
@@ -578,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </svg>
           <span>Selecione o seu Câmpus da UTFPR:</span>
         </h3>
-        <p class="campi-selector-subtitle">Clique no botão correspondente para visualizar os e-mails, telefones e horários de atendimento da ASSAE e NUAPE:</p>
+        <p class="campi-selector-subtitle">Clique no botão correspondente para visualizar os e-mails, telefones e horários de atendimento da ASSAE:</p>
       </div>
       <div class="campi-btn-grid" id="campiBtnGrid"></div>
       <div class="campus-info-card" id="campusInfoCard"></div>
@@ -597,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </svg>
             <span>UTFPR Câmpus ${campus.name}</span>
           </div>
-          <span class="campus-tag-badge">ASSAE / NUAPE</span>
+          <span class="campus-tag-badge">ASSAE</span>
         </div>
         <div class="campus-details-list">
           <div class="campus-detail-row">
@@ -607,10 +613,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="campus-detail-row">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             <div><strong>E-mail ASSAE (Atendimento Câmpus):</strong> <a href="mailto:${campus.assaeEmail}">${campus.assaeEmail}</a></div>
-          </div>
-          <div class="campus-detail-row">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <div><strong>E-mail NUAPE (Apoio ao Estudante):</strong> <a href="mailto:${campus.nuapeEmail}">${campus.nuapeEmail}</a></div>
           </div>
           ${campus.auxilioEmail ? `
             <div class="campus-detail-row">
@@ -1163,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (val === 'nao') {
           showFeedback(stepEdital, 'warning', `
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <strong>Atenção:</strong> É altamente recomendável ler o edital oficial. Você pode consultá-lo na página <a href="#page-28">Edital Oficial</a> do guia.
+            <strong>Atenção:</strong> É altamente recomendável ler o edital oficial. Você pode consultar a <a href="https://sei.utfpr.edu.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=6394999&id_orgao_publicacao=0" target="_blank" rel="noopener noreferrer">Publicação Oficial do Edital no SEI-UTFPR</a>.
           `);
         } else {
           showFeedback(stepEdital, 'success', `
@@ -1667,13 +1669,13 @@ document.addEventListener('DOMContentLoaded', () => {
             docsList.push('<b>Comprovante de Isenção MIR:</b> Print da consulta "Não Entregue" do Portal Meu Imposto de Renda da Receita Federal para os membros maiores de 18 anos isentos (precisa conter CPF/nome no topo e autenticação no rodapé).');
           } else if (wizardState.irpf === 'isentos_sem_mir') {
             docsList.push('<b>Comprovante de Isenção MIR:</b> Print do Portal Meu Imposto de Renda para os membros isentos com acesso.');
-            docsList.push('<b>Declaração VII - Não Obrigatoriedade de IRPF (<a href="#page-27">Baixar Modelo 7</a>):</b> Obrigatória para cada membro maior de 18 anos isento que não possui acesso ao gov.br Prata/Ouro para emitir o MIR. <b>Preenchimento:</b> Marque os anos de 2024 e/ou 2025 e o membro deve assinar.');
+            docsList.push('<b>Declaração VII - Não Obrigatoriedade de IRPF (<a href="documentos/Declaração 7 - Não obrigatoriedade IR.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 7 (.docx)</a>):</b> Obrigatória para cada membro maior de 18 anos isento que não possui acesso ao gov.br Prata/Ouro para emitir o MIR. <b>Preenchimento:</b> Marque os anos de 2024 e/ou 2025 e o membro deve assinar.');
           }
         }
         
         // 5. Independência Financeira
         if (wizardState.independencia === 'sim') {
-          docsList.push('<b>Declaração IV - Independência Financeira (<a href="#page-27">Baixar Modelo 4</a>):</b> Deve ser preenchida e assinada por seus <b>pais ou responsável legal</b>, atestando expressamente que não contribuem financeira ou materialmente com o estudante. Deve conter as assinaturas e telefones de duas testemunhas externas (não familiares).');
+          docsList.push('<b>Declaração IV - Independência Financeira (<a href="documentos/Declaração 4 - Independência financeira.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 4 (.docx)</a>):</b> Deve ser preenchida e assinada por seus <b>pais ou responsável legal</b>, atestando expressamente que não contribuem financeira ou materialmente com o estudante. Deve conter as assinaturas e telefones de duas testemunhas externas (não familiares).');
           docsList.push('<b>Comprovantes de Independência:</b> Comprovante de endereço próprio diferente do dos pais, além de comprovante de renda própria suficiente para prover a subsistência.');
         }
         
@@ -1682,28 +1684,28 @@ document.addEventListener('DOMContentLoaded', () => {
           docsList.push('<b>Comprovante de Despesa de Moradia:</b> Cópia do contrato de locação em nome de algum membro do grupo familiar e recibo de pagamento do aluguel/financiamento recente.');
         } else if (wizardState.moradia === 'estudante_aluguel_contrato') {
           docsList.push('<b>Comprovantes para Auxílio Moradia:</b> Cópia do Contrato de Locação em seu nome e recibo de pagamento do aluguel recente na cidade do campus.');
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Resido sozinho e pago R$ ... de aluguel). Assine o documento.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Resido sozinho e pago R$ ... de aluguel). Assine o documento.');
         } else if (wizardState.moradia === 'estudante_aluguel_sem_contrato') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Resido sozinho e pago R$ ... de aluguel). Assine.');
-          docsList.push('<b>Declaração VI - Comprovação de Pagamento de Aluguel (<a href="#page-27">Baixar Modelo 6</a>):</b> Deve ser preenchida e assinada pelo **proprietário/locador** do imóvel, atestando a locação informal e o valor pago. Requer assinatura de duas testemunhas de referência com dados completos (não familiares). <b>Preenchimento:</b> Marque a **Opção 1** (Sou proprietário do imóvel e Alugo residência sem contrato).');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Resido sozinho e pago R$ ... de aluguel). Assine.');
+          docsList.push('<b>Declaração VI - Comprovação de Pagamento de Aluguel (<a href="documentos/Declaração 6 - Pagamento de aluguel.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 6 (.docx)</a>):</b> Deve ser preenchida e assinada pelo **proprietário/locador** do imóvel, atestando a locação informal e o valor pago. Requer assinatura de duas testemunhas de referência com dados completos (não familiares). <b>Preenchimento:</b> Marque a **Opção 1** (Sou proprietário do imóvel e Alugo residência sem contrato).');
           docsList.push('<b>Comprovante de Pagamento:</b> Recibo recente de pagamento do aluguel ou comprovante de transferência bancária ao proprietário.');
         } else if (wizardState.moradia === 'estudante_pensionato') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Resido em pensionato e pago R$ ...). Assine.');
-          docsList.push('<b>Declaração VI - Comprovação de Pagamento de Aluguel (<a href="#page-27">Baixar Modelo 6</a>):</b> Preenchida e assinada pelo **proprietário do pensionato**. <b>Preenchimento:</b> Marque a **Opção 2** (Alugo vaga em regime de pensionato). Deve ser assinado pelo dono do pensionato e conter duas testemunhas.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Resido em pensionato e pago R$ ...). Assine.');
+          docsList.push('<b>Declaração VI - Comprovação de Pagamento de Aluguel (<a href="documentos/Declaração 6 - Pagamento de aluguel.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 6 (.docx)</a>):</b> Preenchida e assinada pelo **proprietário do pensionato**. <b>Preenchimento:</b> Marque a **Opção 2** (Alugo vaga em regime de pensionato). Deve ser assinado pelo dono do pensionato e conter duas testemunhas.');
           docsList.push('<b>Comprovante de Pensionato:</b> Recibo de pagamento mensal recente.');
         } else if (wizardState.moradia === 'estudante_compartilhada') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 4</b> (Resido em moradia compartilhada/república, pagando R$ ... de aluguel). Liste os nomes, CPF e telefones dos seus colegas de república.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 4</b> (Resido em moradia compartilhada/república, pagando R$ ... de aluguel). Liste os nomes, CPF e telefones dos seus colegas de república.');
           docsList.push('<b>Contrato de Locação e Comprovantes:</b> Contrato de aluguel da república e recibo de pagamento do último mês, acompanhados de comprovantes de rateio se houver.');
-          docsList.push('<b>Declaração VI - Comprovação de Aluguel (<a href="#page-27">Baixar Modelo 6</a>):</b> Caso a república não possua contrato formal assinado, o proprietário deve preencher e assinar a Declaração VI (Opção 1).');
+          docsList.push('<b>Declaração VI - Comprovação de Aluguel (<a href="documentos/Declaração 6 - Pagamento de aluguel.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 6 (.docx)</a>):</b> Caso a república não possua contrato formal assinado, o proprietário deve preencher e assinar a Declaração VI (Opção 1).');
         } else if (wizardState.moradia === 'estudante_cedido') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Resido sozinho e não pago aluguel - cedido gratuitamente) ou a opção de residência com familiares correspondente. Requer preenchimento de duas testemunhas de referência com dados completos (não familiares).');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Resido sozinho e não pago aluguel - cedido gratuitamente) ou a opção de residência com familiares correspondente. Requer preenchimento de duas testemunhas de referência com dados completos (não familiares).');
         } else if (wizardState.moradia === 'estudante_alojamento') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> e informe no texto a residência gratuita em alojamento estudantil oferecido pela UTFPR.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 2</b> e informe no texto a residência gratuita em alojamento estudantil oferecido pela UTFPR.');
         } else if (wizardState.moradia === 'estudante_casado_aluguel') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Resido com cônjuge/filhos e pago R$ ...). Informou nome e CPF dos familiares.');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Resido com cônjuge/filhos e pago R$ ...). Informou nome e CPF dos familiares.');
           docsList.push('<b>Contrato de Locação e Recibos:</b> Contrato de aluguel e recibo recente em nome do estudante ou cônjuge.');
         } else if (wizardState.moradia === 'estudante_casado_proprio') {
-          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="#page-27">Baixar Modelo 2</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 6</b> (Resido com cônjuge/filhos e não pago aluguel).');
+          docsList.push('<b>Declaração II - Situação de Moradia do Estudante (<a href="documentos/Declaração 2 - Situação moradia estudante.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 2 (.docx)</a>):</b> Preenchida por você. <b>Preenchimento:</b> Marque a <b>Opção 6</b> (Resido com cônjuge/filhos e não pago aluguel).');
         }
         
         // 7. Fontes de Renda específicas e suas respectivas declarações
@@ -1712,23 +1714,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (wizardState.fontesRenda.includes('autonomo')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Obrigatória para o membro familiar autônomo, profissional liberal ou trabalhador informal. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Exerço atividade de forma autônoma ou informal ou profissional liberal como...), preencha a atividade exercida, a média de rendimentos dos últimos 3 meses e informe nome e telefone de dois clientes atendidos.');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Obrigatória para o membro familiar autônomo, profissional liberal ou trabalhador informal. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Exerço atividade de forma autônoma ou informal ou profissional liberal como...), preencha a atividade exercida, a média de rendimentos dos últimos 3 meses e informe nome e telefone de dois clientes atendidos.');
         }
         
         if (wizardState.fontesRenda.includes('estagio')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Para o estudante ou membro estagiário/bolsista. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Recebo na condição de bolsista/estagiário do projeto/órgão...), informe a data de início e o valor de bolsa mensal. Anexe cópia do Termo de Compromisso de Estágio.');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Para o estudante ou membro estagiário/bolsista. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Recebo na condição de bolsista/estagiário do projeto/órgão...), informe a data de início e o valor de bolsa mensal. Anexe cópia do Termo de Compromisso de Estágio.');
         }
         
         if (wizardState.fontesRenda.includes('mei')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Obrigatória para os membros MEI da família. <b>Preenchimento:</b> Marque a <b>Opção 4</b> (Microempreendedor Individual), preencha o CNPJ, atividade e valor mensal médio. Anexe a Certidão de Condição de Microempreendedor Individual (CCMEI) e Declaração Anual do Simples Nacional (DASN-SIMEI) do último exercício.');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Obrigatória para os membros MEI da família. <b>Preenchimento:</b> Marque a <b>Opção 4</b> (Microempreendedor Individual), preencha o CNPJ, atividade e valor mensal médio. Anexe a Certidão de Condição de Microempreendedor Individual (CCMEI) e Declaração Anual do Simples Nacional (DASN-SIMEI) do último exercício.');
         }
         
         if (wizardState.fontesRenda.includes('desempregado')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Obrigatória para <b>cada membro maior de 18 anos</b> que se declare desempregado, estudante sem renda ou do lar. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Não exerço nenhuma atividade remunerada, formal ou informal) para atestar a ausência de renda.');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Obrigatória para <b>cada membro maior de 18 anos</b> que se declare desempregado, estudante sem renda ou do lar. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Não exerço nenhuma atividade remunerada, formal ou informal) para atestar a ausência de renda.');
         }
         
         if (wizardState.fontesRenda.includes('rural')) {
-          docsList.push('<b>Declaração III - Renda de Atividade Rural (<a href="#page-27">Baixar Modelo 3</a>):</b> Obrigatória para produtores rurais ou trabalhadores da agricultura. Deve ser emitida e preenchida/assinada por sindicato de produtores, sindicato de trabalhadores rurais ou Secretaria Municipal/Estadual de Agricultura. <b>Preenchimento:</b> Identifique a localização, área total da propriedade, condição de exploração (proprietário, arrendatário, etc.) e preencha o quadro de comercialização, receitas brutas e custos dos últimos 12 meses.');
+          docsList.push('<b>Declaração III - Renda de Atividade Rural (<a href="documentos/Declaração 3 - Rural.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 3 (.docx)</a>):</b> Obrigatória para produtores rurais ou trabalhadores da agricultura. Deve ser emitida e preenchida/assinada por sindicato de produtores, sindicato de trabalhadores rurais ou Secretaria Municipal/Estadual de Agricultura. <b>Preenchimento:</b> Identifique a localização, área total da propriedade, condição de exploração (proprietário, arrendatário, etc.) e preencha o quadro de comercialização, receitas brutas e custos dos últimos 12 meses.');
           docsList.push('<b>Comprovantes Rurais Adicionais:</b> Bloco de Notas de Produtor Rural (notas emitidas nos últimos 12 meses) e extrato DAP (Declaração de Aptidão ao Pronaf) ou CAF.');
         }
         
@@ -1741,29 +1743,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (wizardState.fontesRenda.includes('pensao_verbal')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Preenchida pelo responsável ou estudante que recebe. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Recebo pensão alimentícia de... no valor de R$ ... mensal).');
-          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="#page-27">Baixar Modelo 8</a>):</b>');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Preenchida pelo responsável ou estudante que recebe. <b>Preenchimento:</b> Marque a <b>Opção 5</b> (Recebo pensão alimentícia de... no valor de R$ ... mensal).');
+          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="documentos/Declaração 8 - Renda terceiros .docx" download class="wizard-doc-download-link">📥 Baixar Modelo 8 (.docx)</a>):</b>');
           docsList.push('&bull; Se o estudante for maior de 18 anos: o genitor pagador deve assinar e marcar a <b>Opção 4</b> (Contribuo mensalmente com R$ ... de pensão para o estudante).');
           docsList.push('&bull; Se for para menor de 18 anos do grupo: a mãe ou responsável legal residente deve assinar e marcar a <b>Opção 5</b> (Estudante ... recebe pensão alimentícia de ... no valor de R$ ... mensal).');
         }
         
         if (wizardState.fontesRenda.includes('comissao')) {
-          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="#page-27">Baixar Modelo 8</a>):</b> Obrigatória para quem recebe comissão de vendas. Deve ser preenchida e assinada pelo parceiro/empresa pagadora. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Pago o valor mensal médio de R$ ... por comissão de vendas dos produtos...).');
+          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="documentos/Declaração 8 - Renda terceiros .docx" download class="wizard-doc-download-link">📥 Baixar Modelo 8 (.docx)</a>):</b> Obrigatória para quem recebe comissão de vendas. Deve ser preenchida e assinada pelo parceiro/empresa pagadora. <b>Preenchimento:</b> Marque a <b>Opção 3</b> (Pago o valor mensal médio de R$ ... por comissão de vendas dos produtos...).');
         }
         
         if (wizardState.fontesRenda.includes('ajuda_terceiros')) {
-          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="#page-27">Baixar Modelo 8</a>):</b> A ser preenchida e assinada por quem envia a ajuda financeira de fora do grupo familiar. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Contribuo financeiramente com o estudante ... com o valor de R$ ... mensais).');
+          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="documentos/Declaração 8 - Renda terceiros .docx" download class="wizard-doc-download-link">📥 Baixar Modelo 8 (.docx)</a>):</b> A ser preenchida e assinada por quem envia a ajuda financeira de fora do grupo familiar. <b>Preenchimento:</b> Marque a <b>Opção 1</b> (Contribuo financeiramente com o estudante ... com o valor de R$ ... mensais).');
         }
         
         if (wizardState.fontesRenda.includes('programa_social')) {
-          docsList.push('<b>Declaração I - Declaração de Renda (<a href="#page-27">Baixar Modelo 1</a>):</b> Preenchida pelo beneficiário do domicílio. <b>Preenchimento:</b> Marque a <b>Opção 6</b> (Recebo do programa social ... o valor de R$ ... mensal).');
+          docsList.push('<b>Declaração I - Declaração de Renda (<a href="documentos/Declaração 1 - Renda.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 1 (.docx)</a>):</b> Preenchida pelo beneficiário do domicílio. <b>Preenchimento:</b> Marque a <b>Opção 6</b> (Recebo do programa social ... o valor de R$ ... mensal).');
           docsList.push('<b>Extrato de Pagamento do Programa:</b> Extrato recente do recebimento do benefício (ex: Bolsa Família), com nome do titular e valor histórico das parcelas.');
         }
         
         // 8. Situações Especiais e Casos de Exceção
         if (wizardState.situacoesEspeciais.includes('separacao_verbal')) {
-          docsList.push('<b>Declaração V - Diversas Situações (<a href="#page-27">Baixar Modelo 5</a>):</b> Preenchida pelo genitor com quem você reside ou por você, descrevendo detalhadamente a separação de fato informal e o acordo de boca estabelecido. Exige assinatura de duas testemunhas de referência com dados completos.');
-          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="#page-27">Baixar Modelo 8</a>):</b> Se houver pensão informal decorrente dessa separação, junte a Declaração VIII (Opção 4 ou 5) preenchida conforme o caso.');
+          docsList.push('<b>Declaração V - Diversas Situações (<a href="documentos/Declaração 5 - Diversas situações.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 5 (.docx)</a>):</b> Preenchida pelo genitor com quem você reside ou por você, descrevendo detalhadamente a separação de fato informal e o acordo de boca estabelecido. Exige assinatura de duas testemunhas de referência com dados completos.');
+          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="documentos/Declaração 8 - Renda terceiros .docx" download class="wizard-doc-download-link">📥 Baixar Modelo 8 (.docx)</a>):</b> Se houver pensão informal decorrente dessa separação, junte a Declaração VIII (Opção 4 ou 5) preenchida conforme o caso.');
         }
         
         if (wizardState.situacoesEspeciais.includes('doenca_grave')) {
@@ -1775,11 +1777,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (wizardState.situacoesEspeciais.includes('aluguel_terceiros')) {
-          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="#page-27">Baixar Modelo 8</a>):</b> Preenchida e assinada por quem paga o seu aluguel de forma direta. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Pago o valor de R$ ... mensais a título de aluguel do imóvel localizado em...).');
+          docsList.push('<b>Declaração VIII - Renda de Terceiros (<a href="documentos/Declaração 8 - Renda terceiros .docx" download class="wizard-doc-download-link">📥 Baixar Modelo 8 (.docx)</a>):</b> Preenchida e assinada por quem paga o seu aluguel de forma direta. <b>Preenchimento:</b> Marque a <b>Opção 2</b> (Pago o valor de R$ ... mensais a título de aluguel do imóvel localizado em...).');
         }
         
         if (wizardState.situacoesEspeciais.includes('outros_casos')) {
-          docsList.push('<b>Declaração V - Diversas Situações (<a href="#page-27">Baixar Modelo 5</a>):</b> Preenchida por você ou membro familiar justificando a realidade excepcional não prevista (ex: abandono, perda de contato, etc.). Deve conter duas referências.');
+          docsList.push('<b>Declaração V - Diversas Situações (<a href="documentos/Declaração 5 - Diversas situações.docx" download class="wizard-doc-download-link">📥 Baixar Modelo 5 (.docx)</a>):</b> Preenchida por você ou membro familiar justificando a realidade excepcional não prevista (ex: abandono, perda de contato, etc.). Deve conter duas referências.');
         }
       }
       
@@ -1918,7 +1920,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (savedState.edital === 'nao') {
               showFeedback(stepEdital, 'warning', `
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                <strong>Atenção:</strong> É altamente recomendável ler o edital oficial. Você pode consultá-lo na página <a href="#page-28">Edital Oficial</a> do guia.
+                <strong>Atenção:</strong> É altamente recomendável ler o edital oficial. Você pode consultar a <a href="https://sei.utfpr.edu.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=6394999&id_orgao_publicacao=0" target="_blank" rel="noopener noreferrer">Publicação Oficial do Edital no SEI-UTFPR</a>.
               `);
             } else {
               showFeedback(stepEdital, 'success', `

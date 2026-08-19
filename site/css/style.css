@@ -309,14 +309,6 @@ button, input, select {
   background-color: #1e1e24;
 }
 
-.theme-opt-btn.opt-sepia {
-  background-color: #f4ecd8;
-}
-
-.theme-opt-btn.opt-utfpr {
-  background: linear-gradient(135deg, #111111 0%, #111111 calc(50% - 0.5px), #f3c400 calc(50% + 0.5px), #f3c400 100%);
-}
-
 .theme-opt-btn.active {
   border-color: #ffffff;
   box-shadow: 0 0 0 2px var(--primary);
@@ -2209,6 +2201,146 @@ button, input, select {
   .campus-btn {
     padding: 6px 10px;
     font-size: 0.8rem;
+  }
+}
+
+/* ==========================================================================
+   CARD DA PUBLICAÇÃO OFICIAL DO EDITAL (SEI-UTFPR)
+   ========================================================================== */
+
+.official-edital-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
+.official-edital-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--primary);
+}
+
+.official-edital-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.official-edital-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.official-edital-desc {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.official-edital-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.btn-edital-link {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--primary);
+  color: #000000;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-edital-link:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-edital-download {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.btn-edital-download:hover {
+  border-color: var(--primary);
+  background-color: var(--bg-card-hover);
+  color: var(--text-title);
+}
+
+/* ==========================================================================
+   LINKS DE DOWNLOAD DIRETO DE DECLARAÇÕES NO SIMULADOR
+   ========================================================================== */
+
+.wizard-doc-download-link {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(243, 196, 0, 0.15);
+  color: var(--text-title);
+  border: 1px solid var(--primary);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-left: 4px;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.wizard-doc-download-link:hover {
+  background-color: var(--primary);
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .official-edital-card {
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .official-edital-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-edital-link, .btn-edital-download {
+    width: 100%;
+    justify-content: center;
   }
 }
 

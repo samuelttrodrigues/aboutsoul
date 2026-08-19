@@ -1483,9 +1483,9 @@ const GUIA_DATA = [
       {
         "index": 25,
         "title": "CONTATOS E ORIENTAÇÃO FINAL",
-        "eyebrow": "PROAE / ASSAE",
-        "subtitle": "Canais de atendimento dos 13 campi e orientações preventivas",
-        "highlight": "Você não precisa enfrentar o processo sozinho. A equipe de assistência estudantil do seu campus está pronta para te orientar.",
+        "eyebrow": "ASSAE",
+        "subtitle": "Canais de atendimento da ASSAE nos 13 campi e orientações preventivas",
+        "highlight": "Você não precisa enfrentar o processo sozinho. A equipe da ASSAE do seu campus está pronta para te orientar.",
         "dark": false,
         "elements": [
           {
@@ -1500,7 +1500,7 @@ const GUIA_DATA = [
           {
             "type": "card",
             "cls": "card bodyText",
-            "content": "• <b>Orientação Preventiva:</b> Na dúvida sobre qualquer documento, declaração ou cálculo de renda per capita, procure a ASSAE/NUAPE do seu campus com antecedência."
+            "content": "• <b>Orientação Preventiva:</b> Na dúvida sobre qualquer documento, declaração ou cálculo de renda per capita, procure a ASSAE do seu campus com antecedência."
           },
           {
             "type": "card",
@@ -1655,13 +1655,15 @@ const GUIA_DATA = [
         "index": 28,
         "title": "EDITAL OFICIAL",
         "eyebrow": "DOCUMENTO BASE",
-        "subtitle": "Edital de Seleção e Manutenção",
+        "subtitle": "Publicação Oficial SEI-UTFPR",
+        "externalUrl": "https://sei.utfpr.edu.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=6394999&id_orgao_publicacao=0",
         "dark": false,
         "elements": [
           {
-            "type": "pdf-viewer",
+            "type": "official_link",
             "title": "Edital Oficial nº 01/2026 PROAE",
-            "url": "documentos/edital aux.pdf"
+            "url": "https://sei.utfpr.edu.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=6394999&id_orgao_publicacao=0",
+            "description": "O Edital Oficial nº 01/2026 PROAE está publicado e disponível para consulta pública na íntegra no Sistema Eletrônico de Informações (SEI) da UTFPR."
           }
         ]
       }
