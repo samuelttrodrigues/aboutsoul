@@ -1,0 +1,269 @@
+================================================================================
+TERMOS DE USO — SOUL
+Última atualização: 16 de março de 2026
+================================================================================
+
+Bem-vindo(a) ao Soul. Estes Termos de Uso ("Termos") regulam o seu acesso e uso
+do aplicativo Soul, site e serviços relacionados (coletivamente, o "Serviço"),
+de propriedade e operado por Samuel Thiago Telles Rodrigues.
+
+Ao criar uma conta ou utilizar o Serviço, você concorda em se vincular a estes
+Termos. Se você não concorda com qualquer parte destes Termos, não utilize o
+Serviço.
+
+────────────────────────────────────────────────────────────────────────────────
+1. ELEGIBILIDADE E CAPACIDADE CIVIL
+────────────────────────────────────────────────────────────────────────────────
+
+Você deve ter pelo menos 18 (dezoito) anos de idade para acessar ou usar o Soul.
+Ao criar uma conta, você declara expressamente que possui 18 anos ou mais e
+detém plena capacidade civil para celebrar um contrato vinculante sob a
+legislação brasileira.
+
+O uso do Serviço por menores de 18 anos é estritamente proibido. O Soul
+reserva-se o direito de suspender ou encerrar imediatamente qualquer conta
+mediante suspeita fundamentada de que o usuário seja menor de idade.
+
+────────────────────────────────────────────────────────────────────────────────
+2. CRIAÇÃO DE CONTA E SEGURANÇA
+────────────────────────────────────────────────────────────────────────────────
+
+Para acessar o Soul, você poderá criar uma conta utilizando serviços de
+autenticação de terceiros (como Apple ou Google). Você é responsável por manter
+a confidencialidade de suas credenciais de login e por todas as atividades
+realizadas sob sua conta. Você concorda em fornecer informações precisas e
+atualizadas.
+
+────────────────────────────────────────────────────────────────────────────────
+3. REGRAS DE CONDUTA E POLÍTICA DE TOLERÂNCIA ZERO
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul está comprometido em manter uma comunidade segura, autêntica e
+construtiva. A publicação dos conteúdos listados abaixo poderá resultar na
+suspensão imediata ou no encerramento permanente da sua conta, a critério da
+plataforma e mediante análise do caso:
+
+a) Conteúdo Gerado por IA:
+   Todo conteúdo publicado deve ser criado por usuários humanos. O uso de
+   inteligência artificial para gerar postagens, imagens ou vídeos é proibido.
+
+b) Conteúdo Explícito e NSFW:
+   É proibida a postagem de pornografia, nudez não artística, violência extrema
+   (gore) ou mutilação.
+
+c) Conteúdo Financeiro Predatório:
+   Promoção de casas de apostas online, cassinos, esquemas de enriquecimento
+   rápido ou venda de cursos de caráter enganoso.
+
+d) Desinformação:
+   Propagação de notícias falsas comprovadamente verificadas como tal,
+   especialmente envolvendo política, saúde pública ou figuras públicas.
+
+e) Discurso de Ódio e Discriminação:
+   Conteúdos que incitem ódio, discriminação, violência ou desumanização com
+   base em gênero, raça, etnia, orientação sexual, religião, origem nacional ou
+   qualquer outra característica protegida pela legislação brasileira, incluindo
+   a Lei 7.716/1989 (Lei de Crimes Raciais) e a Lei 14.532/2023.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR (dois pontos)                                         │
+│                                                                              │
+│ 1. Desinformação e Marco Civil (art. 19): o Marco Civil estabelece que a    │
+│    responsabilidade civil da plataforma por conteúdo de terceiro nasce      │
+│    apenas após descumprimento de ordem judicial de remoção. Ao prever       │
+│    banimento por "desinformação comprovada" sem ordem judicial, a           │
+│    plataforma (a) cria responsabilidade contratual de agir que, se não      │
+│    cumprida, expõe a empresa a ação do prejudicado; e (b) pode ser          │
+│    questionada por censura arbitrária caso bana conteúdo que o MCI não      │
+│    obrigaria a remover. Confirmar com advogado se é necessário adicionar um │
+│    processo mínimo de revisão antes do banimento permanente por             │
+│    desinformação.                                                            │
+│                                                                              │
+│ 2. "Reincidência comprovada" como exceção ao aviso prévio: o critério não   │
+│    define quem comprova, em qual registro e com qual standard de prova.     │
+│    "Comprovada" pela própria plataforma, sem processo definido, pode ser    │
+│    atacado como cláusula que deixa ao fornecedor a definição unilateral de  │
+│    suas obrigações (CDC art. 51, XIII). Confirmar com advogado se é         │
+│    necessário detalhar o procedimento de verificação.                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Considere adicionar um processo de apelação explícito nesta seção:          │
+│ "O usuário poderá contestar a suspensão ou encerramento da conta em até     │
+│ [X] dias através do e-mail [SUPORTE]. O Soul se compromete a revisar o      │
+│ caso em até [Y] dias úteis." Isso reduz significativamente o risco de       │
+│ ações judiciais por banimento arbitrário.                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+4. PROPRIEDADE INTELECTUAL E DIREITOS AUTORAIS
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul respeita a propriedade intelectual de terceiros. É proibido publicar
+imagens, fotografias ou artes que infrinjam direitos autorais ou marcas
+registradas.
+
+Caso você identifique que seu trabalho protegido por direitos autorais foi
+publicado no Soul sem autorização, envie uma notificação para o e-mail abaixo
+contendo:
+
+  (a) identificação do material original;
+  (b) URL ou localização do conteúdo infrator no aplicativo;
+  (c) declaração de titularidade dos direitos; e
+  (d) seus dados de contato.
+
+O Soul removerá o conteúdo mediante análise da notificação. Usuários reincidentes
+em infrações de direitos autorais serão banidos permanentemente.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Insira aqui o e-mail para notificações de direitos autorais.                │
+│ Ex.: dmca@soulapp.com.br — mantenha registro de todas as notificações       │
+│ recebidas. Sem canal de recebimento funcional, qualquer titular que não      │
+│ consiga enviar a notificação pode mover ação imediatamente, alegando que a  │
+│ plataforma tornou estruturalmente impossível o exercício do direito.        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  E-mail para notificações de direitos autorais: [INSERIR E-MAIL DMCA]
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Ao se comprometer a remover conteúdo "mediante análise da notificação" sem  │
+│ definir prazo, a plataforma assume obrigação contratual de agir em prazo    │
+│ razoável. Um juiz pode arbitrar isso em 24 ou 48h. Defina um prazo          │
+│ explícito de resposta para não ser cobrado por omissão.                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+5. RESPONSABILIDADE SOBRE O CONTEÚDO (MARCO CIVIL DA INTERNET)
+────────────────────────────────────────────────────────────────────────────────
+
+Você mantém a propriedade sobre o conteúdo (imagens e textos) que publica no
+Soul e é o único responsável legal por ele.
+
+Papel da Plataforma:
+O Soul atua como provedor de aplicação. Nos termos do art. 19 do Marco Civil da
+Internet (Lei 12.965/2014), o Soul não é responsável civilmente por danos
+decorrentes de conteúdo de terceiros, a menos que descumpra ordem judicial
+específica de remoção.
+
+Exceção para Imagens Íntimas:
+Em cumprimento ao art. 21 do Marco Civil da Internet, a notificação de um
+usuário sobre o compartilhamento não consensual de suas imagens ou vídeos
+íntimos resultará na remoção imediata do conteúdo, independentemente de ordem
+judicial, além do banimento permanente do infrator.
+
+────────────────────────────────────────────────────────────────────────────────
+6. PRIVACIDADE E USO DE DADOS
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul não vende seus dados pessoais para terceiros. O tratamento de dados
+pessoais é regido exclusivamente pela nossa Política de Privacidade, disponível
+no aplicativo, em total conformidade com a LGPD (Lei 13.709/2018).
+
+Uso Interno: Dados como faixa etária, localização aproximada e tags de
+preferência são utilizados exclusivamente dentro do aplicativo para otimizar sua
+experiência e direcionar conteúdos impulsionados de forma anonimizada.
+
+Dados Sigilosos: Informações privadas, como e-mail, data de criação da conta e
+conversas diretas, permanecem estritamente confidenciais e não são acessíveis a
+outros usuários.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Segmentação de impulsionamento (LGPD art. 20): o uso de dados demográficos  │
+│ para segmentar publicidade — mesmo anonimizados — pode configurar decisão   │
+│ automatizada com impacto no usuário. Os critérios de segmentação não são    │
+│ divulgados neste texto. Confirmar se isso viola o princípio da              │
+│ transparência da LGPD e se é necessário declarar os critérios ou ao menos   │
+│ mencionar o direito de revisão do usuário.                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+7. MONETIZAÇÃO E PUBLICIDADE
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul utiliza um modelo de impulsionamento interno de publicações. Usuários e
+empresas têm a opção de pagar à plataforma para ampliar o alcance de suas
+postagens a um público segmentado com base em dados demográficos anonimizados
+disponíveis no aplicativo.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Se houver outros modelos de monetização planejados (assinaturas, plano      │
+│ premium, etc.), declare-os aqui antes do lançamento para evitar             │
+│ questionamentos futuros sobre alteração contratual unilateral.              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+8. SUSPENSÃO E ENCERRAMENTO DE CONTA
+────────────────────────────────────────────────────────────────────────────────
+
+Reservamo-nos o direito de suspender ou encerrar sua conta nos seguintes termos:
+
+a) Violações Graves (banimento imediato e permanente):
+   Publicação de conteúdo ilegal, material de abuso sexual infantil (CSAM),
+   exploração de vulnerabilidades do sistema, compartilhamento não consensual de
+   imagens íntimas.
+
+b) Demais Violações:
+   Notificação prévia ao usuário, com prazo mínimo de 72 horas para manifestação
+   antes do banimento permanente, salvo em casos de reincidência comprovada.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Defina o e-mail e prazo para o processo de apelação:                        │
+│ "Contestações ao encerramento de conta devem ser enviadas para [E-MAIL] em  │
+│ até [X] dias após a notificação."                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ O processo de apelação de 72h não define canal de envio, responsável pela   │
+│ análise nem prazo de resposta. Sem procedimento definido, o processo é      │
+│ ilusório e pode ser atacado pelo CDC (art. 6º, VIII — direito à informação  │
+│ adequada e clara). Um banimento sem canal de apelação real pode ser         │
+│ enquadrado como prática abusiva.                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+9. RESOLUÇÃO DE DISPUTAS E FORO
+────────────────────────────────────────────────────────────────────────────────
+
+Estes Termos são regidos pelas leis da República Federativa do Brasil.
+
+Consumidores: Para usuários padrão, quaisquer disputas legais serão resolvidas
+no foro do domicílio do usuário, conforme o Código de Defesa do Consumidor
+(Lei 8.078/1990).
+
+Comercial: Para disputas entre pessoas jurídicas, como questões relativas a
+impulsionamento de publicações, o foro eleito é exclusivamente o da Comarca de
+Francisco Beltrão, Estado do Paraná.
+
+────────────────────────────────────────────────────────────────────────────────
+10. ALTERAÇÕES NOS TERMOS
+────────────────────────────────────────────────────────────────────────────────
+
+Podemos atualizar estes Termos periodicamente. Forneceremos aviso prévio mínimo
+de 14 (quatorze) dias antes que quaisquer mudanças materiais entrem em vigor,
+seja por meio de notificação no aplicativo ou por e-mail. O uso contínuo do
+aplicativo após esse período constitui aceitação dos novos Termos.
+
+────────────────────────────────────────────────────────────────────────────────
+CONTATO
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Insira aqui o e-mail oficial de suporte. Ex.: suporte@soulapp.com.br        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  E-mail de suporte: [INSERIR E-MAIL DE SUPORTE]
+
+================================================================================
+AVISO GERAL [Claude]: Este documento foi redigido com base no CDC (Lei
+8.078/1990), no Marco Civil da Internet (Lei 12.965/2014) e na LGPD (Lei
+13.709/2018). As notas marcadas com [Claude] são observações do assistente e
+NÃO fazem parte do texto jurídico — devem ser removidas antes da publicação.
+Este documento não substitui assessoria jurídica profissional.
+================================================================================

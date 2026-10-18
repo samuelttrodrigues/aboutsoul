@@ -1,0 +1,304 @@
+================================================================================
+POLÍTICA DE PRIVACIDADE — SOUL
+Última atualização: 16 de março de 2026
+================================================================================
+
+Esta Política de Privacidade descreve como o aplicativo Soul, de propriedade e
+operado por Samuel Thiago Telles Rodrigues ("Controlador de Dados", "nós",
+"nosso"), coleta, usa, armazena e protege suas informações pessoais, em
+conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018 — LGPD) e o
+Marco Civil da Internet (Lei 12.965/2014).
+
+────────────────────────────────────────────────────────────────────────────────
+1. NOSSO COMPROMISSO DE PRIVACIDADE
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul não vende, aluga ou comercializa seus dados pessoais para terceiros sob
+nenhuma circunstância. O modelo de negócios do aplicativo é baseado em
+impulsionamento interno de publicações. Seus dados são mantidos em sigilo e
+segurança dentro da nossa infraestrutura de serviços.
+
+Os dados dos usuários não são utilizados para treinar modelos de inteligência
+artificial, seja pelo Soul ou por terceiros.
+
+────────────────────────────────────────────────────────────────────────────────
+2. DADOS QUE COLETAMOS E BASE LEGAL
+────────────────────────────────────────────────────────────────────────────────
+
+Para cada categoria de dado coletado, a base legal aplicável nos termos da LGPD
+(art. 7º) é indicada abaixo:
+
+a) Dados de Cadastro (nome, e-mail via autenticação Google/Apple):
+   Base legal — execução de contrato (art. 7º, V da LGPD).
+   Necessários para criação e autenticação da conta.
+
+b) Dados de Perfil e Uso (imagens publicadas, histórico de interações, tags de
+   preferência, data de criação):
+   Base legal — execução de contrato e legítimo interesse (art. 7º, V e IX).
+   Utilizados para fornecer o serviço e personalizar a experiência do usuário.
+
+c) Dados de Localização Aproximada (faixa de CEP, cidade, estado):
+   Base legal — consentimento do usuário (art. 7º, I da LGPD).
+   Utilizados exclusivamente para direcionamento de conteúdo impulsionado
+   relevante. O usuário pode revogar esse consentimento a qualquer momento
+   nas configurações do aplicativo.
+
+d) Dados Técnicos do Dispositivo (sistema operacional, modelo):
+   Base legal — legítimo interesse (art. 7º, IX).
+   Utilizados para garantir compatibilidade e funcionamento adequado do
+   aplicativo.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Art. 7º, IX (legítimo interesse): a LGPD exige Relatório de Impacto à      │
+│ Proteção de Dados (RIPD) quando o tratamento puder afetar direitos dos      │
+│ titulares. Confirmar se a coleta de dados técnicos e de localização exige   │
+│ RIPD formalizado antes do lançamento. A ANPD pode requisitá-lo a qualquer  │
+│ momento após o lançamento público.                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+3. COMO UTILIZAMOS OS SEUS DADOS
+────────────────────────────────────────────────────────────────────────────────
+
+As informações coletadas são utilizadas exclusivamente para as seguintes
+finalidades:
+
+a) Fornecer, operar e manter o funcionamento do aplicativo;
+
+b) Autenticar seu acesso e garantir a segurança da conta;
+
+c) Personalizar sua experiência, exibindo conteúdos e publicações impulsionadas
+   relevantes com base em suas tags de preferência, faixa etária e localização
+   aproximada;
+
+d) Comunicar atualizações de segurança, suporte técnico ou mudanças nos nossos
+   Termos.
+
+Os dados dos usuários não são utilizados para treinar modelos de inteligência
+artificial, próprios ou de terceiros.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Decisões automatizadas (art. 20 LGPD): a personalização de conteúdo por    │
+│ algoritmo configura tomada de decisão automatizada que afeta o usuário. O   │
+│ art. 20 garante ao titular o direito de solicitar revisão humana e de ser   │
+│ informado sobre os critérios utilizados. Confirmar se é necessário          │
+│ adicionar subseção específica sobre isso antes do lançamento.               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+4. COMPARTILHAMENTO DE DADOS E INFRAESTRUTURA
+────────────────────────────────────────────────────────────────────────────────
+
+Seus dados não são compartilhados para fins publicitários externos.
+Compartilhamos informações apenas nas seguintes situações:
+
+a) Provedores de Infraestrutura:
+   O Soul utiliza a plataforma Firebase (Google LLC) como infraestrutura de
+   back-end, com servidores configurados na região southamerica-east1 (São Paulo,
+   Brasil). Os dados dos usuários são armazenados fisicamente no Brasil. O
+   tratamento realizado pelo Google LLC como operador de dados segue o Data
+   Processing Agreement (DPA) do Firebase, disponível em
+   firebase.google.com/support/privacy, em conformidade com o art. 37 da LGPD.
+
+b) Obrigações Legais:
+   Quando exigido por lei, ordem judicial ou para cumprir solicitações válidas de
+   autoridades públicas brasileiras.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR (dois pontos)                                         │
+│                                                                              │
+│ 1. CLOUD Act (EUA): a Google LLC é empresa americana sujeita ao CLOUD Act,  │
+│    que permite que autoridades dos EUA intimem entrega de dados em qualquer  │
+│    país, independentemente da localização do servidor. Confirmar com         │
+│    advogado se é recomendável declarar esse risco residual na política ou se │
+│    a menção ao DPA do Firebase é suficiente para cumprir o dever de         │
+│    transparência da LGPD.                                                    │
+│                                                                              │
+│ 2. DPA do Firebase e transferências operacionais: o DPA pode permitir que   │
+│    engenheiros de suporte da Google em outros países acessem dados para fins │
+│    de manutenção. Confirmar se isso configura transferência internacional    │
+│    (art. 33 LGPD) e qual a base legal adequada a declarar.                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+5. PROTEÇÃO DE MENORES
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul é estritamente voltado para maiores de 18 (dezoito) anos. Não coletamos
+intencionalmente dados de crianças ou adolescentes. Se identificarmos que
+processamos dados de um menor de idade, a conta e todas as informações associadas
+serão excluídas imediatamente de nossos servidores, conforme exigido pela LGPD
+(art. 14) e pelo Estatuto da Criança e do Adolescente.
+
+────────────────────────────────────────────────────────────────────────────────
+6. SEGURANÇA DOS DADOS
+────────────────────────────────────────────────────────────────────────────────
+
+Implementamos medidas de segurança técnicas e organizacionais adequadas para
+proteger seus dados contra acesso não autorizado, alteração, divulgação ou
+destruição. No entanto, nenhum método de transmissão ou armazenamento eletrônico
+é 100% seguro.
+
+Em caso de incidente de segurança que possa acarretar risco ou dano relevante
+aos titulares, notificaremos a Autoridade Nacional de Proteção de Dados (ANPD) e
+os usuários afetados em prazo razoável, conforme exigido pelo art. 48 da LGPD.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ A Resolução CD/ANPD nº 15/2024 fixou prazo de 3 dias úteis para            │
+│ comunicação preliminar à ANPD em incidentes de alta gravidade. Confirmar    │
+│ se o texto deve mencionar os 3 dias úteis explicitamente ou se "prazo       │
+│ razoável" é suficiente sob a resolução vigente na data de publicação.       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+7. SEUS DIREITOS SOB A LGPD
+────────────────────────────────────────────────────────────────────────────────
+
+De acordo com a LGPD (Lei 13.709/2018), você possui os seguintes direitos em
+relação às suas informações pessoais:
+
+a) Acesso e Confirmação: saber quais dados temos sobre você;
+
+b) Correção: solicitar atualização de dados incompletos, inexatos ou
+   desatualizados;
+
+c) Anonimização, Bloqueio ou Eliminação: de dados desnecessários ou tratados
+   em desconformidade;
+
+d) Portabilidade: solicitar a transferência dos seus dados para outro serviço;
+
+e) Exclusão: solicitar a exclusão permanente da sua conta e de todos os seus
+   dados pessoais, diretamente pelas configurações do aplicativo ou entrando
+   em contato conosco;
+
+f) Revogação de Consentimento: retirar o consentimento para o uso de dados que
+   dependam dessa base legal, sem prejuízo da licitude do tratamento realizado
+   anteriormente;
+
+g) Informação sobre Compartilhamento: saber com quais entidades seus dados são
+   compartilhados;
+
+h) Revisão de Decisões Automatizadas: solicitar revisão humana de decisões
+   tomadas com base unicamente no tratamento automatizado de dados pessoais,
+   nos termos do art. 20 da LGPD.
+
+Responderemos às solicitações de titulares em até 15 (quinze) dias úteis após o
+recebimento, conforme recomendação da ANPD.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Verificar se a Resolução ANPD vigente no momento do lançamento mantém o     │
+│ prazo de 15 dias úteis ou o altera. A LGPD (art. 19) prevê "prazo          │
+│ razoável" sem número específico. Confirmar antes de publicar.               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+8. RETENÇÃO DE DADOS
+────────────────────────────────────────────────────────────────────────────────
+
+Manteremos seus dados pessoais pelos seguintes prazos:
+
+a) Registros de acesso (logs de conexão): mínimo de 6 (seis) meses, conforme
+   exigido pelo Marco Civil da Internet (Lei 12.965/2014, art. 15);
+
+b) Dados de cadastro e perfil: enquanto a conta estiver ativa. Após a exclusão
+   da conta, os dados serão eliminados em até 30 (trinta) dias, salvo obrigação
+   legal de retenção;
+
+c) Dados de localização e dados técnicos do dispositivo: pelo tempo necessário
+   para as finalidades declaradas, não excedendo o prazo de retenção da conta.
+
+Após o término do prazo de retenção aplicável, os dados serão eliminados de
+forma segura ou anonimizados.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Prazo de 30 dias para exclusão pós-cancelamento: verificar se é viável      │
+│ operacionalmente com a infraestrutura Firebase (backups automáticos e       │
+│ propagação de deleção). Se os backups retiverem dados por mais tempo, o     │
+│ prazo declarado pode gerar descumprimento involuntário. Checar as           │
+│ configurações de retenção de backup do Firebase antes de publicar.          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+9. TECNOLOGIAS DE COLETA E SDKs DE TERCEIROS
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul utiliza os seguintes SDKs e tecnologias de coleta de dados:
+
+a) Firebase Analytics (Google LLC): coleta dados comportamentais anonimizados
+   de uso do aplicativo (telas acessadas, eventos de interação) para fins de
+   melhoria do serviço. Esses dados são processados conforme o DPA do Firebase.
+
+b) Autenticação via Google / Apple: utilizamos os serviços de autenticação do
+   Google e da Apple para criação de conta. Esses provedores têm suas próprias
+   políticas de privacidade, acessíveis nos seus respectivos sites.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Se o aplicativo utilizar outros SDKs (ex.: Firebase Crashlytics, Amplitude, │
+│ Mixpanel, OneSignal), liste cada um aqui com sua finalidade.                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Dados comportamentais do Firebase Analytics podem alimentar o algoritmo de  │
+│ personalização de conteúdo, configurando decisão automatizada (art. 20      │
+│ LGPD). Confirmar se é necessário declarar isso explicitamente nesta seção  │
+│ ou na Seção 3.                                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+10. CONTATO DO ENCARREGADO DE DADOS (DPO)
+────────────────────────────────────────────────────────────────────────────────
+
+Para exercer seus direitos, relatar incidentes ou tirar dúvidas sobre esta
+Política de Privacidade, entre em contato com nosso Encarregado de Dados (DPO):
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR — OBRIGATÓRIO                                 │
+│ A LGPD (art. 41) exige que o Encarregado seja publicamente identificável e  │
+│ acessível. Sem esse campo preenchido, a política está juridicamente          │
+│ incompleta e a ANPD pode autuar desde o primeiro dia de operação.           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Nome:   [NOME DO DPO/ENCARREGADO]
+  E-mail: [E-MAIL DO DPO]   (ex.: privacidade@soulapp.com.br)
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ Confirmar com advogado se o fundador/desenvolvedor pode acumular a função   │
+│ de DPO ou se é recomendável designar pessoa distinta. A ANPD pode           │
+│ questionar conflito de interesses se o próprio controlador for o            │
+│ encarregado (art. 41, §1º da LGPD).                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+11. ALTERAÇÕES NESTA POLÍTICA
+────────────────────────────────────────────────────────────────────────────────
+
+Podemos atualizar esta Política de Privacidade periodicamente. Forneceremos
+aviso prévio mínimo de 14 (quatorze) dias antes que quaisquer mudanças materiais
+entrem em vigor, por meio de notificação no aplicativo ou por e-mail. O uso
+contínuo do aplicativo após esse período constitui aceitação da nova versão.
+
+────────────────────────────────────────────────────────────────────────────────
+12. LEGISLAÇÃO APLICÁVEL
+────────────────────────────────────────────────────────────────────────────────
+
+Esta Política de Privacidade é regida pelas leis da República Federativa do
+Brasil, em especial pela Lei Geral de Proteção de Dados (Lei 13.709/2018) e pelo
+Marco Civil da Internet (Lei 12.965/2014). Para questões relacionadas a esta
+política, aplica-se o foro do domicílio do usuário, conforme o Código de Defesa
+do Consumidor.
+
+================================================================================
+AVISO GERAL [Claude]: Este documento foi redigido com base na LGPD (Lei
+13.709/2018) e no Marco Civil da Internet (Lei 12.965/2014). As notas marcadas
+com [Claude] são observações do assistente e NÃO fazem parte do texto jurídico
+— devem ser removidas antes da publicação. Este documento não substitui
+assessoria jurídica profissional.
+================================================================================

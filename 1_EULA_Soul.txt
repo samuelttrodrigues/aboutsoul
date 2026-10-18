@@ -1,0 +1,169 @@
+================================================================================
+CONTRATO DE LICENÇA DE USUÁRIO FINAL (EULA) — SOUL
+Última atualização: 16 de março de 2026
+================================================================================
+
+Este Contrato de Licença de Usuário Final ("EULA" ou "Contrato") é um acordo
+legal vinculante entre você ("Usuário") e Samuel Thiago Telles Rodrigues
+("Licenciante", "nós" ou "nosso"), desenvolvedor e proprietário do aplicativo
+móvel Soul ("Aplicativo").
+
+Ao baixar, instalar ou utilizar o Aplicativo, você concorda expressamente em
+ficar vinculado aos termos deste EULA. Se você não concordar com estes termos,
+não instale ou utilize o Aplicativo e exclua-o imediatamente do seu dispositivo.
+
+────────────────────────────────────────────────────────────────────────────────
+1. CONCESSÃO DE LICENÇA
+────────────────────────────────────────────────────────────────────────────────
+
+O Soul não é vendido a você; ele é licenciado. Sujeito à sua conformidade
+contínua com este EULA e com os nossos Termos de Uso, concedemos a você uma
+licença limitada, revogável, não exclusiva e intransferível para baixar, instalar
+e utilizar o Aplicativo em dispositivos móveis que você possua ou controle,
+estritamente para seu uso pessoal e não comercial.
+
+────────────────────────────────────────────────────────────────────────────────
+2. RESTRIÇÕES DE USO
+────────────────────────────────────────────────────────────────────────────────
+
+Você concorda em não realizar, nem permitir que terceiros realizem, as seguintes
+ações:
+
+a) Copiar, modificar, traduzir, adaptar ou criar obras derivadas baseadas no
+   Aplicativo;
+
+b) Descompilar, fazer engenharia reversa, desmontar ou tentar extrair o
+   código-fonte do Aplicativo;
+
+c) Alugar, arrendar, emprestar, vender, sublicenciar ou distribuir o Aplicativo
+   para terceiros;
+
+d) Remover, alterar ou ocultar qualquer aviso de direitos autorais, marca
+   registrada ou outros avisos de direitos de propriedade contidos no Aplicativo;
+
+e) Utilizar o Aplicativo de qualquer forma que possa danificar, desativar,
+   sobrecarregar ou prejudicar nossos servidores ou redes.
+
+────────────────────────────────────────────────────────────────────────────────
+3. PROPRIEDADE INTELECTUAL
+────────────────────────────────────────────────────────────────────────────────
+
+A marca Soul, seu design, logotipos, código-fonte, interface e toda a propriedade
+intelectual associada são de propriedade exclusiva de Samuel Thiago Telles
+Rodrigues. Este EULA não concede a você nenhum direito sobre as nossas marcas ou
+propriedades intelectuais, exceto a licença de uso expressamente descrita na
+Seção 1.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ A declaração de titularidade da marca Soul deve ser verificada antes de     │
+│ publicar. Se o registro junto ao INPI ainda não foi concedido, remova a     │
+│ referência a "marca registrada" ou substitua por "em processo de registro   │
+│ junto ao INPI". Afirmar titularidade registrada antes de tê-la pode         │
+│ configurar publicidade enganosa (CDC art. 37) e vício de consentimento      │
+│ (CC art. 138).                                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+4. SERVIÇOS DE TERCEIROS E LOJAS DE APLICATIVOS
+────────────────────────────────────────────────────────────────────────────────
+
+Você reconhece que este EULA é celebrado exclusivamente entre você e o
+Licenciante, e não com a Apple Inc. ou a Google LLC. O Licenciante, e não as
+lojas de aplicativos, é o único responsável pelo Aplicativo e por seu conteúdo.
+As lojas de aplicativos não têm nenhuma obrigação de fornecer serviços de
+manutenção ou suporte em relação ao Soul.
+
+────────────────────────────────────────────────────────────────────────────────
+5. ISENÇÃO DE GARANTIAS
+────────────────────────────────────────────────────────────────────────────────
+
+O Aplicativo é fornecido na melhor forma possível, porém, dada a natureza dos
+serviços de tecnologia, não garantimos funcionamento ininterrupto, ausência de
+erros ou imunidade total a falhas de segurança.
+
+Na medida em que a legislação brasileira, incluindo o Código de Defesa do
+Consumidor (Lei 8.078/1990), imponha garantias mínimas que não possam ser
+contratualmente excluídas, tais garantias legais permanecem integralmente
+aplicáveis.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ A expressão "na melhor forma possível" não tem significado jurídico preciso │
+│ e não afasta responsabilidade por falha de serviço. O fornecedor de serviço │
+│ digital tem dever de prestação adequada (CDC art. 20). Tribunais brasileiros │
+│ tendem a desconsiderar ressalvas genéricas de isenção. Confirmar com        │
+│ advogado se a redação atual é defensável ou deve ser substituída por uma    │
+│ descrição objetiva dos níveis de serviço.                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+6. LIMITAÇÃO DE RESPONSABILIDADE
+────────────────────────────────────────────────────────────────────────────────
+
+Na extensão máxima permitida pela legislação brasileira aplicável, o Licenciante
+não será responsável por danos indiretos, incidentais ou consequenciais
+decorrentes do uso do Aplicativo. Esta limitação não exclui a responsabilidade
+por danos diretos causados por culpa do Licenciante, nem afasta direitos do
+consumidor previstos no Código de Defesa do Consumidor.
+
+────────────────────────────────────────────────────────────────────────────────
+7. RESCISÃO
+────────────────────────────────────────────────────────────────────────────────
+
+Esta licença é efetiva até que seja rescindida. Você pode rescindi-la a qualquer
+momento, desinstalando o Aplicativo.
+
+Podemos rescindir sua licença mediante notificação prévia em caso de violação dos
+termos deste EULA. Em casos de violação grave — incluindo, mas não se limitando
+a, compartilhamento de conteúdo ilegal ou exploração de vulnerabilidades do
+sistema — a rescisão poderá ser imediata.
+
+Após a rescisão, você deve interromper todo o uso do Aplicativo. Seus dados
+pessoais serão tratados conforme a Política de Privacidade, incluindo o direito
+de solicitar exportação ou exclusão.
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ⚖  ADVOGADO — REVISAR                                                       │
+│ A licença é descrita como "revogável" sem definir todas as hipóteses de     │
+│ revogação além das violações. Lida em conjunto com a cláusula de rescisão,  │
+│ isso pode permitir revogação sem causa objetiva. O CDC (art. 51, IV e XI)   │
+│ considera nulas cláusulas que imponham renúncia de direito sem              │
+│ contraprestação. Confirmar com advogado se é necessário listar taxativamente│
+│ as hipóteses de rescisão unilateral pelo Licenciante.                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────
+8. FORO E LEGISLAÇÃO APLICÁVEL
+────────────────────────────────────────────────────────────────────────────────
+
+Este EULA será regido e interpretado de acordo com as leis da República
+Federativa do Brasil.
+
+Para questões que não envolvam relação direta de consumo, fica eleito o foro da
+Comarca de Francisco Beltrão, Estado do Paraná, com renúncia a qualquer outro.
+
+Para relações de consumo, aplica-se o foro do domicílio do usuário, conforme o
+Código de Defesa do Consumidor.
+
+────────────────────────────────────────────────────────────────────────────────
+CONTATO
+
+┌─ NOTA [Claude] ────────────────────────────────────────────────────────────┐
+│ ✏  PREENCHER ANTES DE PUBLICAR                                               │
+│ Insira aqui o e-mail oficial de suporte/contato. Ex.: legal@soulapp.com.br  │
+│ O CDC (art. 6º, III) e o Decreto 7.962/2013 (art. 2º) exigem identificação  │
+│ de canal de contato acessível. Sem esse campo, o contrato está incompleto   │
+│ e o consumidor pode arguir que não tinha como exercer seus direitos.        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+E-mail de suporte: [INSERIR E-MAIL OFICIAL DE SUPORTE]
+
+================================================================================
+AVISO GERAL [Claude]: Este documento foi redigido com base no CDC (Lei
+8.078/1990), no Marco Civil da Internet (Lei 12.965/2014) e nas diretrizes das
+lojas Apple App Store e Google Play. As notas marcadas com [Claude] são
+observações do assistente e NÃO fazem parte do texto jurídico — devem ser
+removidas antes da publicação. Este documento não substitui assessoria jurídica
+profissional.
+================================================================================

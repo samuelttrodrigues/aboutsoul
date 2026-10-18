@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Soul — Nossa Filosofia</title>
+    <meta name="description" content="A filosofia do aplicativo Soul. Nosso propósito, por que criamos o app, o que queremos atingir e por que acreditamos que isso é bom para a comunidade." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Public+Sans:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#7366D0',
+                            container: '#f3f1ff',
+                        },
+                        background: '#f6f4e7',
+                        onBackground: '#38382e',
+                        surface: '#f6f4e7',
+                        onSurface: '#38382e',
+                        onSurfaceVariant: '#38382e',
+                        outlineVariant: '#ebe9d9',
+                        secondary: '#ebe9d9',
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Public Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .editorial-shadow {
+            box-shadow: 0 20px 50px -12px rgba(115, 102, 208, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body antialiased selection:bg-primary selection:text-white">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-onBackground/5 font-headline tracking-tight transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-onBackground tracking-tighter">Soul</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-onBackground/70 hover:text-primary transition-colors">Início</a>
+                <a href="index.html#recursos"
+                    class="text-onBackground/70 hover:text-primary transition-colors">Recursos</a>
+                <a href="index.html#comunidade"
+                    class="text-onBackground/70 hover:text-primary transition-colors">Comunidade</a>
+                <a href="filosofia.html"
+                    class="text-primary font-bold transition-colors">Filosofia</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">
+                    Entrar no Santuário
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-40 pb-20 px-6 max-w-4xl mx-auto">
+        <!-- Header Section -->
+        <header class="mb-20 text-center">
+            <div
+                class="inline-block px-4 py-1 mb-6 rounded-full border border-primary/20 text-primary font-label text-xs tracking-widest uppercase">
+                Ethos
+            </div>
+            <h1 class="font-headline text-6xl text-onBackground mb-6 leading-tight">Nossa Filosofia</h1>
+            <p class="font-headline italic text-xl text-onBackground/60">A base ética que guia nossas escolhas.
+            </p>
+        </header>
+
+        <!-- Editorial Content -->
+        <article class="bg-white/40 backdrop-blur-sm rounded-2xl p-10 md:p-16 editorial-shadow border border-white/60">
+            <div class="prose prose-lg max-w-none text-onBackground/80 leading-relaxed space-y-12">
+
+                <section>
+                    <p class="text-sm text-onBackground/50 mb-8">Última atualização: 29 de junho de 2026 - Samuel</p>
+                    <p class="text-lg font-light leading-relaxed">
+                        Acredito que as redes sociais não devem ser apenas linhas de código criadas para capturar e vender sua atenção. 
+                        No Soul, alinhamos nossa visão ética com nossos termos legais de uso, proteção de dados e licenças, construindo
+                         um ambiente transparente e seguro sob a legislação brasileira.
+                    </p>
+                </section>
+
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+                <!-- Section 1 -->
+                <section>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary font-headline text-2xl italic">01.</span>
+                        <h2 class="font-headline text-[30px] text-onBackground">Nosso Propósito: O Humano em Foco</h2>
+                    </div>
+                    <p>O Soul existe para resgatar a <strong>expressão humana real</strong>. Em nossos <a href="termos.html" class="text-primary hover:underline font-semibold">Termos de Uso</a>, estabelecemos uma política clara: o conteúdo gerado por inteligência artificial (IA) é estritamente proibido. Queremos que você interaja com a arte e as reflexões que vêm diretamente do intelecto e da alma de outra pessoa, livre de automação.</p>
+                    <p>Além disso, o controle do que você cria permanece integralmente com você. Conforme garantido pelo Marco Civil da Internet (art. 19), você retém a propriedade intelectual sobre todo texto ou imagem compartilhada, mantendo seus direitos autorais blindados contra a exploração indevida.</p>
+                </section>
+
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+                <!-- Section 2 -->
+                <section>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary font-headline text-2xl italic">02.</span>
+                        <h2 class="font-headline text-[30px] text-onBackground">Por Que Criamos o App: Contra o Vício Digital</h2>
+                    </div>
+                    <p>Projetamos o Soul para afastar os cassinos comportamentais das redes tradicionais. Nossos Termos de Uso combatem diretamente a poluição e a exploração financeira predatória, banindo:</p>
+                    <ul class="space-y-2 list-disc pl-6">
+                        <li>Promoção de casas de apostas online (BETS), cassinos ou jogos de azar;</li>
+                        <li>Esquemas de enriquecimento rápido ou golpes fraudulentos;</li>
+                        <li>Anúncios invasivos e rastreadores comportamentais de terceiros.</li>
+                    </ul>
+                    <p>Nosso modelo econômico baseia-se exclusivamente no impulsionamento interno de publicações sob regras claras e transparentes. Sua privacidade é resguardada por termos inegociáveis: seus dados pessoais **nunca** serão vendidos e jamais serão utilizados para treinar modelos externos de IA.</p>
+                </section>
+
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+                <!-- Section 3 -->
+                <section>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary font-headline text-2xl italic">03.</span>
+                        <h2 class="font-headline text-[30px] text-onBackground">O Que Queremos Atingir: Respeito e Segurança</h2>
+                    </div>
+                    <p>O Soul é uma comunidade estruturada para maiores de 18 anos, em total conformidade civil e proteção a menores. Nosso compromisso é criar um ecossistema seguro e ético:</p>
+                    <div class="space-y-6 mt-6">
+                        <div class="bg-primary/5 p-6 rounded-[2rem] border border-primary/10">
+                            <h3 class="font-headline text-lg mb-2">Segurança Regionalizada e LGPD</h3>
+                            <p class="text-sm">Seus dados e imagens são armazenados de forma segura em servidores regionais no Brasil (região southamerica-east1 no Firebase), obedecendo estritamente ao Art. 37 da LGPD.</p>
+                        </div>
+                        <div class="bg-primary/5 p-6 rounded-[2rem] border border-primary/10">
+                            <h3 class="font-headline text-lg mb-2">Tolerância Zero contra a Intolerância</h3>
+                            <p class="text-sm">Repudiamos qualquer forma de discurso de ódio ou discriminação. Agimos conforme a legislação brasileira (Leis de Crimes Raciais 7.716/1989 e 14.532/2023) para punir comportamentos tóxicos na plataforma.</p>
+                        </div>
+                        <div class="bg-primary/5 p-6 rounded-[2rem] border border-primary/10">
+                            <h3 class="font-headline text-lg mb-2">Garantia do Devido Processo</h3>
+                            <p class="text-sm">Acreditamos no respeito às pessoas. Salvo em infrações críticas graves, oferecemos um processo mínimo de defesa de 72 horas para qualquer usuário antes de banimentos permanentes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+                <!-- Section 4 -->
+                <section>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary font-headline text-2xl italic">04.</span>
+                        <h2 class="font-headline text-[30px] text-onBackground">Por Que Acreditamos Que Isso é Bom: Dignidade sob a Lei</h2>
+                    </div>
+                    <p>Nosso Contrato de Licença de Usuário Final (<a href="eula.html" class="text-primary hover:underline font-semibold">EULA</a>) e nossa <a href="privacidade.html" class="text-primary hover:underline font-semibold">Política de Privacidade</a> não são barreiras burocráticas; são a nossa declaração de princípios. Ao contrário de outras plataformas, respeitamos as garantias estabelecidas pelo Código de Defesa do Consumidor.</p>
+                    <p>Se você decidir sair do Soul, garantimos que suas informações não serão retidas indefinidamente: oferecemos uma eliminação simples, com pendência de 30 dias para arrependimento, após os quais seus dados são apagados permanentemente de nossos servidores ativos. Acreditamos que a tecnologia deve capacitar e proteger o indivíduo, devolvendo a dignidade ao espaço virtual.</p>
+                </section>
+
+                <footer class="pt-12 text-center text-sm italic opacity-50">
+                    © 2026 Soul. Todos os direitos reservados.
+                </footer>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-background w-full border-t border-onBackground/10 mt-24">
+        <div
+            class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="font-headline text-xl italic text-onBackground">Soul</div>
+                <p class="font-body text-xs text-onBackground/60 mt-2">© 2026 Soul. Feito para Humanos.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                <a href="index.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Início</a>
+                <a href="privacidade.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Privacidade (LGPD)</a>
+                <a href="termos.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Termos de Uso</a>
+                <a href="eula.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">EULA</a>
+                <a href="excluir-conta.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Excluir Conta</a>
+                <a href="filosofia.html" class="font-body text-sm text-primary font-semibold">Filosofia</a>
+                <a href="mailto:contato@soul.com"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

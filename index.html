@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Soul — Espaços digitais com alma</title>
+    <meta name="description" content="Soul é uma rede social construída sobre presença humana real. Sem algoritmos abusivos, sem ruído de IA e com privacidade absoluta para a nossa comunidade." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Public+Sans:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#7366D0',
+                            container: '#f3f1ff',
+                        },
+                        background: '#f6f4e7',
+                        onBackground: '#38382e',
+                        surface: '#f6f4e7',
+                        onSurface: '#38382e',
+                        onSurfaceVariant: '#38382e',
+                        outlineVariant: '#ebe9d9',
+                        secondary: '#ebe9d9',
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Public Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(115, 102, 208, 0.12) 0%, rgba(246, 244, 231, 0) 70%);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #ada3ff 0%, #7366D0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tonal-transition {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .phone-mockup {
+            border: 8px solid #ebe9d9;
+            border-radius: 2.5rem;
+            position: relative;
+            background: #f6f4e7;
+            box-shadow: 0 25px 50px -12px rgba(56, 56, 46, 0.1);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 1.5rem;
+            background: #ebe9d9;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            z-index: 20;
+        }
+
+        .cursor-blink {
+            animation: cursor-blink 0.8s step-end infinite;
+            font-weight: 200;
+        }
+
+        .anim-word {
+            text-decoration: underline;
+            text-decoration-color: #7366D0;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 2px;
+        }
+
+        @keyframes cursor-blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body class="bg-background text-onBackground font-body selection:bg-primary selection:text-white">
+    <nav
+        class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-onBackground/5 font-headline tracking-tight transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-onBackground tracking-tighter">Soul</a>
+            <div class="hidden md:flex items-center gap-8" id="nav-links">
+                <a href="#inicio" class="nav-item text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200" data-section="inicio">Início</a>
+                <a href="#recursos" class="nav-item text-onBackground/70 hover:text-primary transition-all duration-200 pb-1 border-b-2 border-transparent" data-section="recursos">Recursos</a>
+                <a href="#comunidade" class="nav-item text-onBackground/70 hover:text-primary transition-all duration-200 pb-1 border-b-2 border-transparent" data-section="comunidade">Comunidade</a>
+                <a href="filosofia.html" class="nav-item text-onBackground/70 hover:text-primary transition-all duration-200 pb-1 border-b-2 border-transparent">Filosofia</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">
+                    Registrar
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-[85vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+            <div class="absolute inset-0 hero-glow -z-10"></div>
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-8">
+                    <span class="material-symbols-outlined text-sm">favorite</span>
+                    Conexão verdadeira
+                </div>
+                <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-8">
+                    Espaços digitais <br />
+                    <span class="text-gradient-primary italic">com <span class="anim-word">alma</span><span class="cursor-blink">|</span></span>
+                </h1>
+                <p
+                    class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                    Uma rede social de gente como a gente. Sem algoritmos abusivos e predatórios, sem
+                    IA em seu feed derretendo seu cérebro, sem BETS estragando seu dia. Apenas conteúdo feito por pessoas para pessoas
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                    <button
+                        class="w-full md:w-auto px-12 py-4 bg-[#7366D0] text-white rounded-full font-bold text-lg font-headline tracking-tight hover:brightness-110 hover:scale-105 transition-all shadow-xl shadow-primary/25">
+                        Saiba mais
+                    </button>
+                    <a href="filosofia.html"
+                        class="w-full md:w-auto px-12 py-4 text-center rounded-full font-bold text-lg font-headline tracking-tight border border-outline-variant/30 hover:bg-surface-container transition-all">
+                        Nossa filosofia
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Timeline de Momentos -->
+        <section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10" id="recursos">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
+                        <div class="phone-notch"></div>
+                        <div class="p-6 pt-12 flex flex-col gap-4 h-full">
+                            <div
+                                class="w-full h-full flex flex-col items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center border-2 border-dashed border-outline-variant/20 rounded-2xl">
+                                [ Screenshot: Timeline ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <span class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Nada
+                        de posts sugeridos </span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Linha do tempo
+                    </h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        No Soul sua linha do tempo respeita o seu tempo e as pessoas que você segue.
+                        Momentos reais acima de qualquer algoritimo abusivo.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-on-surface">Ordem cronológica</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-on-surface">Zero anúncios intrusivos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-on-surface">Quem realmente te interessa em <strong>foco</strong></span>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Showreels de Imagens -->
+        <section class="bg-secondary/30 py-24">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span
+                            class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Estética
+                            e qualidade</span>
+                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Showreels sem
+                            poluição</h2>
+                        <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Dê vida às suas arte em uma experiência livre de poluição visual.
+                            Valorizamos cada detalhe da sua arte, da sua <strong>alma</strong>, por que o que você expõe é o que realmente importa.
+                        </p>
+                        <div class="bg-primary-container p-6 rounded-2xl border border-outlineVariant/10">
+                            <p class="text-sm font-light italic text-onSurfaceVariant">
+                                Nota: Suporte para vídeo em fase de testes. Por enquanto apenas imagens são suportadas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
+                            <div class="phone-notch"></div>
+                            <div
+                                class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
+                                [ Screenshot: ImageDisplay  ]
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/20 blur-3xl rounded-full -z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Área de Notas -->
+        <section class="max-w-7xl mx-auto px-8 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
+                        <div class="phone-notch"></div>
+                        <div
+                            class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
+                            [ Screenshot: Notinhas ]
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <span
+                        class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Conversas
+                        Reais</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Notinhas</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        As Notinhas são o palco para seus pensamentos e reflexões.
+                        Compartilhe o que você pensa e participe de discussões abertas da comunidade.
+                        <strong>Lembre-se de que o respeito é a base de tudo.</strong>
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-primary/5 rounded-[2rem] border border-primary/10">
+                            <span class="material-symbols-outlined text-primary mb-2">format_quote</span>
+                            <h4 class="font-bold text-sm mb-1 text-onBackground">Citações</h4>
+                            <p class="text-xs text-onBackground/70">Destaque trechos e responda com contexto</p>
+                        </div>
+                        <div class="p-4 bg-primary/5 rounded-[2rem] border border-primary/10">
+                            <span class="material-symbols-outlined text-primary mb-2">forum</span>
+                            <h4 class="font-bold text-sm mb-1 text-onBackground">Fios e mais fios</h4>
+                            <p class="text-xs text-onBackground/70">Estruture seuspensamentos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Perfis Personalizáveis -->
+        <section class="bg-surface py-24 border-y border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Identidade
+                        Digital</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight">Perfis Personalizáveis</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-primary/5 rounded-[2rem] p-8 border border-primary/10">
+                        <div
+                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
+                            [ Mockup: Layout Minimalista ]
+                        </div>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Minimalismo</h3>
+                        <p class="text-onBackground/70 text-sm leading-relaxed">Foco total no conteúdo e na tipografia,
+                            ideal
+                            para escritores e poetas </p>
+                    </div>
+                    <div
+                        class="bg-primary/5 rounded-[2rem] p-8 border border-primary/20 scale-105 shadow-2xl shadow-primary/5">
+                        <div
+                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
+                            [ Mockup: Layout Galeria ]
+                        </div>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Curador </h3>
+                        <p class="text-onBackground/70 text-sm leading-relaxed">Uma grade dinâmica que prioriza suas
+                            imagens e
+                            criações artísticas.</p>
+                    </div>
+                    <div class="bg-primary/5 rounded-[2rem] p-8 border border-primary/10">
+                        <div
+                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
+                            [ Mockup: Layout Bio-Link ]
+                        </div>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Conector</h3>
+                        <p class="text-onBackground/70 text-sm leading-relaxed">Centralize sua presença digital com
+                            links e
+                            integrações diretas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mensagens Diretas -->
+        <section class="bg-secondary/30 py-24">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span
+                            class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Privacidade Total</span>
+                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Mensagens Diretas</h2>
+                        <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Criptografia de ponta a ponta de verdade para conversas que pertencem apenas a você. Converse também em grupos.
+                        </p>
+                        <div class="bg-primary-container p-6 rounded-2xl border border-outlineVariant/10">
+                            <p class="text-sm font-light italic text-onSurfaceVariant">
+                                Nota: <a href="privacidade.html" class="text-primary hover:underline font-medium">Confira nossa política de dados</a> para saber como seus dados são realmente tratados.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
+                            <div class="phone-notch"></div>
+                            <div
+                                class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
+                                [ Screenshot: Chat ]
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/20 blur-3xl rounded-full -z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Privacy/LGPD Section -->
+        <section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10">
+            <div
+                class="bg-secondary rounded-3xl p-12 border border-outlineVariant/15 flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-primary text-4xl">verified_user</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold mb-6">Seus dados são seus.</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        Sem letras miúdas. Tudo o que você compartilha continua sendo seu. Não vendemos suas informações, não rastreamos você pela internet e nunca usaremos suas <strong>conversas</strong> para treinar anúncios ou modelos de IAs generativas.
+                    </p>
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/20 text-xs font-bold text-primary">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        NÓ REGIONAL - BRASIL ATIVO
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <div
+                        class="aspect-square bg-primary/10 rounded-3xl border border-outlineVariant/15 flex items-center justify-center text-on-surface-variant/40 italic font-headline text-xs text-center p-8">
+                        [ Insira sua imagem aqui ]
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials -->
+        <section class="bg-surface py-24" id="comunidade">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-20">
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Vozes
+                        com Alma</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Feito por Humanos, para
+                        Humanos</h2>
+                    <p class="text-on-surface-variant max-w-xl mx-auto">Pessoas reais compartilhando experiências reais
+                        em um espaço que valoriza profundidade sobre cliques.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-primary/5 rounded-[2rem] p-10 border border-primary/10 hover:border-primary/30 transition-colors">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline shadow-lg shadow-primary/20">
+                                AM</div>
+                            <div>
+                                <h4 class="font-bold font-headline text-onBackground">Ana Martins</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Curadora, São Paulo</span>
+                            </div>
+                        </div>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"A ausência de ruído de IA é
+                            revolucionária. Posso finalmente ver o que meus amigos estão realmente pensando sem filtros
+                            algorítmicos no caminho."</p>
+                    </div>
+                    <div
+                        class="bg-primary/5 rounded-[2rem] p-10 border border-primary/10 hover:border-primary/30 transition-colors">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline">
+                                RP</div>
+                            <div>
+                                <h4 class="font-bold font-headline text-onBackground">Ricardo Pereira</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Escritor, Rio</span>
+                            </div>
+                        </div>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Finalmente, uma plataforma
+                            que leva a LGPD e nossa privacidade a sério. Soul parece um porto seguro para a expressão
+                            criativa."</p>
+                    </div>
+                    <div
+                        class="bg-primary/5 rounded-[2rem] p-10 border border-primary/10 hover:border-primary/30 transition-colors">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline">
+                                LV</div>
+                            <div>
+                                <h4 class="font-bold font-headline text-onBackground">Luiza Vieira</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Artista, Porto Alegre</span>
+                            </div>
+                        </div>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"O Soul trata as redes sociais
+                            como
+                            um ofício. A estética editorial faz com que cada conversa pareça mais intencional e
+                            significativa."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Final CTA Section -->
+        <section class="py-32 px-8" id="filosofia">
+            <div
+                class="max-w-4xl mx-auto bg-primary-container p-12 md:p-24 rounded-[3rem] text-center relative overflow-hidden border border-primary/10 shadow-2xl">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-3xl rounded-full -mr-20 -mt-20"></div>
+                <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tight mb-8">Junte-se a quem tem 
+                    <span class="text-gradient-primary italic"><span class="anim-word">alma</span><span class="cursor-blink">|</span></span>
+                </h2>
+                <p class="text-on-surface-variant mb-12 text-lg max-w-xl mx-auto leading-relaxed">Junte-se a uma
+                    comunidade onde você é visto, ouvido e protegido. Experimente a próxima era da conexão com alma.</p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <button
+                        class="bg-[#7366D0] text-white font-bold font-headline px-12 py-5 rounded-full text-xl hover:scale-105 transition-transform shadow-xl shadow-primary/30">
+                        Entrar na Comunidade
+                    </button>
+                    <a href="filosofia.html"
+                        class="bg-transparent border-2 border-primary/30 text-onSurface font-bold font-headline px-12 py-5 rounded-full text-xl hover:bg-secondary transition-colors text-center">
+                        Nossa filosofia
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-background w-full border-t border-onBackground/10 mt-24">
+        <div
+            class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="font-headline text-xl italic text-onBackground">Soul</div>
+                <p class="font-body text-xs text-onBackground/60 mt-2">© 2026 Soul. Feito para gente como a gente.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                <a href="index.html" class="font-body text-sm text-primary font-semibold">Início</a>
+                <a href="privacidade.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Privacidade
+                    (LGPD)</a>
+                <a href="termos.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Termos de
+                    Uso</a>
+                <a href="eula.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">EULA</a>
+                <a href="excluir-conta.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Excluir Conta</a>
+                <a href="filosofia.html"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Filosofia</a>
+                <a href="mailto:contato@soul.com"
+                    class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Mobile Navigation Shell (Bottom) -->
+    <div class="md:hidden fixed bottom-6 left-6 right-6 z-50">
+        <div
+            class="bg-background/90 backdrop-blur-2xl rounded-full px-8 py-4 flex justify-around items-center shadow-2xl border border-white/5">
+            <span class="material-symbols-outlined text-primary">home</span>
+            <span class="material-symbols-outlined text-onSurfaceVariant">explore</span>
+            <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center -mt-12 shadow-xl shadow-primary/30 text-white">
+                <span class="material-symbols-outlined text-3xl">add</span>
+            </div>
+            <span class="material-symbols-outlined text-onSurfaceVariant">chat_bubble_outline</span>
+            <span class="material-symbols-outlined text-onSurfaceVariant">person_outline</span>
+        </div>
+    </div>
+    <!-- Active state navigation helper -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('#nav-links .nav-item');
+
+            const removeActiveClasses = () => {
+                navItems.forEach(item => {
+                    item.classList.remove('text-primary', 'font-bold', 'border-primary');
+                    item.classList.add('text-onBackground/70', 'border-transparent');
+                });
+            };
+
+            const addActiveClasses = (element) => {
+                element.classList.remove('text-onBackground/70', 'border-transparent');
+                element.classList.add('text-primary', 'font-bold', 'border-primary');
+            };
+
+            // Intersection Observer to highlight based on scroll position
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px', // triggers when section is in the middle of the viewport
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        const activeItem = document.querySelector(`#nav-links .nav-item[data-section="${id}"]`);
+                        if (activeItem) {
+                            removeActiveClasses();
+                            addActiveClasses(activeItem);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // Backup click handler for instant feedback
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    removeActiveClasses();
+                    addActiveClasses(item);
+                });
+            });
+
+            // Typewriter animation for "alma" and "soul"
+            const wordElements = document.querySelectorAll('.anim-word');
+            if (wordElements.length > 0) {
+                const words = ['alma', 'soul'];
+                let wordIndex = 0;
+                let charIndex = words[wordIndex].length;
+                let isDeleting = true;
+                let typingSpeed = 150;
+
+                function type() {
+                    const currentWord = words[wordIndex];
+
+                    if (isDeleting) {
+                        charIndex--;
+                        typingSpeed = 100; // Deletion speed
+                    } else {
+                        charIndex++;
+                        typingSpeed = 150; // Typing speed
+                    }
+
+                    const displayedText = currentWord.substring(0, charIndex);
+                    wordElements.forEach(el => {
+                        el.textContent = displayedText;
+                    });
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        isDeleting = true;
+                        typingSpeed = 1500; // Wait 1.5 seconds when word is fully typed
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typingSpeed = 500; // Wait 0.5 seconds before typing next word
+                    }
+
+                    setTimeout(type, typingSpeed);
+                }
+
+                // Start typing loop after an initial 3 second pause
+                setTimeout(type, 3000);
+            }
+        });
+    </script>
+</body>
+
+</html>
