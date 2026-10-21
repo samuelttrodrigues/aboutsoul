@@ -64,16 +64,17 @@
     <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold text-onBackground tracking-tighter">Soul</a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="text-onBackground/70 hover:text-primary transition-colors">Início</a>
+        <a href="index.html#inicio" class="text-onBackground/70 hover:text-primary transition-colors">Início</a>
         <a href="index.html#recursos" class="text-onBackground/70 hover:text-primary transition-colors">Recursos</a>
         <a href="index.html#comunidade" class="text-onBackground/70 hover:text-primary transition-colors">Comunidade</a>
-        <a href="index.html#filosofia" class="text-onBackground/70 hover:text-primary transition-colors">Filosofia</a>
+        <a href="termos.html" class="text-onBackground/70 hover:text-primary transition-colors">Políticas</a>
+        <a href="filosofia.html" class="text-onBackground/70 hover:text-primary transition-colors">Filosofia</a>
       </div>
       <div class="flex items-center gap-4">
-        <button
+        <a href="https://forms.gle/5RBuByJqcdp2EkHt8"
           class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">
-          Entrar no Santuário
-        </button>
+          Registrar
+        </a>
       </div>
     </div>
   </nav>
@@ -94,10 +95,10 @@
       <div class="prose prose-lg max-w-none text-onBackground/80 leading-relaxed space-y-12">
 
         <section>
-          <p class="text-sm text-onBackground/50 mb-8">Última atualização: 16 de março de 2026</p>
+          <p class="text-sm text-onBackground/50 mb-8">Última atualização: 19 de outubro de 2026</p>
           <p>Bem-vindo(a) ao Soul. Estes Termos de Uso ("Termos") regulam o seu acesso e uso do aplicativo Soul, site e
             serviços relacionados (coletivamente, o "Serviço"), de propriedade e operado por Samuel Thiago Telles
-            Rodrigues.</p>
+            Rodrigues, com sede em Francisco Beltrão/PR.</p>
           <p>Ao criar uma conta ou utilizar o Serviço, você concorda em se vincular a estes Termos. Se você não concorda
             com qualquer parte destes Termos, não utilize o Serviço.</p>
         </section>
@@ -110,10 +111,10 @@
             <span class="text-primary font-headline text-2xl italic">01.</span>
             <h2 class="font-headline text-[30px] text-onBackground">Elegibilidade</h2>
           </div>
-          <p>Você deve ter pelo menos 18 (dezoito) anos de idade para acessar ou usar o Soul. Ao criar uma conta, você
-            declara expressamente que possui 18 anos ou mais e detém plena capacidade civil para celebrar um contrato
-            vinculante sob a legislação brasileira.</p>
-          <p>O uso do Serviço por menores de 18 anos é estritamente proibido.</p>
+          <p>O Soul é destinado a pessoas com 13 anos ou mais. A verificação combina o sinal de idade das lojas de
+            aplicativos, uma data de nascimento neutra quando necessário e denúncias fundamentadas de contas de menores.
+            Usuários entre 13 e 17 anos recebem salvaguardas adicionais, incluindo limites operacionais mais rigorosos e
+            prioridade na moderação.</p>
         </section>
 
         <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
@@ -178,7 +179,8 @@
             <h2 class="font-headline text-[30px] text-onBackground">Direitos Autorais</h2>
           </div>
           <p>O Soul respeita a propriedade intelectual. Caso identifique infração de seus direitos, envie notificação
-            para <strong>contato@soul.com</strong> contendo a identificação do material e prova de titularidade.</p>
+            para <a href="mailto:dmca@soul.dev.br" class="text-primary hover:underline font-semibold">dmca@soul.dev.br</a>
+            contendo a identificação do material, a URL do conteúdo e prova de titularidade.</p>
         </section>
 
         <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
@@ -221,16 +223,50 @@
 
         <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
 
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-primary font-headline text-2xl italic">08.</span>
+            <h2 class="font-headline text-[30px] text-onBackground">Criptografia e moderação</h2>
+          </div>
+          <p>As mensagens individuais e em grupo usam criptografia ponta-a-ponta. O Soul não consegue ler o conteúdo por
+            design. Se um participante denunciar uma mensagem, poderá ser coletado apenas o contexto limitado de 10
+            mensagens anteriores, a denunciada e 10 posteriores, com acesso restrito ao superadmin.</p>
+          <p>O fluxo completo de sinalização, votação, decisão administrativa, bloqueio e apelação está descrito na
+            <a href="moderacao.html" class="text-primary hover:underline font-semibold">Política de Moderação</a>.</p>
+        </section>
+
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-primary font-headline text-2xl italic">09.</span>
+            <h2 class="font-headline text-[30px] text-onBackground">Rescisão e exclusão da conta</h2>
+          </div>
+          <p>Você pode excluir sua conta pelo aplicativo ou pela página de <a href="excluir-conta.html" class="text-primary hover:underline font-semibold">exclusão de conta</a>. A solicitação inicia uma carência de 30 dias, durante a qual o login pode reativar a conta.</p>
+          <p>Depois desse prazo, os dados do Firestore, Firebase Storage, Firebase Auth e Cloudflare R2 são excluídos dos servidores ativos. Conteúdo preservado para investigação criminal permanece retido pelo prazo legal aplicável.</p>
+        </section>
+
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-primary font-headline text-2xl italic">10.</span>
+            <h2 class="font-headline text-[30px] text-onBackground">Limites operacionais</h2>
+          </div>
+            <p>Os limites técnicos de mídia, publicações, mensagens, denúncias e retenção podem ser ajustados quando necessário, com comunicação no aplicativo. Esses parâmetros não alteram as garantias contratuais destes Termos.</p>
+        </section>
+
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+
         <!-- Contact Box -->
         <section class="mt-20">
           <div class="bg-primary/5 p-8 md:p-12 rounded-[2rem] border border-primary/10 text-center">
             <h3 class="font-headline text-2xl text-onBackground mb-4">Precisa contestar algo?</h3>
             <p class="text-onBackground/70 mb-8 max-w-lg mx-auto">Se você acredita que sua conta foi suspensa
               indevidamente, entre em contato conosco.</p>
-            <a href="mailto:contato@soul.com"
+            <a href="mailto:suporte@soul.dev.br"
               class="inline-flex items-center gap-3 bg-primary text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-all">
-              <span class="material-symbols-outlined">support_agent</span>
-              suporte@soul.com
+              suporte@soul.dev.br
             </a>
           </div>
         </section>
@@ -247,7 +283,7 @@
       class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 flex flex-col md:flex-row justify-between items-center gap-8">
       <div>
         <div class="font-headline text-xl italic text-onBackground">Soul</div>
-        <p class="font-body text-xs text-onBackground/60 mt-2">© 2024 Soul. Feito para Humanos.</p>
+        <p class="font-body text-xs text-onBackground/60 mt-2">© 2026 Soul. Feito para gente como a gente.</p>
       </div>
       <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
         <a href="index.html"
@@ -255,12 +291,13 @@
         <a href="privacidade.html"
           class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Privacidade (LGPD)</a>
         <a href="termos.html" class="font-body text-sm text-primary font-semibold">Termos de Uso</a>
+        <a href="moderacao.html" class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Moderação</a>
         <a href="eula.html" class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">EULA</a>
         <a href="excluir-conta.html"
           class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Excluir Conta</a>
         <a href="filosofia.html"
           class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Filosofia</a>
-        <a href="mailto:contato@soul.com"
+        <a href="mailto:contato@soul.dev.br"
           class="font-body text-sm text-onBackground/60 hover:text-primary transition-colors">Contato</a>
       </div>
     </div>
