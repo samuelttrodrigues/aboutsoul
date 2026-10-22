@@ -63,24 +63,39 @@
         }
 
         .phone-mockup {
-            border: 8px solid #ebe9d9;
-            border-radius: 2.5rem;
+            border-radius: 1rem;
             position: relative;
-            background: #f6f4e7;
+            background: rgba(115, 102, 208, 0.08);
             box-shadow: 0 25px 50px -12px rgba(56, 56, 46, 0.1);
         }
 
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 1.5rem;
-            background: #ebe9d9;
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-            z-index: 20;
+        .phone-mockup img,
+        .zoomable {
+            cursor: zoom-in;
+        }
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.85);
+            cursor: zoom-out;
+        }
+
+        #lightbox.open {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .cursor-blink {
@@ -130,7 +145,7 @@
                 <div
                     class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-8">
                     <span class="material-symbols-outlined text-sm">favorite</span>
-                    Conexão verdadeira
+                    Do Brasil para o Brasil
                 </div>
                 <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-8">
                     Espaços digitais <br />
@@ -138,7 +153,7 @@
                 </h1>
                 <p
                     class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                    Uma rede social de pessoas para pessoas. Sem algoritmos que decidem o que você deve pensar, sem o monopólio das Big Techs manipulando o debate e sem a IA interferindo no seu feed. Apenas conversas reais de pessoas reais para pessoas reais.
+                    Uma rede social de pessoas para pessoas. Sem algoritmos que decidem o que você deve pensar, sem o monopólio das Big Techs manipulando o debate e sem a IA interferindo no seu feed.<br> Apenas conversas e pessoas reais em busca da soberania digital!
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
                     <button
@@ -150,13 +165,12 @@
                         Nossa filosofia
                     </a>
                 </div>
-                <!-- Novo Selo de Confiança -->
                 <div class="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-primary/5 border border-primary/15 text-xs md:text-sm text-onBackground/80 max-w-xl mx-auto text-left shadow-sm">
                     <span class="text-xl shrink-0">🛡️</span>
                     <div>
-                        <strong class="font-bold text-onBackground">Comunidade 16+</strong>
+                        <strong class="font-bold text-onBackground">Soberania Digital</strong>
                         <span class="text-onBackground/40 mx-1">|</span>
-                        <span>Ambiente verificado via Google Age Verification para conversas mais maduras, humanas e livres de perfis falsos.</span>
+                        <span>Uma rede feita no Brasil e para os brasileiros, livre da censura algorítmica e do controle do Vale do Silício.</span>
                     </div>
                 </div>
             </div>
@@ -165,14 +179,9 @@
         <section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10" id="recursos">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1">
-                    <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
-                        <div class="phone-notch"></div>
-                        <div class="p-6 pt-12 flex flex-col gap-4 h-full">
-                            <div
-                                class="w-full h-full flex flex-col items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center border-2 border-dashed border-outline-variant/20 rounded-2xl">
-                                [ Screenshot: Timeline ]
-                            </div>
-                        </div>
+                    <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                                <!-- Substitua "Timeline" pelo link do print: <img src="LINK_DO_PRINT" alt="Timeline" class="w-full h-full object-cover" /> -->
+                                <img src="imgs/TL.png" alt="Timeline" class="block w-full h-auto" />
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
@@ -188,7 +197,7 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary">check_circle</span>
-                            <span class="text-on-surface"><strong>Zero interferência algorítmica:</strong> ninguém escolhe o que é politicamente conveniente ou lucrativo para você ler.</span>
+                            <span class="text-on-surface"><strong>Sem interferência:</strong> nenhuma força estrangeira escolhe o que é politicamente conveniente ou lucrativo para você ler.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary">check_circle</span>
@@ -198,7 +207,7 @@
                 </div>
             </div>
         </section>
-        <!-- Showreels de Imagens -->
+        <!-- Showreels -->
         <section class="bg-secondary/30 py-24">
             <div class="max-w-7xl mx-auto px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -206,25 +215,26 @@
                         <span
                             class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Estética
                             e qualidade</span>
-                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Showreels sem
-                            poluição</h2>
+                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Videos com
+                            poluição reduzida</h2>
                         <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
                             Dê vida às suas arte em uma experiência livre de poluição visual.
                             Valorizamos cada detalhe da sua arte, da sua <strong>alma</strong>, por que o que você expõe é o que realmente importa.
                         </p>
                         <div class="bg-primary-container p-6 rounded-2xl border border-outlineVariant/10">
                             <p class="text-sm font-light italic text-onSurfaceVariant">
-                                Nota: Suporte para vídeo em fase de testes. Por enquanto apenas imagens são suportadas.
+                                Nota: Suporte para vídeo em fase de testes. <br><b>Enquanto em teste, alguns erros podem ocorrer.</b>
                             </p>
                         </div>
                     </div>
-                    <div class="relative">
-                        <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
-                            <div class="phone-notch"></div>
-                            <div
-                                class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
-                                [ Screenshot: ImageDisplay  ]
-                            </div>
+                    <div class="relative flex flex-col sm:flex-row md:flex-col xl:flex-row gap-6 justify-center items-center">
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                                <!-- Substitua "Reel 1" pelo link do print: <img src="LINK_DO_PRINT" alt="Reel 1" class="block w-full h-auto" /> -->
+                                <img src="imgs/Reel.png" alt="Reel 1" class="block w-full h-auto" />
+                        </div>
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                                <!-- Substitua "Reel 2" pelo link do print: <img src="LINK_DO_PRINT" alt="Reel 2" class="block w-full h-auto" /> -->
+                                <img src="imgs/Reel 2.png" alt="Reel 2" class="block w-full h-auto" />
                         </div>
                         <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/20 blur-3xl rounded-full -z-10">
                         </div>
@@ -236,13 +246,10 @@
         <section class="max-w-7xl mx-auto px-8 py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1">
-                    <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
-                        <div class="phone-notch"></div>
-                        <div
-                            class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
-                            [ Screenshot: Notinhas ]
+                    <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                            <!-- Substitua "Notinhas" pelo link do print: <img src="LINK_DO_PRINT" alt="Notinhas" class="w-full h-full object-cover" /> -->
+                            <img src="imgs/Notas.png" alt="Notinhas" class="block w-full h-auto" />
                         </div>
-                    </div>
                 </div>
                 <div class="order-1 md:order-2">
                     <span
@@ -277,37 +284,45 @@
                         Digital</span>
                     <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight">Perfis Personalizáveis</h2>
                 </div>
+                <!-- Edição de perfil -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+                    <div>
+                        <span class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Do seu jeito</span>
+                        <h3 class="text-2xl md:text-3xl font-headline font-bold tracking-tight mb-6">Edite seu perfil e escolha sua cor</h3>
+                        <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Troque a foto, o nome de exibição e a bio, e escolha a cor de destaque que combina com você.
+                        </p>
+                    </div>
+                    <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                        <!-- Substitua "Editar Perfil" pelo link do print: <img src="LINK_DO_PRINT" alt="Editar Perfil" class="block w-full h-auto" /> -->
+                        <img src="imgs/Perfil 2.png" alt="Editar Perfil" class="block w-full h-auto" />
+                    </div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-primary/5 rounded-[2rem] p-8 border border-primary/10">
-                        <div
-                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
-                            [ Mockup: Layout Minimalista ]
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto mb-6 overflow-hidden">
+                            <!-- Substitua "Layout Minimalista" pelo link do print: <img src="LINK_DO_PRINT" alt="Layout Minimalista" class="w-full h-full object-cover" /> -->
+                            <img src="imgs/Criativo.png" alt="Layout Minimalista" class="block w-full h-auto" />
                         </div>
-                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Minimalismo</h3>
-                        <p class="text-onBackground/70 text-sm leading-relaxed">Foco total no conteúdo e na tipografia,
-                            ideal
-                            para escritores e poetas </p>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">Criativo</h3>
+                        <p class="text-onBackground/70 text-sm leading-relaxed">Para criadores que gostam de explorar novos conceitos.</p>
                     </div>
                     <div
                         class="bg-primary/5 rounded-[2rem] p-8 border border-primary/20 scale-105 shadow-2xl shadow-primary/5">
-                        <div
-                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
-                            [ Mockup: Layout Galeria ]
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto mb-6 overflow-hidden">
+                            <img src="imgs/Artistico.png" alt="Layout Galeria" class="block w-full h-auto" />
                         </div>
-                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Curador </h3>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">Artistas</h3>
                         <p class="text-onBackground/70 text-sm leading-relaxed">Uma grade dinâmica que prioriza suas
                             imagens e
-                            criações artísticas.</p>
+                            criações. Sem ter que encher o seu perfil com imagens vazias</p>
                     </div>
                     <div class="bg-primary/5 rounded-[2rem] p-8 border border-primary/10">
-                        <div
-                            class="aspect-[4/5] bg-primary/10 rounded-2xl mb-6 flex items-center justify-center text-primary/30 text-[10px] text-center px-4">
-                            [ Mockup: Layout Bio-Link ]
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto mb-6 overflow-hidden">
+                            <img src="imgs/Padrao.png" alt="Layout Bio-Link" class="block w-full h-auto" />
                         </div>
-                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">O Conector</h3>
-                        <p class="text-onBackground/70 text-sm leading-relaxed">Centralize sua presença digital com
-                            links e
-                            integrações diretas.</p>
+                        <h3 class="text-xl font-headline font-bold mb-3 text-onBackground">Padrão</h3>
+                        <p class="text-onBackground/70 text-sm leading-relaxed">Para quem não liga muito para a personalização.</p>
                     </div>
                 </div>
             </div>
@@ -318,23 +333,30 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div>
                         <span
-                            class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Privacidade Total</span>
-                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Mensagens Diretas</h2>
+                            class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Privacidade e organização</span>
+                        <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Mensagens</h2>
                         <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
-                            Criptografia de ponta a ponta de verdade para conversas que pertencem apenas a você. Converse também em grupos.
+                            Criptografia para conversas que pertencem apenas a você. Grupos em desenvolvimento.
                         </p>
                         <div class="bg-primary-container p-6 rounded-2xl border border-outlineVariant/10">
                             <p class="text-sm font-light italic text-onSurfaceVariant">
-                                Nota: <a href="privacidade.html" class="text-primary hover:underline font-medium">Confira nossa política de dados</a> para saber como seus dados são realmente tratados.
+                                Nota: <a href="privacidade.html" class="text-primary hover:underline font-medium">Confira nossa política de dados</a> para saber como seus dados são tratados.<br>Denúncias realizadas dentro da conversa serão arquivadas para investigação, mas não serão compartilhadas com terceiros.
                             </p>
                         </div>
                     </div>
-                    <div class="relative">
-                        <div class="phone-mockup w-full max-w-[320px] aspect-[9/19] mx-auto overflow-hidden">
-                            <div class="phone-notch"></div>
+                    <div class="relative flex flex-col sm:flex-row md:flex-col xl:flex-row gap-6 justify-center items-center">
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
                             <div
-                                class="w-full h-full flex items-center justify-center text-on-surface-variant/30 italic font-headline text-xs text-center">
-                                [ Screenshot: Chat ]
+                                class="w-full text-on-surface-variant/30 italic font-headline text-xs text-center">
+                                <!-- Substitua "Chat" pelo link do print: <img src="LINK_DO_PRINT" alt="Chat" class="w-full h-full object-cover" /> -->
+                                <img src="imgs/Msg1.png" alt="Chat" class="block w-full h-auto" />
+                            </div>
+                        </div>
+                        <div class="phone-mockup !bg-transparent w-full max-w-[320px] mx-auto overflow-hidden">
+                            <div
+                                class="w-full text-on-surface-variant/30 italic font-headline text-xs text-center">
+                                <!-- Substitua "Chat 2" pelo link do print: <img src="LINK_DO_PRINT" alt="Chat 2" class="w-full h-full object-cover" /> -->
+                                <img src="imgs/Msg2.png" alt="Chat 2" class="block w-full h-auto" />
                             </div>
                         </div>
                         <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/20 blur-3xl rounded-full -z-10">
@@ -354,16 +376,16 @@
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-wider uppercase mb-4">
                             Google Age Verification
                         </div>
-                        <h3 class="text-2xl font-headline font-bold mb-4 text-onBackground">Comunidade Autêntica &amp; 16+</h3>
+                        <h3 class="text-2xl font-headline font-bold mb-4 text-onBackground">Compromisso Ético &amp; 16+</h3>
                         <p class="text-onBackground/70 text-sm leading-relaxed mb-6">
-                            Barreira rigorosa contra perfis falsos, automações maliciosas e desinformação coordenada.
+                            Uma escolha ativa de não expor menores de 16 anos aos gatilhos e estímulos predatórios do ambiente digital.
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                             <div class="p-4 bg-background rounded-2xl border border-outlineVariant/20 flex items-center gap-3">
                                 <span class="material-symbols-outlined text-primary text-2xl">shield_person</span>
                                 <div>
-                                    <h4 class="font-bold text-xs text-onBackground">Sem robôs e bots</h4>
-                                    <p class="text-[11px] text-onBackground/60">Interações 100% humanas</p>
+                                    <h4 class="font-bold text-xs text-onBackground">Cuidado com o desenvolvimento</h4>
+                                    <p class="text-[11px] text-onBackground/60">Infância preservada fora das telas</p>
                                 </div>
                             </div>
                             <div class="p-4 bg-background rounded-2xl border border-outlineVariant/20 flex items-center gap-3">
@@ -377,61 +399,37 @@
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <span class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Segurança e Maturidade</span>
-                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Ambiente 16+ com Google Age Verification</h2>
+                    <span class="text-primary font-headline font-bold tracking-widest text-xs uppercase mb-4 block">Segurança e humanidade</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">RESPONSABILIDADE SOCIAL & ECA</h2>
                     <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
-                        Redes abertas demais viraram terra de bots, golpes e discussões tóxicas e artificiais. No Soul, adotamos a verificação de idade oficial do Google para garantir uma comunidade a partir dos 16 anos. O resultado é um ecossistema mais seguro, com pessoas reais e discussões que realmente agregam.
+                        Acreditamos firmemente nas diretrizes do Estatuto da Criança e do Adolescente e entendemos que as redes sociais não são ambientes 
+                        saudáveis para a formação dos mais novos. <br>Crianças e jovens em desenvolvimento não devem ser expostos à busca compulsiva por validação, 
+                        à comparação tóxica ou aos impactos da hiperconectividade.<br>
+                         Por isso, adotamos a verificação oficial de idade do Google para assegurar que a plataforma seja restrita a maiores de 16 anos.<br>
+                         Se pautado em votação, iremos subir para 18 anos, para refletirmos a responsabilidade social que a plataforma exige.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary">check_circle</span>
-                            <span class="text-on-surface"><strong>Conversas mais maduras:</strong> moderação e convivência civilizada entre membros reais.</span>
+                            <span class="text-on-surface"><strong>Respeito ao ECA e à infância:</strong> uma escolha de design consciente para proteger quem ainda não tem discernimento pleno das dinâmicas das redes.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary">check_circle</span>
-                            <span class="text-on-surface"><strong>Livre de contas fantasmas:</strong> um ambiente seguro onde cada perfil tem identidade e responsabilidade.</span>
+                            <span class="text-on-surface"><strong>Privacidade e segurança:</strong> a verificação é intermediada pelo Google, confirmando a faixa etária sem que nenhum documento pessoal seja enviado ou armazenado em nossos servidores.</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
-        <!-- Privacy/LGPD Section -->
-        <section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10">
-            <div
-                class="bg-secondary rounded-3xl p-12 border border-outlineVariant/15 flex flex-col md:flex-row items-center gap-12">
-                <div class="flex-1">
-                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-8">
-                        <span class="material-symbols-outlined text-primary text-4xl">verified_user</span>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-headline font-bold mb-6">Seus dados, sua voz.</h2>
-                    <p class="text-on-surface-variant text-lg leading-relaxed mb-6">
-                        No Soul, você mantém o controle sobre o que publica. Escolhemos a transparência e respeitamos a privacidade e a voz de cada pessoa.
-                    </p>
-                    <p class="text-on-surface-variant text-base leading-relaxed mb-8">
-                        Tudo o que você publica é seu. Não rastreamos seus passos na web, não vendemos seus dados para corretores de anúncios e nunca usaremos sua produção criativa para alimentar IAs.
-                    </p>
-                    <div
-                        class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/20 text-xs font-bold text-primary">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        🇧🇷 Soberania e LGPD: Servidores com nó regional no Brasil, respeitando as leis e a comunidade brasileira.
-                    </div>
-                </div>
-                <div class="w-full md:w-1/3">
-                    <div
-                        class="aspect-square bg-primary/10 rounded-3xl border border-outlineVariant/15 flex items-center justify-center text-on-surface-variant/40 italic font-headline text-xs text-center p-8">
-                        [ Insira sua imagem aqui ]
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- Testimonials -->
         <section class="bg-surface py-24" id="comunidade">
             <div class="max-w-7xl mx-auto px-8">
                 <div class="text-center mb-20">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Vozes
                         com Alma</span>
-                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Feito por Humanos, para
-                        Humanos</h2>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-6">Feito por e para gente como a gente
+                        </h2>
                     <p class="text-on-surface-variant max-w-xl mx-auto">Pessoas reais compartilhando experiências reais
                         em um espaço que valoriza profundidade sobre cliques.</p>
                 </div>
@@ -441,44 +439,44 @@
                         <div class="flex items-center gap-4 mb-8">
                             <div
                                 class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline shadow-lg shadow-primary/20">
-                                GC</div>
+                                CF</div>
                             <div>
-                                <h4 class="font-bold font-headline text-onBackground">Gabriel Costa</h4>
-                                <span class="text-onBackground/60 text-xs font-bold">Criador de conteúdo, Curitiba</span>
+                                <h4 class="font-bold font-headline text-onBackground">Camila Fujii</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Estudante de Engenharia, Francisco Beltrão</span>
                             </div>
                         </div>
-                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Depois que o Instagram virou um shopping center e o Threads começou a esconder debates públicos e alcance de quem pensa de forma independente, o Soul virou meu refúgio diário."</p>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Cansado de ter o alcance limitado por algoritmos opacos que decidem qual opinião deve circular. A gente deve finalmente conseguir debater os rumos do 
+                            país e trocar ideias sem o filtro corporativo de bilionários estrangeiros."</p>
                     </div>
                     <div
                         class="bg-primary/5 rounded-[2rem] p-10 border border-primary/10 hover:border-primary/30 transition-colors">
                         <div class="flex items-center gap-4 mb-8">
                             <div
                                 class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline">
-                                RP</div>
+                                JA</div>
                             <div>
-                                <h4 class="font-bold font-headline text-onBackground">Ricardo Pereira</h4>
-                                <span class="text-onBackground/60 text-xs font-bold">Escritor, Rio</span>
+                                <h4 class="font-bold font-headline text-onBackground">João Antônio</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Engenherio, Santos</span>
                             </div>
                         </div>
-                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Finalmente, uma plataforma
-                            que leva a LGPD e nossa privacidade a sério. Soul parece um porto seguro para a expressão
-                            criativa."</p>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Hoje em dia, como as redes são 
+                            controladas por um poder centralizado, a opinião contrária à deles sofre censura e supressão de alcance. Elas não ligam para o usuário, mas sim para os próprios interesses,
+                             a ponto de limitarem a nossa própria liberdade de expressão."</p>
                     </div>
                     <div
                         class="bg-primary/5 rounded-[2rem] p-10 border border-primary/10 hover:border-primary/30 transition-colors">
                         <div class="flex items-center gap-4 mb-8">
                             <div
                                 class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold font-headline">
-                                LV</div>
+                                RS</div>
                             <div>
-                                <h4 class="font-bold font-headline text-onBackground">Luiza Vieira</h4>
-                                <span class="text-onBackground/60 text-xs font-bold">Artista, Porto Alegre</span>
+                                <h4 class="font-bold font-headline text-onBackground">Rodrigo Santos</h4>
+                                <span class="text-onBackground/60 text-xs font-bold">Engenherio, Francisco Beltrão</span>
                             </div>
                         </div>
-                        <p class="text-onBackground/70 italic leading-relaxed font-light">"O Soul trata as redes sociais
-                            como
-                            um ofício. A estética editorial faz com que cada conversa pareça mais intencional e
-                            significativa."</p>
+                        <p class="text-onBackground/70 italic leading-relaxed font-light">"Hoje, as redes sociais 
+                            funcionam sob o controle absoluto do Vale do Silício. Era mais do que hora de termos um espaço genuinamente brasileiro, 
+                            seguro e que liberte a nossa voz da tutela de algoritmos corporativos."</p>
                     </div>
                 </div>
             </div>
@@ -491,13 +489,13 @@
                 <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tight mb-8">Junte-se a quem tem 
                     <span class="text-gradient-primary italic"><span class="anim-word">alma</span><span class="cursor-blink">|</span></span>
                 </h2>
-                <p class="text-on-surface-variant mb-12 text-lg max-w-xl mx-auto leading-relaxed">Junte-se a uma
-                    comunidade onde você é visto, ouvido e protegido. Experimente a próxima era da conexão com alma.</p>
+                <p class="text-on-surface-variant mb-12 text-lg max-w-xl mx-auto leading-relaxed">Chega de ser produto nas mãos de monopólios estrangeiros. Venha para uma rede brasileira,
+                     livre de manipulação algorítmica e feita para quem quer conversar de verdade.</p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center">
-                    <button
-                        class="bg-[#7366D0] text-white font-bold font-headline px-12 py-5 rounded-full text-xl hover:scale-105 transition-transform shadow-xl shadow-primary/30">
+                    <a href="https://forms.gle/5RBuByJqcdp2EkHt8"
+                        class="bg-[#7366D0] text-white text-center font-bold font-headline px-12 py-5 rounded-full text-xl hover:scale-105 transition-transform shadow-xl shadow-primary/30">
                         Entrar na Comunidade
-                    </button>
+                    </a>
                     <a href="filosofia.html"
                         class="bg-transparent border-2 border-primary/30 text-onSurface font-bold font-headline px-12 py-5 rounded-full text-xl hover:bg-secondary transition-colors text-center">
                         Nossa filosofia
@@ -512,7 +510,7 @@
             class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 flex flex-col md:flex-row justify-between items-center gap-8">
             <div>
                 <div class="font-headline text-xl italic text-onBackground">Soul</div>
-                <p class="font-body text-xs text-onBackground/60 mt-2">© 2026 Soul. Feito para gente como a gente.</p>
+                <p class="font-body text-xs text-onBackground/60 mt-2">2026 Soul. Feito para gente como a gente.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
                 <a href="index.html" class="font-body text-sm text-primary font-semibold">Início</a>
@@ -624,6 +622,35 @@
                 setTimeout(type, 3000);
             }
         });
+    </script>
+    <!-- Lightbox: clique em qualquer print para ampliar -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+    <script>
+        (function () {
+            var box = document.getElementById('lightbox');
+            var big = document.getElementById('lightbox-img');
+            function close() {
+                box.classList.remove('open');
+                big.src = '';
+                document.body.style.overflow = '';
+            }
+            document.addEventListener('click', function (e) {
+                var img = e.target.closest('.phone-mockup img, .zoomable');
+                if (img && img.tagName === 'IMG') {
+                    big.src = img.currentSrc || img.src;
+                    big.alt = img.alt;
+                    box.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                } else if (box.classList.contains('open')) {
+                    close();
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') close();
+            });
+        })();
     </script>
 </body>
 
