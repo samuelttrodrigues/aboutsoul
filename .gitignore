@@ -1,4 +1,8 @@
 .agents/
 .qodo/
-/teste/
-/teste2/
+teste/
+teste2/
+
+# Documentos e rascunhos de texto
+*.md
+*.txt
