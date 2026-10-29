@@ -6,3 +6,8 @@ teste2/
 # Documentos e rascunhos de texto
 *.md
 *.txt
+
+# Brand guide gerado e PDFs
+soul-brand-guide.html
+Soul_Identidade_Visual_Guia.pdf
+*.pdf
